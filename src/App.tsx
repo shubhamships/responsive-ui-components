@@ -1,9 +1,11 @@
 import Buttons from "@/components/elements/Buttons";
+import TabsDemo from "@/components/elements/Tabs";
 
 function App() {
   return (
     <>
-      <Buttons />
+      {/* <Buttons /> */}
+      <TabsDemo />
     </>
   );
 }
