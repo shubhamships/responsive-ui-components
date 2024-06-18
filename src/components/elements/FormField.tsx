@@ -1,0 +1,148 @@
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+export default function FormField() {
+  return (
+    <>
+      <div className="grid gap-6 mb-6 md:grid-cols-2">
+        <div id="firstNameField" className="m-4 pr-2 pl-2 pr-2 pl-2">
+          <Label htmlFor="firstName" className="text-slate-700">
+            First name
+          </Label>
+
+          <Input type="text" placeholder="Enter First Name" required />
+        </div>
+
+        <div id="lastNameField" className="m-4 pr-2 pl-2">
+          <Label htmlFor="lastName" className="text-slate-700">
+            Last name
+          </Label>
+
+          <Input type="text" placeholder="Enter Last Name" required />
+        </div>
+
+        <div id="phoneField" className="m-4 pr-2 pl-2">
+          <Label htmlFor="phone" className="text-slate-700">
+            Phone Number
+          </Label>
+
+          <Input type="tel" placeholder="Enter Phone Number" required />
+        </div>
+
+        <div id="alternatePhoneField" className="m-4 pr-2 pl-2">
+          <Label htmlFor="alternatePhone" className="text-slate-700">
+            Alternate Phone Number
+          </Label>
+
+          <Input
+            type="tel"
+            placeholder="Enter Alternate Phone Number"
+            required
+          />
+        </div>
+
+        <div id="emailField" className="m-4 pr-2 pl-2">
+          <Label htmlFor="email" className="text-slate-700">
+            Email address
+          </Label>
+          <Input type="email" placeholder="Enter Email" required />
+        </div>
+
+        <div id="selectCountry" className="m-4 pr-2 pl-2">
+          <Label htmlFor="country" className="text-slate-700">
+            Select Country
+          </Label>
+          <Select>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select Country" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Select Country</SelectLabel>
+                <SelectItem value="afghanistan">Afghanistan (AFG)</SelectItem>
+                <SelectItem value="alandislands">
+                  Aland Islands (ALA)
+                </SelectItem>
+                <SelectItem value="albania">Albania (ALB)</SelectItem>
+                <SelectItem value="algeria">Algeria (DZA)</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div id="addressField" className="m-4 pr-2 pl-2">
+          <Label htmlFor="address" className="text-slate-700">
+            Address
+          </Label>
+          <Input type="text" placeholder="Enter Address" required />
+        </div>
+        <div id="address1Field" className="m-4 pr-2 pl-2">
+          <Label htmlFor="address1" className="text-slate-700">
+            Address 1
+          </Label>
+          <Input type="text" placeholder="Enter Address 1" required />
+        </div>
+        <div id="landmarkField" className="m-4 pr-2 pl-2">
+          <Label htmlFor="landmark" className="text-slate-700">
+            Landmark
+          </Label>
+          <Input type="text" placeholder="Enter Landmark" required />
+        </div>
+        <div id="address2Field" className="m-4 pr-2 pl-2">
+          <Label htmlFor="address2" className="text-slate-700">
+            Address 2
+          </Label>
+          <Input type="text" placeholder="Enter Address 2" required />
+        </div>
+
+        <div id="pinCodeField" className="m-4 pr-2 pl-2">
+          <Label htmlFor="pincode" className="text-slate-700">
+            Pincode
+          </Label>
+          <Input
+            type="password"
+            maxLength={6}
+            placeholder="Enter Pincode"
+            required
+          />
+        </div>
+
+        <div id="cityField" className="m-4 pr-2 pl-2">
+          <Label htmlFor="city" className="text-slate-700">
+            City
+          </Label>
+
+          <Input type="text" placeholder="Enter City" required />
+        </div>
+
+        <div id="selectState" className="m-4 pr-2 pl-2">
+          <Label htmlFor="state" className="text-slate-700">
+            Select State
+          </Label>
+          <Select>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select State" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Select State</SelectLabel>
+                <SelectItem value="delhi">Delhi</SelectItem>
+                <SelectItem value="uttarPradesh">Uttar Pradesh</SelectItem>
+                <SelectItem value="banglore">Banglore</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+    </>
+  );
+}
