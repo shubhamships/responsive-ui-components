@@ -1,15 +1,16 @@
-// import Buttons from "@/components/elements/Buttons";
-import FormField from "@/components/elements/FormField";
-// import TabsDemo from "@/components/elements/Tabs";
+import Home from "@/pages/Home";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  { path: "/add-order", element: <h3>Add Order</h3> },
+]);
 
 function App() {
-  return (
-    <>
-      <FormField />
-      {/* <Buttons /> */}
-      {/* <TabsDemo /> */}
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

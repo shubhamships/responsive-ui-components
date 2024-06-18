@@ -13,21 +13,31 @@ import {
 export default function FormField() {
   return (
     <>
-      <div className="grid gap-6 mb-6 md:grid-cols-2">
-        <div id="firstNameField" className="m-4 pr-2 pl-2 pr-2 pl-2">
+      <div className="grid md:grid-cols-2">
+        <div id="firstNameField" className="m-4 px-2">
           <Label htmlFor="firstName" className="text-slate-700">
             First name
           </Label>
 
-          <Input type="text" placeholder="Enter First Name" required />
+          <Input
+            type="text"
+            placeholder="Enter First Name"
+            required
+            className="mt-1"
+          />
         </div>
 
-        <div id="lastNameField" className="m-4 pr-2 pl-2">
+        <div id="lastNameField" className="m-4 px-2">
           <Label htmlFor="lastName" className="text-slate-700">
             Last name
           </Label>
 
-          <Input type="text" placeholder="Enter Last Name" required />
+          <Input
+            type="text"
+            placeholder="Enter Last Name"
+            required
+            className="mt-1"
+          />
         </div>
 
         <div id="phoneField" className="m-4 pr-2 pl-2">
@@ -35,7 +45,12 @@ export default function FormField() {
             Phone Number
           </Label>
 
-          <Input type="tel" placeholder="Enter Phone Number" required />
+          <Input
+            type="tel"
+            placeholder="Enter Phone Number"
+            required
+            className="mt-1"
+          />
         </div>
 
         <div id="alternatePhoneField" className="m-4 pr-2 pl-2">
@@ -47,6 +62,7 @@ export default function FormField() {
             type="tel"
             placeholder="Enter Alternate Phone Number"
             required
+            className="mt-1"
           />
         </div>
 
@@ -54,7 +70,12 @@ export default function FormField() {
           <Label htmlFor="email" className="text-slate-700">
             Email address
           </Label>
-          <Input type="email" placeholder="Enter Email" required />
+          <Input
+            type="email"
+            placeholder="Enter Email"
+            required
+            className="mt-1"
+          />
         </div>
 
         <div id="selectCountry" className="m-4 pr-2 pl-2">
@@ -83,25 +104,45 @@ export default function FormField() {
           <Label htmlFor="address" className="text-slate-700">
             Address
           </Label>
-          <Input type="text" placeholder="Enter Address" required />
+          <Input
+            type="text"
+            placeholder="Enter Address"
+            required
+            className="mt-1"
+          />
         </div>
         <div id="address1Field" className="m-4 pr-2 pl-2">
           <Label htmlFor="address1" className="text-slate-700">
             Address 1
           </Label>
-          <Input type="text" placeholder="Enter Address 1" required />
+          <Input
+            type="text"
+            placeholder="Enter Address 1"
+            required
+            className="mt-1"
+          />
         </div>
         <div id="landmarkField" className="m-4 pr-2 pl-2">
           <Label htmlFor="landmark" className="text-slate-700">
             Landmark
           </Label>
-          <Input type="text" placeholder="Enter Landmark" required />
+          <Input
+            type="text"
+            placeholder="Enter Landmark"
+            required
+            className="mt-1"
+          />
         </div>
         <div id="address2Field" className="m-4 pr-2 pl-2">
           <Label htmlFor="address2" className="text-slate-700">
             Address 2
           </Label>
-          <Input type="text" placeholder="Enter Address 2" required />
+          <Input
+            type="text"
+            placeholder="Enter Address 2"
+            required
+            className="mt-1"
+          />
         </div>
 
         <div id="pinCodeField" className="m-4 pr-2 pl-2">
@@ -121,7 +162,12 @@ export default function FormField() {
             City
           </Label>
 
-          <Input type="text" placeholder="Enter City" required />
+          <Input
+            type="text"
+            placeholder="Enter City"
+            required
+            className="mt-1"
+          />
         </div>
 
         <div id="selectState" className="m-4 pr-2 pl-2">
