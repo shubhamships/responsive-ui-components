@@ -209,7 +209,8 @@ export default function AddOrder() {
               <SelectTrigger
                 className="w-full mt-1"
                 value={formData.state}
-                onChange={handleInputChange}
+                id="state"
+                onChange={() => handleInputChange}
               >
                 <SelectValue placeholder="Select State" />
               </SelectTrigger>
