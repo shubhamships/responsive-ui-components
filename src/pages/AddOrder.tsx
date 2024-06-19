@@ -23,6 +23,8 @@ export default function AddOrder() {
     address2Billing: "",
     pincodeBilling: "",
     cityBilling: "",
+    stateBilling: "",
+    countryBilling: "",
   });
   const [check, setCheck] = useState(false);
   //function to set formData when entering value in form field
@@ -37,7 +39,34 @@ export default function AddOrder() {
     e.preventDefault();
     console.log(formData);
   };
-
+  //function to save the shipping state in the form
+  const handleState = (value: string) => {
+    setFormData({
+      ...formData,
+      state: value,
+    });
+  };
+  //function to save the shipping country in the form
+  const handleCountry = (value: string) => {
+    setFormData({
+      ...formData,
+      country: value,
+    });
+  };
+  //function to save the billing state in the form
+  const handleBillingState = (value: string) => {
+    setFormData({
+      ...formData,
+      stateBilling: value,
+    });
+  };
+  //function to save the billing country in the form
+  const handleBillingCountry = (value: string) => {
+    setFormData({
+      ...formData,
+      countryBilling: value,
+    });
+  };
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheck(e.target.checked);
 
@@ -50,6 +79,8 @@ export default function AddOrder() {
         address2Billing: formData.address2,
         pincodeBilling: formData.pincode,
         cityBilling: formData.city,
+        stateBilling: formData.state,
+        countryBilling: formData.country,
       });
     }
   };
@@ -60,6 +91,8 @@ export default function AddOrder() {
         <ShippingForm
           formData={formData}
           handleInputChange={handleInputChange}
+          handleState={handleState}
+          handleCountry={handleCountry}
         />
         <div className="m-4">
           <input type="checkbox" onChange={handleCheckboxChange} />
@@ -68,6 +101,8 @@ export default function AddOrder() {
             <BillingForm
               formData={formData}
               handleInputChange={handleInputChange}
+              handleBillingState={handleBillingState}
+              handleBillingCountry={handleBillingCountry}
             />
           )}
           <div className="flex flex-col items-center justify-center mt-4 mb-2">

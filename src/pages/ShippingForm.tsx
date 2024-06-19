@@ -10,7 +10,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export default function ShippingForm({ handleInputChange, formData }) {
+export default function ShippingForm({
+  handleInputChange,
+  formData,
+  handleState,
+  handleCountry,
+}) {
   return (
     <>
       <div className="grid md:grid-cols-2">
@@ -88,7 +93,7 @@ export default function ShippingForm({ handleInputChange, formData }) {
           <Label htmlFor="country">
             Select Country <span className="text-red-600">*</span>
           </Label>
-          <Select>
+          <Select onValueChange={handleCountry}>
             <SelectTrigger className="w-full mt-1">
               <SelectValue placeholder="Select Country" />
             </SelectTrigger>
@@ -180,13 +185,8 @@ export default function ShippingForm({ handleInputChange, formData }) {
           <Label htmlFor="state">
             Select State <span className="text-red-600">*</span>
           </Label>
-          <Select>
-            <SelectTrigger
-              className="w-full mt-1"
-              value={formData.state}
-              id="state"
-              onChange={() => handleInputChange}
-            >
+          <Select onValueChange={handleState}>
+            <SelectTrigger className="w-full mt-1">
               <SelectValue placeholder="Select State" />
             </SelectTrigger>
             <SelectContent>
