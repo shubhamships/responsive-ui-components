@@ -1,7 +1,5 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-
 import {
   Select,
   SelectContent,
@@ -12,80 +10,86 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export default function FormField() {
+export default function ShippingForm({ handleInputChange, formData }) {
   return (
     <>
       <div className="grid md:grid-cols-2">
         <div id="firstNameField" className="m-4 px-2">
-          <Label htmlFor="firstName" className="text-slate-700">
-            First name
+          <Label htmlFor="firstName">
+            First name <span className="text-red-600">*</span>
           </Label>
-
           <Input
             type="text"
+            id="firstName"
             placeholder="Enter First Name"
             required
-            className="mt-1"
+            className="mt-2"
+            value={formData.firstName}
+            onChange={handleInputChange}
           />
         </div>
-
         <div id="lastNameField" className="m-4 px-2">
-          <Label htmlFor="lastName" className="text-slate-700">
-            Last name
+          <Label htmlFor="lastName">
+            Last name <span className="text-red-600">*</span>
           </Label>
-
           <Input
             type="text"
+            id="lastName"
             placeholder="Enter Last Name"
             required
-            className="mt-1"
+            className="mt-2"
+            value={formData.lastName}
+            onChange={handleInputChange}
           />
         </div>
-
         <div id="phoneField" className="m-4 pr-2 pl-2">
-          <Label htmlFor="phone" className="text-slate-700">
-            Phone Number
+          <Label htmlFor="phone">
+            Phone Number <span className="text-red-600">*</span>
           </Label>
-
           <Input
             type="tel"
+            id="phone"
             placeholder="Enter Phone Number"
             required
-            className="mt-1"
+            value={formData.phone}
+            onChange={handleInputChange}
+            className="mt-2"
           />
         </div>
-
         <div id="alternatePhoneField" className="m-4 pr-2 pl-2">
-          <Label htmlFor="alternatePhone" className="text-slate-700">
-            Alternate Phone Number
+          <Label htmlFor="alternatePhone">
+            Alternate Phone Number <span className="text-red-600">*</span>
           </Label>
-
           <Input
             type="tel"
+            id="alternatePhone"
             placeholder="Enter Alternate Phone Number"
             required
-            className="mt-1"
+            value={formData.alternatePhone}
+            onChange={handleInputChange}
+            className="mt-2"
           />
         </div>
-
         <div id="emailField" className="m-4 pr-2 pl-2">
-          <Label htmlFor="email" className="text-slate-700">
-            Email address
+          <Label htmlFor="email">
+            Email address <span className="text-red-600">*</span>
           </Label>
           <Input
             type="email"
+            id="email"
             placeholder="Enter Email"
             required
-            className="mt-1"
+            className="mt-2"
+            value={formData.email}
+            onChange={handleInputChange}
           />
         </div>
-
         <div id="selectCountry" className="m-4 pr-2 pl-2">
-          <Label htmlFor="country" className="text-slate-700">
-            Select Country
+          <Label htmlFor="country">
+            Select Country <span className="text-red-600">*</span>
           </Label>
           <Select>
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full mt-1">
               <SelectValue placeholder="Select Country" />
             </SelectTrigger>
             <SelectContent>
@@ -101,83 +105,88 @@ export default function FormField() {
             </SelectContent>
           </Select>
         </div>
-
-        <div id="addressField" className="m-4 pr-2 pl-2">
-          <Label htmlFor="address" className="text-slate-700">
-            Address
-          </Label>
-          <Input
-            type="text"
-            placeholder="Enter Address"
-            required
-            className="mt-1"
-          />
-        </div>
-        <div id="address1Field" className="m-4 pr-2 pl-2">
-          <Label htmlFor="address1" className="text-slate-700">
-            Address 1
+        <div id="addressField1" className="m-4 pr-2 pl-2">
+          <Label htmlFor="address1">
+            Address 1 <span className="text-red-600">*</span>
           </Label>
           <Input
             type="text"
             placeholder="Enter Address 1"
             required
-            className="mt-1"
+            className="mt-2"
+            id="address1"
+            value={formData.address1}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div id="address2Field" className="m-4 pr-2 pl-2">
+          <Label htmlFor="address2">
+            Address 2 <span className="text-red-600">*</span>
+          </Label>
+          <Input
+            type="text"
+            id="address2"
+            placeholder="Enter Address 2"
+            required
+            value={formData.address2}
+            onChange={handleInputChange}
+            className="mt-2"
           />
         </div>
         <div id="landmarkField" className="m-4 pr-2 pl-2">
-          <Label htmlFor="landmark" className="text-slate-700">
-            Landmark
+          <Label htmlFor="landmark">
+            Landmark <span className="text-red-600">*</span>
           </Label>
           <Input
             type="text"
             placeholder="Enter Landmark"
             required
-            className="mt-1"
+            className="mt-2"
+            id="landmark"
+            value={formData.landmark}
+            onChange={handleInputChange}
           />
         </div>
-        <div id="address2Field" className="m-4 pr-2 pl-2">
-          <Label htmlFor="address2" className="text-slate-700">
-            Address 2
+        <div id="pinCodeField" className="m-4 pr-2 pl-2">
+          <Label htmlFor="pincode">
+            Pincode <span className="text-red-600">*</span>
           </Label>
           <Input
             type="text"
-            placeholder="Enter Address 2"
-            required
-            className="mt-1"
-          />
-        </div>
-
-        <div id="pinCodeField" className="m-4 pr-2 pl-2">
-          <Label htmlFor="pincode" className="text-slate-700">
-            Pincode
-          </Label>
-          <Input
-            type="password"
             maxLength={6}
             placeholder="Enter Pincode"
             required
+            id="pincode"
+            value={formData.pincode}
+            onChange={handleInputChange}
+            className="mt-2"
           />
         </div>
-
         <div id="cityField" className="m-4 pr-2 pl-2">
-          <Label htmlFor="city" className="text-slate-700">
-            City
+          <Label htmlFor="city">
+            City <span className="text-red-600">*</span>
           </Label>
-
           <Input
             type="text"
             placeholder="Enter City"
+            id="city"
+            value={formData.city}
+            onChange={handleInputChange}
             required
-            className="mt-1"
+            className="mt-2"
           />
         </div>
-
         <div id="selectState" className="m-4 pr-2 pl-2">
-          <Label htmlFor="state" className="text-slate-700">
-            Select State
+          <Label htmlFor="state">
+            Select State <span className="text-red-600">*</span>
           </Label>
           <Select>
-            <SelectTrigger className="w-full">
+            <SelectTrigger
+              className="w-full mt-1"
+              value={formData.state}
+              id="state"
+              onChange={() => handleInputChange}
+            >
               <SelectValue placeholder="Select State" />
             </SelectTrigger>
             <SelectContent>
@@ -189,16 +198,6 @@ export default function FormField() {
               </SelectGroup>
             </SelectContent>
           </Select>
-        </div>
-
-        <div className="flex items-center space-x-2">
-          <Checkbox id="terms" />
-          <label
-            htmlFor="terms"
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            Shipping & Billing Address are same.
-          </label>
         </div>
       </div>
     </>
