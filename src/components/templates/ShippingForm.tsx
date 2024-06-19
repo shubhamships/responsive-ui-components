@@ -19,7 +19,7 @@ export default function ShippingForm({
   return (
     <>
       <div className="grid md:grid-cols-2">
-        <div id="firstNameField" className="m-4 px-2">
+        <div id="firstNameField" className="m-2">
           <Label htmlFor="firstName">
             First name <span className="text-red-600">*</span>
           </Label>
@@ -33,7 +33,7 @@ export default function ShippingForm({
             onChange={handleInputChange}
           />
         </div>
-        <div id="lastNameField" className="m-4 px-2">
+        <div id="lastNameField" className="m-2">
           <Label htmlFor="lastName">
             Last name <span className="text-red-600">*</span>
           </Label>
@@ -47,7 +47,7 @@ export default function ShippingForm({
             onChange={handleInputChange}
           />
         </div>
-        <div id="phoneField" className="m-4 pr-2 pl-2">
+        <div id="phoneField" className="m-2">
           <Label htmlFor="phone">
             Phone Number <span className="text-red-600">*</span>
           </Label>
@@ -61,7 +61,7 @@ export default function ShippingForm({
             className="mt-2"
           />
         </div>
-        <div id="alternatePhoneField" className="m-4 pr-2 pl-2">
+        <div id="alternatePhoneField" className="m-2">
           <Label htmlFor="alternatePhone">
             Alternate Phone Number <span className="text-red-600">*</span>
           </Label>
@@ -75,7 +75,7 @@ export default function ShippingForm({
             className="mt-2"
           />
         </div>
-        <div id="emailField" className="m-4 pr-2 pl-2">
+        <div id="emailField" className="m-2">
           <Label htmlFor="email">
             Email address <span className="text-red-600">*</span>
           </Label>
@@ -89,7 +89,7 @@ export default function ShippingForm({
             onChange={handleInputChange}
           />
         </div>
-        <div id="selectCountry" className="m-4 pr-2 pl-2">
+        <div id="selectCountry" className="m-2">
           <Label htmlFor="country">
             Select Country <span className="text-red-600">*</span>
           </Label>
@@ -110,7 +110,7 @@ export default function ShippingForm({
             </SelectContent>
           </Select>
         </div>
-        <div id="addressField1" className="m-4 pr-2 pl-2">
+        <div id="addressField1" className="m-2">
           <Label htmlFor="address1">
             Address 1 <span className="text-red-600">*</span>
           </Label>
@@ -124,7 +124,7 @@ export default function ShippingForm({
             onChange={handleInputChange}
           />
         </div>
-        <div id="address2Field" className="m-4 pr-2 pl-2">
+        <div id="address2Field" className="m-2">
           <Label htmlFor="address2">
             Address 2 <span className="text-red-600">*</span>
           </Label>
@@ -138,7 +138,7 @@ export default function ShippingForm({
             className="mt-2"
           />
         </div>
-        <div id="landmarkField" className="m-4 pr-2 pl-2">
+        <div id="landmarkField" className="m-2">
           <Label htmlFor="landmark">
             Landmark <span className="text-red-600">*</span>
           </Label>
@@ -152,7 +152,7 @@ export default function ShippingForm({
             onChange={handleInputChange}
           />
         </div>
-        <div id="pinCodeField" className="m-4 pr-2 pl-2">
+        <div id="pinCodeField" className="m-2">
           <Label htmlFor="pincode">
             Pincode <span className="text-red-600">*</span>
           </Label>
@@ -167,7 +167,7 @@ export default function ShippingForm({
             className="mt-2"
           />
         </div>
-        <div id="cityField" className="m-4 pr-2 pl-2">
+        <div id="cityField" className="m-2">
           <Label htmlFor="city">
             City <span className="text-red-600">*</span>
           </Label>
@@ -181,7 +181,7 @@ export default function ShippingForm({
             className="mt-2"
           />
         </div>
-        <div id="selectState" className="m-4 pr-2 pl-2">
+        <div id="selectState" className="m-2">
           <Label htmlFor="state">
             Select State <span className="text-red-600">*</span>
           </Label>

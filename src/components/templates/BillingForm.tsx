@@ -19,7 +19,7 @@ export default function BillingForm({
   return (
     <>
       <div className="grid md:grid-cols-2">
-        <div id="selectcountryBilling" className="m-4 pr-2 pl-2">
+        <div id="selectcountryBilling" className="m-2">
           <Label htmlFor="countryBilling">
             Select Country <span className="text-red-600">*</span>
           </Label>
@@ -40,7 +40,7 @@ export default function BillingForm({
             </SelectContent>
           </Select>
         </div>
-        <div id="addressField1Billing" className="m-4 pr-2 pl-2">
+        <div id="addressField1Billing" className="m-2">
           <Label htmlFor="address1Billing">
             Address 1 <span className="text-red-600">*</span>
           </Label>
@@ -54,7 +54,7 @@ export default function BillingForm({
             onChange={handleInputChange}
           />
         </div>
-        <div id="address2FieldBilling" className="m-4 pr-2 pl-2">
+        <div id="address2FieldBilling" className="m-2">
           <Label htmlFor="address2Billing">
             Address 2 <span className="text-red-600">*</span>
           </Label>
@@ -68,7 +68,7 @@ export default function BillingForm({
             className="mt-2"
           />
         </div>
-        <div id="landmarkFieldBilling" className="m-4 pr-2 pl-2">
+        <div id="landmarkFieldBilling" className="m-2">
           <Label htmlFor="landmarkBilling">
             Landmark <span className="text-red-600">*</span>
           </Label>
@@ -82,7 +82,7 @@ export default function BillingForm({
             onChange={handleInputChange}
           />
         </div>
-        <div id="pinCodeFieldBilling" className="m-4 pr-2 pl-2">
+        <div id="pinCodeFieldBilling" className="m-2">
           <Label htmlFor="pincodeBilling">
             Pincode <span className="text-red-600">*</span>
           </Label>
@@ -97,7 +97,7 @@ export default function BillingForm({
             className="mt-2"
           />
         </div>
-        <div id="cityFieldBilling" className="m-4 pr-2 pl-2">
+        <div id="cityFieldBilling" className="m-2">
           <Label htmlFor="cityBilling">
             City <span className="text-red-600">*</span>
           </Label>
@@ -111,7 +111,7 @@ export default function BillingForm({
             className="mt-2"
           />
         </div>
-        <div id="selectstateBilling" className="m-4 pr-2 pl-2">
+        <div id="selectstateBilling" className="m-2">
           <Label htmlFor="stateBilling">
             Select State <span className="text-red-600">*</span>
           </Label>

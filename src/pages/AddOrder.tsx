@@ -1,8 +1,8 @@
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import BillingForm from "@/pages/BillingForm";
-import ShippingForm from "@/pages/ShippingForm";
+import BillingForm from "@/components/templates/BillingForm";
+import ShippingForm from "@/components/templates/ShippingForm";
 
 export default function AddOrder() {
   const [formData, setFormData] = useState({
@@ -87,22 +87,24 @@ export default function AddOrder() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <ShippingForm
-          formData={formData}
-          handleInputChange={handleInputChange}
-          handleState={handleState}
-          handleCountry={handleCountry}
-        />
-        <div className="m-4">
-          <Label>
-            <input
-              type="checkbox"
-              onChange={handleCheckboxChange}
-              className="mr-2"
-            />
-            Billing and shipping address are same.
-          </Label>
+      <main className="m-4 px-2">
+        <form onSubmit={handleSubmit}>
+          <ShippingForm
+            formData={formData}
+            handleInputChange={handleInputChange}
+            handleState={handleState}
+            handleCountry={handleCountry}
+          />
+          <div className="m-4">
+            <Label>
+              <input
+                type="checkbox"
+                onChange={handleCheckboxChange}
+                className="mr-2"
+              />
+              Billing and shipping address are same.
+            </Label>
+          </div>
           {check === false && (
             <BillingForm
               formData={formData}
@@ -114,8 +116,8 @@ export default function AddOrder() {
           <div className="flex flex-col items-center justify-center mt-4 mb-2">
             <Button type="submit">Submit</Button>
           </div>
-        </div>
-      </form>
+        </form>
+      </main>
     </>
   );
 }
