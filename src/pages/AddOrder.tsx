@@ -95,8 +95,14 @@ export default function AddOrder() {
           handleCountry={handleCountry}
         />
         <div className="m-4">
-          <input type="checkbox" onChange={handleCheckboxChange} />
-          <Label className="ml-2">Billing and shipping address are same.</Label>
+          <Label>
+            <input
+              type="checkbox"
+              onChange={handleCheckboxChange}
+              className="mr-2"
+            />
+            Billing and shipping address are same.
+          </Label>
           {check === false && (
             <BillingForm
               formData={formData}
