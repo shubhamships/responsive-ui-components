@@ -12,7 +12,7 @@ import {
 
 export default function BillingForm({
   handleInputChange,
-  formData,
+  billingForm,
   handleBillingState,
   handleBillingCountry,
 }) {
@@ -50,7 +50,7 @@ export default function BillingForm({
             required
             className="mt-2"
             id="address1Billing"
-            value={formData.address1Billing}
+            value={billingForm.address1Billing}
             onChange={handleInputChange}
           />
         </div>
@@ -63,7 +63,7 @@ export default function BillingForm({
             id="address2Billing"
             placeholder="Enter Address 2"
             required
-            value={formData.address2Billing}
+            value={billingForm.address2Billing}
             onChange={handleInputChange}
             className="mt-2"
           />
@@ -78,7 +78,7 @@ export default function BillingForm({
             required
             className="mt-2"
             id="landmarkBilling"
-            value={formData.landmarkBilling}
+            value={billingForm.landmarkBilling}
             onChange={handleInputChange}
           />
         </div>
@@ -92,7 +92,7 @@ export default function BillingForm({
             placeholder="Enter Pincode"
             required
             id="pincodeBilling"
-            value={formData.pincodeBilling}
+            value={billingForm.pincodeBilling}
             onChange={handleInputChange}
             className="mt-2"
           />
@@ -105,7 +105,7 @@ export default function BillingForm({
             type="text"
             placeholder="Enter City"
             id="cityBilling"
-            value={formData.cityBilling}
+            value={billingForm.cityBilling}
             onChange={handleInputChange}
             required
             className="mt-2"

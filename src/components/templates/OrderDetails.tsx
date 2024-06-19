@@ -12,7 +12,7 @@ import {
 
 export default function OrderDetails({
   handleInputChange,
-  formData,
+  orderForm,
   handleCurrency,
 }) {
   return (
@@ -31,7 +31,7 @@ export default function OrderDetails({
             placeholder="Enter Invoice Number"
             required
             className="mt-2"
-            value={formData.invoiceNumber}
+            value={orderForm.invoiceNumber}
             onChange={handleInputChange}
           />
         </div>
@@ -45,7 +45,7 @@ export default function OrderDetails({
             placeholder="Enter Invoice Date"
             required
             className="mt-2"
-            value={formData.invoiceDate}
+            value={orderForm.invoiceDate}
             onChange={handleInputChange}
           />
         </div>
@@ -80,7 +80,7 @@ export default function OrderDetails({
             placeholder="Enter Order Id/Ref. Id"
             required
             className="mt-2"
-            value={formData.orderRef}
+            value={orderForm.orderRef}
             onChange={handleInputChange}
           />
         </div>
@@ -94,7 +94,7 @@ export default function OrderDetails({
             placeholder="Enter IOSS Number:"
             required
             className="mt-2"
-            value={formData.ioss}
+            value={orderForm.ioss}
             onChange={handleInputChange}
           />
         </div>

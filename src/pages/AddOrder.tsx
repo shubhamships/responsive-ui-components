@@ -5,7 +5,7 @@ import BillingForm from "@/components/templates/BillingForm";
 import ShippingForm from "@/components/templates/ShippingForm";
 
 export default function AddOrder() {
-  const [formData, setFormData] = useState({
+  const [billingForm, setBillingForm] = useState({
     firstName: "",
     lastName: "",
     phone: "",
@@ -27,43 +27,43 @@ export default function AddOrder() {
     countryBilling: "",
   });
   const [check, setCheck] = useState(false);
-  //function to set formData when entering value in form field
+  //function to set billingForm when entering value in form field
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
+    setBillingForm({
+      ...billingForm,
       [e.target.id]: e.target.value,
     });
   };
-  //function to submit and show the formData in console
+  //function to submit and show the billingForm in console
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
+    console.log(billingForm);
   };
   //function to save the shipping state in the form
   const handleState = (value: string) => {
-    setFormData({
-      ...formData,
+    setBillingForm({
+      ...billingForm,
       state: value,
     });
   };
   //function to save the shipping country in the form
   const handleCountry = (value: string) => {
-    setFormData({
-      ...formData,
+    setBillingForm({
+      ...billingForm,
       country: value,
     });
   };
   //function to save the billing state in the form
   const handleBillingState = (value: string) => {
-    setFormData({
-      ...formData,
+    setBillingForm({
+      ...billingForm,
       stateBilling: value,
     });
   };
   //function to save the billing country in the form
   const handleBillingCountry = (value: string) => {
-    setFormData({
-      ...formData,
+    setBillingForm({
+      ...billingForm,
       countryBilling: value,
     });
   };
@@ -72,15 +72,15 @@ export default function AddOrder() {
 
     // If checkbox is checked, copying shipping address to billing address
     if (e.target.checked) {
-      setFormData({
-        ...formData,
-        address1Billing: formData.address1,
-        landmarkBilling: formData.landmark,
-        address2Billing: formData.address2,
-        pincodeBilling: formData.pincode,
-        cityBilling: formData.city,
-        stateBilling: formData.state,
-        countryBilling: formData.country,
+      setBillingForm({
+        ...billingForm,
+        address1Billing: billingForm.address1,
+        landmarkBilling: billingForm.landmark,
+        address2Billing: billingForm.address2,
+        pincodeBilling: billingForm.pincode,
+        cityBilling: billingForm.city,
+        stateBilling: billingForm.state,
+        countryBilling: billingForm.country,
       });
     }
   };
@@ -90,7 +90,7 @@ export default function AddOrder() {
       <main className="m-4 px-2">
         <form onSubmit={handleSubmit}>
           <ShippingForm
-            formData={formData}
+            billingForm={billingForm}
             handleInputChange={handleInputChange}
             handleState={handleState}
             handleCountry={handleCountry}
@@ -107,7 +107,7 @@ export default function AddOrder() {
           </div>
           {check === false && (
             <BillingForm
-              formData={formData}
+              billingForm={billingForm}
               handleInputChange={handleInputChange}
               handleBillingState={handleBillingState}
               handleBillingCountry={handleBillingCountry}

@@ -12,7 +12,7 @@ import {
 
 export default function ShippingForm({
   handleInputChange,
-  formData,
+  billingForm,
   handleState,
   handleCountry,
 }) {
@@ -29,7 +29,7 @@ export default function ShippingForm({
             placeholder="Enter First Name"
             required
             className="mt-2"
-            value={formData.firstName}
+            value={billingForm.firstName}
             onChange={handleInputChange}
           />
         </div>
@@ -43,7 +43,7 @@ export default function ShippingForm({
             placeholder="Enter Last Name"
             required
             className="mt-2"
-            value={formData.lastName}
+            value={billingForm.lastName}
             onChange={handleInputChange}
           />
         </div>
@@ -56,7 +56,7 @@ export default function ShippingForm({
             id="phone"
             placeholder="Enter Phone Number"
             required
-            value={formData.phone}
+            value={billingForm.phone}
             onChange={handleInputChange}
             className="mt-2"
           />
@@ -70,7 +70,7 @@ export default function ShippingForm({
             id="alternatePhone"
             placeholder="Enter Alternate Phone Number"
             required
-            value={formData.alternatePhone}
+            value={billingForm.alternatePhone}
             onChange={handleInputChange}
             className="mt-2"
           />
@@ -85,7 +85,7 @@ export default function ShippingForm({
             placeholder="Enter Email"
             required
             className="mt-2"
-            value={formData.email}
+            value={billingForm.email}
             onChange={handleInputChange}
           />
         </div>
@@ -120,7 +120,7 @@ export default function ShippingForm({
             required
             className="mt-2"
             id="address1"
-            value={formData.address1}
+            value={billingForm.address1}
             onChange={handleInputChange}
           />
         </div>
@@ -133,7 +133,7 @@ export default function ShippingForm({
             id="address2"
             placeholder="Enter Address 2"
             required
-            value={formData.address2}
+            value={billingForm.address2}
             onChange={handleInputChange}
             className="mt-2"
           />
@@ -148,7 +148,7 @@ export default function ShippingForm({
             required
             className="mt-2"
             id="landmark"
-            value={formData.landmark}
+            value={billingForm.landmark}
             onChange={handleInputChange}
           />
         </div>
@@ -162,7 +162,7 @@ export default function ShippingForm({
             placeholder="Enter Pincode"
             required
             id="pincode"
-            value={formData.pincode}
+            value={billingForm.pincode}
             onChange={handleInputChange}
             className="mt-2"
           />
@@ -175,7 +175,7 @@ export default function ShippingForm({
             type="text"
             placeholder="Enter City"
             id="city"
-            value={formData.city}
+            value={billingForm.city}
             onChange={handleInputChange}
             required
             className="mt-2"

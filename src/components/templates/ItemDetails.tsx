@@ -11,7 +11,7 @@ import {
 
 export default function ItemDetails({
   handleInputChange,
-  formData,
+  orderForm,
   handleIGST,
 }) {
   return (
@@ -30,7 +30,7 @@ export default function ItemDetails({
             placeholder="Enter Product Name"
             required
             className="mt-2"
-            value={formData.prodName}
+            value={orderForm.prodName}
             onChange={handleInputChange}
           />
         </div>
@@ -44,7 +44,7 @@ export default function ItemDetails({
             placeholder="SKU"
             required
             className="mt-2"
-            value={formData.sku}
+            value={orderForm.sku}
             onChange={handleInputChange}
           />
         </div>
@@ -58,7 +58,7 @@ export default function ItemDetails({
             placeholder="HSN"
             required
             className="mt-2"
-            value={formData.hsn}
+            value={orderForm.hsn}
             onChange={handleInputChange}
           />
         </div>
@@ -72,7 +72,7 @@ export default function ItemDetails({
             placeholder=""
             required
             className="mt-2"
-            value={formData.qty}
+            value={orderForm.qty}
             onChange={handleInputChange}
           />
         </div>
@@ -86,7 +86,7 @@ export default function ItemDetails({
             placeholder=""
             required
             className="mt-2"
-            value={formData.unitPrice}
+            value={orderForm.unitPrice}
             onChange={handleInputChange}
           />
         </div>
