@@ -17,7 +17,7 @@ export default function OrderDetails({
 }) {
   return (
     <>
-      <div className="flex flex-col items-center justify-center mt-4 mb-2 font-medium">
+      <div className="flex flex-col items-center justify-center mt-4 mb-4 font-bold text-cyan-500 text-2xl">
         Order Details
       </div>
       <div className="grid md:grid-cols-2">
@@ -54,7 +54,7 @@ export default function OrderDetails({
             Invoice Currency <span className="text-red-600">*</span>
           </Label>
           <Select onValueChange={handleCurrency}>
-            <SelectTrigger className="w-full mt-1">
+            <SelectTrigger className="w-full mt-2">
               <SelectValue placeholder="Select Currency" />
             </SelectTrigger>
             <SelectContent>

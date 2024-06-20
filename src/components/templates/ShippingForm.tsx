@@ -5,7 +5,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -18,9 +17,12 @@ export default function ShippingForm({
 }) {
   return (
     <>
+      <div className="flex flex-col items-center justify-center my-4 font-bold text-cyan-500 text-2xl">
+        Buyer Shipping Details
+      </div>
       <div className="grid md:grid-cols-2">
         <div id="firstNameField" className="m-2">
-          <Label htmlFor="firstName">
+          <Label htmlFor="firstName" className="">
             First name <span className="text-red-600">*</span>
           </Label>
           <Input
@@ -34,7 +36,7 @@ export default function ShippingForm({
           />
         </div>
         <div id="lastNameField" className="m-2">
-          <Label htmlFor="lastName">
+          <Label htmlFor="lastName" className="">
             Last name <span className="text-red-600">*</span>
           </Label>
           <Input
@@ -48,7 +50,7 @@ export default function ShippingForm({
           />
         </div>
         <div id="phoneField" className="m-2">
-          <Label htmlFor="phone">
+          <Label htmlFor="phone" className="">
             Phone Number <span className="text-red-600">*</span>
           </Label>
           <Input
@@ -62,7 +64,7 @@ export default function ShippingForm({
           />
         </div>
         <div id="alternatePhoneField" className="m-2">
-          <Label htmlFor="alternatePhone">
+          <Label htmlFor="alternatePhone" className="">
             Alternate Phone Number <span className="text-red-600">*</span>
           </Label>
           <Input
@@ -76,7 +78,7 @@ export default function ShippingForm({
           />
         </div>
         <div id="emailField" className="m-2">
-          <Label htmlFor="email">
+          <Label htmlFor="email" className="">
             Email address <span className="text-red-600">*</span>
           </Label>
           <Input
@@ -90,16 +92,15 @@ export default function ShippingForm({
           />
         </div>
         <div id="selectCountry" className="m-2">
-          <Label htmlFor="country">
+          <Label htmlFor="country" className="">
             Select Country <span className="text-red-600">*</span>
           </Label>
           <Select onValueChange={handleCountry}>
-            <SelectTrigger className="w-full mt-1">
+            <SelectTrigger className="w-full mt-2">
               <SelectValue placeholder="Select Country" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectLabel>Select Country</SelectLabel>
                 <SelectItem value="afghanistan">Afghanistan (AFG)</SelectItem>
                 <SelectItem value="alandislands">
                   Aland Islands (ALA)
@@ -111,7 +112,7 @@ export default function ShippingForm({
           </Select>
         </div>
         <div id="addressField1" className="m-2">
-          <Label htmlFor="address1">
+          <Label htmlFor="address1" className="">
             Address 1 <span className="text-red-600">*</span>
           </Label>
           <Input
@@ -125,7 +126,7 @@ export default function ShippingForm({
           />
         </div>
         <div id="address2Field" className="m-2">
-          <Label htmlFor="address2">
+          <Label htmlFor="address2" className="">
             Address 2 <span className="text-red-600">*</span>
           </Label>
           <Input
@@ -139,7 +140,7 @@ export default function ShippingForm({
           />
         </div>
         <div id="landmarkField" className="m-2">
-          <Label htmlFor="landmark">
+          <Label htmlFor="landmark" className="">
             Landmark <span className="text-red-600">*</span>
           </Label>
           <Input
@@ -153,7 +154,7 @@ export default function ShippingForm({
           />
         </div>
         <div id="pinCodeField" className="m-2">
-          <Label htmlFor="pincode">
+          <Label htmlFor="pincode" className="">
             Pincode <span className="text-red-600">*</span>
           </Label>
           <Input
@@ -168,7 +169,7 @@ export default function ShippingForm({
           />
         </div>
         <div id="cityField" className="m-2">
-          <Label htmlFor="city">
+          <Label htmlFor="city" className="">
             City <span className="text-red-600">*</span>
           </Label>
           <Input
@@ -182,16 +183,15 @@ export default function ShippingForm({
           />
         </div>
         <div id="selectState" className="m-2">
-          <Label htmlFor="state">
+          <Label htmlFor="state" className="">
             Select State <span className="text-red-600">*</span>
           </Label>
           <Select onValueChange={handleState}>
-            <SelectTrigger className="w-full mt-1">
+            <SelectTrigger className="w-full mt-2">
               <SelectValue placeholder="Select State" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectLabel>Select State</SelectLabel>
                 <SelectItem value="delhi">Delhi</SelectItem>
                 <SelectItem value="uttarPradesh">Uttar Pradesh</SelectItem>
                 <SelectItem value="banglore">Banglore</SelectItem>

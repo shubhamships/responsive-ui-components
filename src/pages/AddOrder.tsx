@@ -3,8 +3,11 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import BillingForm from "@/components/templates/BillingForm";
 import ShippingForm from "@/components/templates/ShippingForm";
+import { useNavigate } from "react-router-dom";
 
 export default function AddOrder() {
+  const navigateTo = useNavigate();
+
   const [billingForm, setBillingForm] = useState({
     firstName: "",
     lastName: "",
@@ -38,6 +41,7 @@ export default function AddOrder() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(billingForm);
+    navigateTo("/add-order2");
   };
   //function to save the shipping state in the form
   const handleState = (value: string) => {
@@ -87,37 +91,39 @@ export default function AddOrder() {
 
   return (
     <>
-      <main className="m-4 px-2">
-        <form onSubmit={handleSubmit}>
-          <ShippingForm
-            billingForm={billingForm}
-            handleInputChange={handleInputChange}
-            handleState={handleState}
-            handleCountry={handleCountry}
-          />
-          <div className="m-4">
-            <Label>
-              <input
-                type="checkbox"
-                onChange={handleCheckboxChange}
-                className="mr-2"
-              />
-              Billing and shipping address are same.
-            </Label>
-          </div>
-          {check === false && (
-            <BillingForm
+      <div className="p-4">
+        <div className="m-4 px-2">
+          <form onSubmit={handleSubmit}>
+            <ShippingForm
               billingForm={billingForm}
               handleInputChange={handleInputChange}
-              handleBillingState={handleBillingState}
-              handleBillingCountry={handleBillingCountry}
+              handleState={handleState}
+              handleCountry={handleCountry}
             />
-          )}
-          <div className="flex flex-col items-center justify-center mt-4 mb-2">
-            <Button type="submit">Submit</Button>
-          </div>
-        </form>
-      </main>
+            <div className="m-4 mb-8">
+              <Label className="text-cyan-600 font-bold">
+                <input
+                  type="checkbox"
+                  onChange={handleCheckboxChange}
+                  className="mr-2"
+                />
+                Billing and shipping address are same.
+              </Label>
+            </div>
+            {check === false && (
+              <BillingForm
+                billingForm={billingForm}
+                handleInputChange={handleInputChange}
+                handleBillingState={handleBillingState}
+                handleBillingCountry={handleBillingCountry}
+              />
+            )}
+            <div className="flex flex-col items-center justify-center mt-4 mb-2">
+              <Button type="submit">Submit</Button>
+            </div>
+          </form>
+        </div>
+      </div>
     </>
   );
 }

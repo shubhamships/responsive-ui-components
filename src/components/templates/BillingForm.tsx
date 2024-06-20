@@ -5,7 +5,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -18,18 +17,20 @@ export default function BillingForm({
 }) {
   return (
     <>
+      <div className="flex flex-col items-center justify-center mt-4 mb-4 font-bold text-cyan-500 text-2xl">
+        Buyer Billing Details
+      </div>
       <div className="grid md:grid-cols-2">
         <div id="selectcountryBilling" className="m-2">
           <Label htmlFor="countryBilling">
             Select Country <span className="text-red-600">*</span>
           </Label>
           <Select onValueChange={handleBillingCountry}>
-            <SelectTrigger className="w-full mt-1">
+            <SelectTrigger className="w-full mt-2">
               <SelectValue placeholder="Select Country" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectLabel>Select Country</SelectLabel>
                 <SelectItem value="afghanistan">Afghanistan (AFG)</SelectItem>
                 <SelectItem value="alandislands">
                   Aland Islands (ALA)
@@ -116,12 +117,11 @@ export default function BillingForm({
             Select State <span className="text-red-600">*</span>
           </Label>
           <Select onValueChange={handleBillingState}>
-            <SelectTrigger className="w-full mt-1">
+            <SelectTrigger className="w-full mt-2">
               <SelectValue placeholder="Select State" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectLabel>Select State</SelectLabel>
                 <SelectItem value="delhi">Delhi</SelectItem>
                 <SelectItem value="uttarPradesh">Uttar Pradesh</SelectItem>
                 <SelectItem value="banglore">Banglore</SelectItem>

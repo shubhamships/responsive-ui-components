@@ -1,7 +1,7 @@
 import OrderDetails from "@/components/templates/OrderDetails";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import ItemDetails from "@/components/templates/ItemDetails";
+import ItemDetails2 from "@/components/templates/ItemDetails2";
 
 export default function AddOrder2() {
   const [orderForm, setOrderForm] = useState({
@@ -44,6 +44,52 @@ export default function AddOrder2() {
     console.log(orderForm);
   };
 
+  //Trying for dynamic inputs
+  const [itemForm, setItemForm] = useState([
+    { id: 1, prodName: "", sku: "", hsn: "", qty: "", unitPrice: "", igst: "" },
+  ]);
+  const handleChange = (index, event) => {
+    const { name, value } = event.target;
+    const list = [...itemForm];
+    list[index][name] = value;
+    setItemForm(list);
+
+    // Updating corresponding fields in orderForm
+    const updatedOrderForm = {
+      ...orderForm,
+      prodName: list[index].prodName,
+      sku: list[index].sku,
+      hsn: list[index].hsn,
+      qty: list[index].qty,
+      unitPrice: list[index].unitPrice,
+      igst: list[index].igst,
+    };
+    setOrderForm(updatedOrderForm);
+  };
+
+  const addInputField = () => {
+    const maxId = Math.max(...itemForm.map((item) => item.id));
+    const newId = maxId + 1;
+    setItemForm([
+      ...itemForm,
+      {
+        id: newId,
+        prodName: "",
+        sku: "",
+        hsn: "",
+        qty: "",
+        unitPrice: "",
+        igst: "",
+      },
+    ]);
+  };
+
+  const removeInputFields = (index) => {
+    const rows = [...itemForm];
+    rows.splice(index, 1);
+    setItemForm(rows);
+  };
+
   return (
     <>
       <main className="m-4 px-2">
@@ -53,9 +99,12 @@ export default function AddOrder2() {
             handleInputChange={handleInputChange}
             handleCurrency={handleCurrency}
           />
-          <ItemDetails
-            orderForm={orderForm}
-            handleInputChange={handleInputChange}
+
+          <ItemDetails2
+            removeInputFields={removeInputFields}
+            itemForm={itemForm}
+            handleChange={handleChange}
+            addInputField={addInputField}
             handleIGST={handleIGST}
           />
 
