@@ -2,7 +2,6 @@ import { Label } from "@radix-ui/react-label";
 import { Input } from "../ui/input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
-
 import {
   Select,
   SelectContent,
@@ -11,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-export default function ItemDetails2({
+export default function ItemDetails({
   handleIGST,
   removeInputFields,
   addInputField,
@@ -27,7 +26,7 @@ export default function ItemDetails2({
         {itemForm.map((data, index) => {
           const { id, prodName, sku, hsn, qty, unitPrice } = data;
           return (
-            <div key={index} className="grid md:grid-cols-2 gap-4">
+            <div key={index} className="gap-4 flex flex-col md:flex-row">
               <div className="my-2 mt-4">
                 <Label htmlFor={`prodName-${id}`}>
                   Product Name <span className="text-red-600">*</span>

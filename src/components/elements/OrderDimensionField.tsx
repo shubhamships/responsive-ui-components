@@ -25,8 +25,10 @@ export default function OrderDimensionField({
               onChange={handleInputChange}
             />
           </div>
-          <div className="bg-sky-50 mt-2 px-3 rounded-r-sm border border-slate-200 text-sm text-base">
-            {unit}
+          <div className="flex justify-items-center flex-col">
+            <div className="bg-sky-50 mt-2 p-2.5 rounded-r-sm border border-slate-200 text-sm">
+              {unit}
+            </div>
           </div>
         </div>
       </div>

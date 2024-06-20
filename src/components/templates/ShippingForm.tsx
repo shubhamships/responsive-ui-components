@@ -65,7 +65,7 @@ export default function ShippingForm({
         </div>
         <div id="alternatePhoneField" className="m-2">
           <Label htmlFor="alternatePhone" className="">
-            Alternate Phone Number <span className="text-red-600">*</span>
+            Alternate Number <span className="text-red-600">*</span>
           </Label>
           <Input
             type="tel"

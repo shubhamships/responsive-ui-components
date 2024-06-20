@@ -4,10 +4,10 @@ import { useState } from "react";
 import BillingForm from "@/components/templates/BillingForm";
 import ShippingForm from "@/components/templates/ShippingForm";
 import { useNavigate } from "react-router-dom";
+import LeftTab from "@/components/templates/LeftTab";
 
 export default function AddOrder() {
   const navigateTo = useNavigate();
-
   const [billingForm, setBillingForm] = useState({
     firstName: "",
     lastName: "",
@@ -93,35 +93,42 @@ export default function AddOrder() {
     <>
       <div className="p-4">
         <div className="m-4 px-2">
-          <form onSubmit={handleSubmit}>
-            <ShippingForm
-              billingForm={billingForm}
-              handleInputChange={handleInputChange}
-              handleState={handleState}
-              handleCountry={handleCountry}
-            />
-            <div className="m-4 mb-8">
-              <Label className="text-cyan-600 font-bold">
-                <input
-                  type="checkbox"
-                  onChange={handleCheckboxChange}
-                  className="mr-2"
+          <div className="md:grid md:grid-cols-2">
+            <div>
+              <LeftTab />
+            </div>
+            <div>
+              <form onSubmit={handleSubmit}>
+                <ShippingForm
+                  billingForm={billingForm}
+                  handleInputChange={handleInputChange}
+                  handleState={handleState}
+                  handleCountry={handleCountry}
                 />
-                Billing and shipping address are same.
-              </Label>
+                <div className="m-4 mb-8">
+                  <Label className="text-cyan-600 font-bold">
+                    <input
+                      type="checkbox"
+                      onChange={handleCheckboxChange}
+                      className="mr-2"
+                    />
+                    Billing and shipping address are same.
+                  </Label>
+                </div>
+                {check === false && (
+                  <BillingForm
+                    billingForm={billingForm}
+                    handleInputChange={handleInputChange}
+                    handleBillingState={handleBillingState}
+                    handleBillingCountry={handleBillingCountry}
+                  />
+                )}
+                <div className="flex flex-col items-center justify-center mt-4 mb-2">
+                  <Button type="submit">Submit</Button>
+                </div>
+              </form>
             </div>
-            {check === false && (
-              <BillingForm
-                billingForm={billingForm}
-                handleInputChange={handleInputChange}
-                handleBillingState={handleBillingState}
-                handleBillingCountry={handleBillingCountry}
-              />
-            )}
-            <div className="flex flex-col items-center justify-center mt-4 mb-2">
-              <Button type="submit">Submit</Button>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </>

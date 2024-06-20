@@ -1,7 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-
 import {
   Select,
   SelectContent,
@@ -20,7 +19,6 @@ export default function FormField() {
           <Label htmlFor="firstName" className="text-slate-700">
             First name
           </Label>
-
           <Input
             type="text"
             placeholder="Enter First Name"
@@ -28,12 +26,10 @@ export default function FormField() {
             className="mt-1"
           />
         </div>
-
         <div id="lastNameField" className="m-4 px-2">
           <Label htmlFor="lastName" className="text-slate-700">
             Last name
           </Label>
-
           <Input
             type="text"
             placeholder="Enter Last Name"
@@ -41,12 +37,10 @@ export default function FormField() {
             className="mt-1"
           />
         </div>
-
         <div id="phoneField" className="m-4 pr-2 pl-2">
           <Label htmlFor="phone" className="text-slate-700">
             Phone Number
           </Label>
-
           <Input
             type="tel"
             placeholder="Enter Phone Number"
@@ -54,12 +48,10 @@ export default function FormField() {
             className="mt-1"
           />
         </div>
-
         <div id="alternatePhoneField" className="m-4 pr-2 pl-2">
           <Label htmlFor="alternatePhone" className="text-slate-700">
             Alternate Phone Number
           </Label>
-
           <Input
             type="tel"
             placeholder="Enter Alternate Phone Number"
@@ -67,7 +59,6 @@ export default function FormField() {
             className="mt-1"
           />
         </div>
-
         <div id="emailField" className="m-4 pr-2 pl-2">
           <Label htmlFor="email" className="text-slate-700">
             Email address
@@ -79,7 +70,6 @@ export default function FormField() {
             className="mt-1"
           />
         </div>
-
         <div id="selectCountry" className="m-4 pr-2 pl-2">
           <Label htmlFor="country" className="text-slate-700">
             Select Country
@@ -101,7 +91,6 @@ export default function FormField() {
             </SelectContent>
           </Select>
         </div>
-
         <div id="addressField" className="m-4 pr-2 pl-2">
           <Label htmlFor="address" className="text-slate-700">
             Address
@@ -146,7 +135,6 @@ export default function FormField() {
             className="mt-1"
           />
         </div>
-
         <div id="pinCodeField" className="m-4 pr-2 pl-2">
           <Label htmlFor="pincode" className="text-slate-700">
             Pincode
@@ -158,12 +146,10 @@ export default function FormField() {
             required
           />
         </div>
-
         <div id="cityField" className="m-4 pr-2 pl-2">
           <Label htmlFor="city" className="text-slate-700">
             City
           </Label>
-
           <Input
             type="text"
             placeholder="Enter City"
@@ -171,7 +157,6 @@ export default function FormField() {
             className="mt-1"
           />
         </div>
-
         <div id="selectState" className="m-4 pr-2 pl-2">
           <Label htmlFor="state" className="text-slate-700">
             Select State
@@ -190,7 +175,6 @@ export default function FormField() {
             </SelectContent>
           </Select>
         </div>
-
         <div className="flex items-center space-x-2">
           <Checkbox id="terms" />
           <label

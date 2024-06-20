@@ -1,5 +1,6 @@
 import Service from "@/components/elements/Service";
 import { CalculatedWeight } from "@/components/templates/CalculatedWeight";
+import LeftTab from "@/components/templates/LeftTab";
 
 export default function AddOrder4() {
   const availableServices = [
@@ -27,36 +28,43 @@ export default function AddOrder4() {
 
   return (
     <>
-      <div className="grid grid-cols-1 justify-center text-center m-4 p-2">
-        <p className="font-bold text-cyan-500 text-2xl mb-2">
-          Select Shipping Partner
-        </p>
-        <p className="text-xs font-medium mt-3 mb-5 text-justify">
-          All shipments via ShipGlobal Direct service are Delivered Duty Paid
-          (DDP), hence no extra duty will be billed on the consignee or the
-          shipper. Rates are inclusive of covid & fuel surcharge, exclusive of
-          GST and ex-Delhi Hub
-        </p>
-        <p className="text-md font-medium mt-3 mb-5">
-          If you need more info, please call/whatsapp at
-          <a href="#" className="text-cyan-500 text-sm ml-1">
-            011-422 77 777.
-          </a>
-        </p>
-      </div>
-      <div>
-        <CalculatedWeight />
-      </div>
-      <div>
-        {availableServices.map((item, index) => (
-          <div key={index}>
-            <Service
-              company={item.name}
-              duration={item.estimated}
-              cost={item.amount}
-            />
+      <div className="md:grid md:grid-cols-2">
+        <div>
+          <LeftTab />
+        </div>
+        <div>
+          <div className="grid grid-cols-1 justify-center text-center m-4 p-2">
+            <p className="font-bold text-cyan-500 text-2xl mb-2">
+              Select Shipping Partner
+            </p>
+            <p className="text-xs font-medium mt-3 mb-5 text-justify">
+              All shipments via ShipGlobal Direct service are Delivered Duty
+              Paid (DDP), hence no extra duty will be billed on the consignee or
+              the shipper. Rates are inclusive of covid & fuel surcharge,
+              exclusive of GST and ex-Delhi Hub
+            </p>
+            <p className="text-md font-medium mt-3 mb-5">
+              If you need more info, please call/whatsapp at
+              <a href="#" className="text-cyan-500 text-sm ml-1">
+                011-422 77 777.
+              </a>
+            </p>
           </div>
-        ))}
+          <div>
+            <CalculatedWeight />
+          </div>
+          <div>
+            {availableServices.map((item, index) => (
+              <div key={index}>
+                <Service
+                  company={item.name}
+                  duration={item.estimated}
+                  cost={item.amount}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
