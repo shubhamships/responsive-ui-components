@@ -2,6 +2,7 @@ import OrderDetails from "@/components/templates/OrderDetails";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import ItemDetails2 from "@/components/templates/ItemDetails2";
+import { useNavigate } from "react-router-dom";
 
 export default function AddOrder2() {
   const [orderForm, setOrderForm] = useState({
@@ -17,6 +18,7 @@ export default function AddOrder2() {
     unitPrice: "",
     igst: "",
   });
+  const navigateTo = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOrderForm({
@@ -42,6 +44,7 @@ export default function AddOrder2() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(orderForm);
+    navigateTo("/add-order3");
   };
 
   //Trying for dynamic inputs
