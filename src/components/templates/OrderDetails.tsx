@@ -13,14 +13,14 @@ import {
 export default function OrderDetails({
   handleInputChange,
   orderForm,
-  handleCurrency,
+  handleFormInputChange,
 }) {
   return (
     <>
       <div className="mt-4 mb-4 font-bold text-cyan-500 text-2xl">
         Order Details
       </div>
-      <div className="grid md:grid-cols-2">
+      <div className="grid md:grid-cols-2 md:gap-6">
         <div id="invoiceNumberField" className="m-2">
           <Label htmlFor="invoiceNumber">
             Invoice Number <span className="text-red-600">*</span>
@@ -53,7 +53,11 @@ export default function OrderDetails({
           <Label htmlFor="invoiceCurrency">
             Invoice Currency <span className="text-red-600">*</span>
           </Label>
-          <Select onValueChange={handleCurrency}>
+          <Select
+            onValueChange={(value) =>
+              handleFormInputChange("invoiceCurrency", value)
+            }
+          >
             <SelectTrigger className="w-full mt-2">
               <SelectValue placeholder="Select Currency" />
             </SelectTrigger>

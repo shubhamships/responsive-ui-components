@@ -1,7 +1,7 @@
 import { Label } from "@radix-ui/react-label";
 import { Input } from "../ui/input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import {
   Select,
   SelectContent,
@@ -11,9 +11,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 export default function ItemDetails({
-  handleIGST,
+  handleFormInputChange,
   removeInputFields,
-  addInputField,
   itemForm,
   handleChange,
 }) {
@@ -26,8 +25,8 @@ export default function ItemDetails({
         {itemForm.map((data, index) => {
           const { id, prodName, sku, hsn, qty, unitPrice } = data;
           return (
-            <div key={index} className="gap-4 flex flex-col md:flex-row">
-              <div className="my-2 mt-4">
+            <div key={index} className="gap-4 grid grid-cols-1 md:grid-cols-8">
+              <div className="my-2 mt-4 md:col-span-2">
                 <Label htmlFor={`prodName-${id}`}>
                   Product Name <span className="text-red-600">*</span>
                 </Label>
@@ -87,7 +86,7 @@ export default function ItemDetails({
                   onChange={(evnt) => handleChange(index, evnt)}
                 />
               </div>
-              <div className="my-2 mt-4">
+              <div className="my-2 mt-4 md:col-span-2">
                 <Label htmlFor={`unitPrice-${id}`}>
                   Price per Unit <span className="text-red-600">*</span>
                 </Label>
@@ -106,7 +105,11 @@ export default function ItemDetails({
                 <Label htmlFor="igst">
                   IGST <span className="text-red-600">*</span>
                 </Label>
-                <Select onValueChange={handleIGST}>
+                <Select
+                  onValueChange={(value) =>
+                    handleFormInputChange("igst", value)
+                  }
+                >
                   <SelectTrigger className="w-full mt-2">
                     <SelectValue placeholder="" />
                   </SelectTrigger>
@@ -135,15 +138,6 @@ export default function ItemDetails({
             </div>
           );
         })}
-        <div className="mt-4">
-          <button
-            type="button"
-            onClick={addInputField}
-            className="btn bg-sky-500 rounded-full text-white px-2 py-1 m-1"
-          >
-            <FontAwesomeIcon icon={faPlus} />
-          </button>
-        </div>
       </div>
     </>
   );

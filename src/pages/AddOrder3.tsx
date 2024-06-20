@@ -27,6 +27,7 @@ export default function AddOrder3() {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    alert(JSON.stringify(oderDimensionForm));
     console.log(oderDimensionForm);
     navigateTo("/add-order4");
   };
@@ -51,7 +52,7 @@ export default function AddOrder3() {
           <div>
             <div className="m-4 px-2">
               <form onSubmit={handleSubmit}>
-                <div className="flex flex-col md:flex-row">
+                <div className="flex flex-col md:flex-row md:gap-6">
                   {shipDetails.map((item, index) => (
                     <OrderDimensionField
                       key={index}
@@ -63,7 +64,7 @@ export default function AddOrder3() {
                   ))}
                 </div>
                 <div className="flex flex-col items-center justify-center mt-8 mb-2">
-                  <Button type="submit">Submit</Button>
+                  <Button type="submit">Continue</Button>
                 </div>
               </form>
             </div>

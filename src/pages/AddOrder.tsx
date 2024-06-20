@@ -30,47 +30,28 @@ export default function AddOrder() {
     countryBilling: "",
   });
   const [check, setCheck] = useState(true);
-  //function to set billingForm when entering value in form field
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBillingForm({
       ...billingForm,
       [e.target.id]: e.target.value,
     });
   };
-  //function to submit and show the billingForm in console
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(billingForm);
+    alert(JSON.stringify(billingForm));
     navigateTo("/add-order2");
   };
-  //function to save the shipping state in the form
-  const handleState = (value: string) => {
+
+  const handleFormInputChange = (id: string, value: string) => {
     setBillingForm({
       ...billingForm,
-      state: value,
+      [id]: value,
     });
   };
-  //function to save the shipping country in the form
-  const handleCountry = (value: string) => {
-    setBillingForm({
-      ...billingForm,
-      country: value,
-    });
-  };
-  //function to save the billing state in the form
-  const handleBillingState = (value: string) => {
-    setBillingForm({
-      ...billingForm,
-      stateBilling: value,
-    });
-  };
-  //function to save the billing country in the form
-  const handleBillingCountry = (value: string) => {
-    setBillingForm({
-      ...billingForm,
-      countryBilling: value,
-    });
-  };
+
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheck(e.target.checked);
 
@@ -102,8 +83,7 @@ export default function AddOrder() {
                 <ShippingForm
                   billingForm={billingForm}
                   handleInputChange={handleInputChange}
-                  handleState={handleState}
-                  handleCountry={handleCountry}
+                  handleFormInputChange={handleFormInputChange}
                 />
                 <div className="m-4 mb-8">
                   <Label className="text-cyan-600 font-bold">
@@ -120,12 +100,11 @@ export default function AddOrder() {
                   <BillingForm
                     billingForm={billingForm}
                     handleInputChange={handleInputChange}
-                    handleBillingState={handleBillingState}
-                    handleBillingCountry={handleBillingCountry}
+                    handleFormInputChange={handleFormInputChange}
                   />
                 )}
                 <div className="flex flex-col items-center justify-center mt-4 mb-2">
-                  <Button type="submit">Submit</Button>
+                  <Button type="submit">Continue</Button>
                 </div>
               </form>
             </div>

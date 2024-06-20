@@ -12,20 +12,23 @@ import {
 export default function BillingForm({
   handleInputChange,
   billingForm,
-  handleBillingState,
-  handleBillingCountry,
+  handleFormInputChange,
 }) {
   return (
     <>
       <div className="mt-4 mb-4 font-bold text-cyan-500 text-2xl">
         Buyer Billing Details
       </div>
-      <div className="grid md:grid-cols-2">
+      <div className="grid md:grid-cols-2 md:gap-6">
         <div id="selectcountryBilling" className="m-2">
           <Label htmlFor="countryBilling">
             Select Country <span className="text-red-600">*</span>
           </Label>
-          <Select onValueChange={handleBillingCountry}>
+          <Select
+            onValueChange={(value) =>
+              handleFormInputChange("countryBilling", value)
+            }
+          >
             <SelectTrigger className="w-full mt-2">
               <SelectValue placeholder="Select Country" />
             </SelectTrigger>
@@ -116,7 +119,11 @@ export default function BillingForm({
           <Label htmlFor="stateBilling">
             Select State <span className="text-red-600">*</span>
           </Label>
-          <Select onValueChange={handleBillingState}>
+          <Select
+            onValueChange={(value) =>
+              handleFormInputChange("stateBilling", value)
+            }
+          >
             <SelectTrigger className="w-full mt-2">
               <SelectValue placeholder="Select State" />
             </SelectTrigger>

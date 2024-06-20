@@ -12,15 +12,14 @@ import {
 export default function ShippingForm({
   handleInputChange,
   billingForm,
-  handleState,
-  handleCountry,
+  handleFormInputChange,
 }) {
   return (
     <>
       <div className="my-4 font-bold text-cyan-500 text-2xl">
         Buyer Shipping Details
       </div>
-      <div className=" grid md:grid-cols-2">
+      <div className=" grid md:grid-cols-2 md:gap-6">
         <div id="firstNameField" className="m-2">
           <Label htmlFor="firstName" className="">
             First name <span className="text-red-600">*</span>
@@ -91,11 +90,14 @@ export default function ShippingForm({
             onChange={handleInputChange}
           />
         </div>
-        <div id="selectCountry" className="m-2">
+        <div id="countryField" className="m-2">
           <Label htmlFor="country" className="">
             Select Country <span className="text-red-600">*</span>
           </Label>
-          <Select onValueChange={handleCountry}>
+          <Select
+            onValueChange={(value) => handleFormInputChange("country", value)}
+            name="country"
+          >
             <SelectTrigger className="w-full mt-2">
               <SelectValue placeholder="Select Country" />
             </SelectTrigger>
@@ -186,7 +188,9 @@ export default function ShippingForm({
           <Label htmlFor="state" className="">
             Select State <span className="text-red-600">*</span>
           </Label>
-          <Select onValueChange={handleState}>
+          <Select
+            onValueChange={(value) => handleFormInputChange("state", value)}
+          >
             <SelectTrigger className="w-full mt-2">
               <SelectValue placeholder="Select State" />
             </SelectTrigger>
