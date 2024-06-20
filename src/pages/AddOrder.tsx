@@ -5,6 +5,7 @@ import BillingForm from "@/components/templates/BillingForm";
 import ShippingForm from "@/components/templates/ShippingForm";
 import { useNavigate } from "react-router-dom";
 import LeftTab from "@/components/templates/LeftTab";
+import { DialogData } from "@/components/elements/DialogData";
 
 export default function AddOrder() {
   const navigateTo = useNavigate();
@@ -104,7 +105,8 @@ export default function AddOrder() {
                   />
                 )}
                 <div className="flex flex-col items-center justify-center mt-4 mb-2">
-                  <Button type="submit">Continue</Button>
+                  {/* <Button type="submit">Continue</Button> */}
+                  <DialogData content={JSON.stringify(billingForm)} />
                 </div>
               </form>
             </div>
