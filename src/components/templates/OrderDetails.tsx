@@ -17,7 +17,7 @@ export default function OrderDetails({
 }) {
   return (
     <>
-      <div className="flex flex-col items-center justify-center mt-4 mb-4 font-bold text-cyan-500 text-2xl">
+      <div className="mt-4 mb-4 font-bold text-cyan-500 text-2xl">
         Order Details
       </div>
       <div className="grid md:grid-cols-2">

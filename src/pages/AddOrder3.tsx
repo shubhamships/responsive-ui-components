@@ -32,12 +32,12 @@ export default function AddOrder3() {
   };
   return (
     <>
-      <div className="md:grid md:grid-cols-2">
-        <div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="md:col-span-1">
           <LeftTab />
         </div>
-        <div>
-          <div className="grid grid-cols-1 justify-center text-center m-4">
+        <div className="md:col-span-2">
+          <div className="m-4">
             <p className="font-bold text-cyan-500 text-2xl mb-2">
               Shipment Details
             </p>

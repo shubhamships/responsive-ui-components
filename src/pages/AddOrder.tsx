@@ -29,7 +29,7 @@ export default function AddOrder() {
     stateBilling: "",
     countryBilling: "",
   });
-  const [check, setCheck] = useState(false);
+  const [check, setCheck] = useState(true);
   //function to set billingForm when entering value in form field
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBillingForm({
@@ -91,13 +91,13 @@ export default function AddOrder() {
 
   return (
     <>
-      <div className="p-4">
+      <main className="p-4">
         <div className="m-4 px-2">
-          <div className="md:grid md:grid-cols-2">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="md:col-span-1">
               <LeftTab />
             </div>
-            <div>
+            <div className="md:col-span-2">
               <form onSubmit={handleSubmit}>
                 <ShippingForm
                   billingForm={billingForm}
@@ -109,6 +109,7 @@ export default function AddOrder() {
                   <Label className="text-cyan-600 font-bold">
                     <input
                       type="checkbox"
+                      defaultChecked={true}
                       onChange={handleCheckboxChange}
                       className="mr-2"
                     />
@@ -130,7 +131,7 @@ export default function AddOrder() {
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </>
   );
 }

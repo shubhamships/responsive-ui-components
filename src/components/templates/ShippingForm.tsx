@@ -17,10 +17,10 @@ export default function ShippingForm({
 }) {
   return (
     <>
-      <div className="flex flex-col items-center justify-center my-4 font-bold text-cyan-500 text-2xl">
+      <div className="my-4 font-bold text-cyan-500 text-2xl">
         Buyer Shipping Details
       </div>
-      <div className="grid md:grid-cols-2">
+      <div className=" grid md:grid-cols-2">
         <div id="firstNameField" className="m-2">
           <Label htmlFor="firstName" className="">
             First name <span className="text-red-600">*</span>

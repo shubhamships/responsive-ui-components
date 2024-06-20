@@ -19,7 +19,7 @@ export default function ItemDetails({
 }) {
   return (
     <>
-      <div className="flex flex-col items-center justify-center mt-4 mb-4 font-bold text-cyan-500 text-2xl">
+      <div className="mt-4 mb-4 font-bold text-cyan-500 text-2xl">
         Item Details
       </div>
       <div className="m-2 font-medium text-sm">
