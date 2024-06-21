@@ -1,10 +1,10 @@
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import BillingForm from "@/components/templates/BillingForm";
-import ShippingForm from "@/components/templates/ShippingForm";
 import { useNavigate } from "react-router-dom";
 import LeftTab from "@/components/templates/LeftTab";
 import { DialogData } from "@/components/elements/DialogData";
+import BuyerShippingDetailsForm from "@/components/templates/BuyerShippingDetailsForm";
+import BuyerBillingDetailsForm from "@/components/templates/BuyerBillingDetailsForm";
 
 export default function AddOrder() {
   const navigateTo = useNavigate();
@@ -18,6 +18,9 @@ export default function AddOrder() {
     address1: "",
     landmark: "",
     address2: "",
+    houseNumber: "",
+    street: "",
+    locality: "",
     pincode: "",
     city: "",
     state: "",
@@ -33,14 +36,9 @@ export default function AddOrder() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBillingForm({
       ...billingForm,
-      [e.target.id]: e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
-
-  // const billingFormData = [];
-  // for (const [key, value] of Object.entries(billingForm)) {
-  //   billingFormData.push(`${key}: ${value}\n`);
-  // }
   const billingFormData = Object.entries(billingForm);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -49,10 +47,10 @@ export default function AddOrder() {
     navigateTo("/add-order2");
   };
 
-  const handleFormInputChange = (id: string, value: string) => {
+  const handleFormInputChange = (name: string, value: string) => {
     setBillingForm({
       ...billingForm,
-      [id]: value,
+      [name]: value,
     });
   };
 
@@ -76,13 +74,13 @@ export default function AddOrder() {
     <>
       <main className="p-4">
         <div className="m-4 px-2">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="md:col-span-1">
               <LeftTab />
             </div>
-            <div className="md:col-span-2">
+            <div className="md:col-span-3">
               <form onSubmit={handleSubmit}>
-                <ShippingForm
+                <BuyerShippingDetailsForm
                   billingForm={billingForm}
                   handleInputChange={handleInputChange}
                   handleFormInputChange={handleFormInputChange}
@@ -100,7 +98,7 @@ export default function AddOrder() {
                   </Label>
                 </div>
                 {check === false && (
-                  <BillingForm
+                  <BuyerBillingDetailsForm
                     billingForm={billingForm}
                     handleInputChange={handleInputChange}
                     handleFormInputChange={handleFormInputChange}
@@ -109,7 +107,6 @@ export default function AddOrder() {
                 <div className="flex flex-col items-center justify-center mt-4 mb-2">
                   <DialogData
                     content={JSON.stringify(billingFormData)}
-                    // content={billingFormData}
                     handleSubmit={handleSubmit}
                   />
                 </div>

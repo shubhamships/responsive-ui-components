@@ -1,11 +1,11 @@
-import OrderDetails from "@/components/templates/OrderDetails";
 import { useState } from "react";
-import ItemDetails from "@/components/templates/ItemDetails";
 import { useNavigate } from "react-router-dom";
 import LeftTab from "@/components/templates/LeftTab";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { DialogData } from "@/components/elements/DialogData";
+import OrderDetailsForm from "@/components/templates/OrderDetailsForm";
+import ItemDetailsForm from "@/components/templates/ItemDetailsForm";
 
 export default function AddOrder2() {
   const [orderForm, setOrderForm] = useState({
@@ -26,13 +26,13 @@ export default function AddOrder2() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOrderForm({
       ...orderForm,
-      [e.target.id]: e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
-  const handleFormInputChange = (id: string, value: string) => {
+  const handleFormInputChange = (name: string, value: string) => {
     setOrderForm({
       ...orderForm,
-      [id]: value,
+      [name]: value,
     });
   };
   const orderFormData = Object.entries(orderForm);
@@ -98,12 +98,12 @@ export default function AddOrder2() {
           </div>
           <div className="md:col-span-2">
             <form onSubmit={handleSubmit}>
-              <OrderDetails
+              <OrderDetailsForm
                 orderForm={orderForm}
                 handleInputChange={handleInputChange}
                 handleFormInputChange={handleFormInputChange}
               />
-              <ItemDetails
+              <ItemDetailsForm
                 removeInputFields={removeInputFields}
                 itemForm={itemForm}
                 handleChange={handleChange}

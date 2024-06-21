@@ -1,5 +1,4 @@
 import { Label } from "@radix-ui/react-label";
-import { Input } from "../ui/input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -10,7 +9,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-export default function ItemDetails({
+import SGFormField from "../elements/SGFormField";
+export default function ItemDetailsForm({
   handleFormInputChange,
   removeInputFields,
   itemForm,
@@ -23,85 +23,53 @@ export default function ItemDetails({
       </div>
       <div className="m-2 font-medium text-sm">
         {itemForm.map((data, index) => {
-          const { id, prodName, sku, hsn, qty, unitPrice } = data;
           return (
-            <div key={index} className="gap-4 grid grid-cols-1 md:grid-cols-8">
+            <div key={index} className="grid grid-cols-1 md:grid-cols-8">
               <div className="my-2 mt-4 md:col-span-2">
-                <Label htmlFor={`prodName-${id}`}>
-                  Product Name <span className="text-red-600">*</span>
-                </Label>
-                <Input
-                  type="text"
+                <SGFormField
                   name="prodName"
-                  id={`prodName-${id}`}
-                  placeholder=""
+                  label="Product"
+                  type="text"
                   required
-                  className="mt-2"
-                  value={prodName}
-                  onChange={(event) => handleChange(index, event)}
+                  onChangeFn={(event) => handleChange(index, event)}
                 />
               </div>
               <div className="my-2 mt-4">
-                <Label htmlFor={`sku-${id}`}>
-                  SKU <span className="text-red-600">*</span>
-                </Label>
-                <Input
-                  type="text"
+                <SGFormField
                   name="sku"
-                  id={`sku-${id}`}
-                  placeholder=""
-                  required
-                  className="mt-2"
-                  value={sku}
-                  onChange={(event) => handleChange(index, event)}
+                  label="SKU"
+                  type="text"
+                  onChangeFn={(event) => handleChange(index, event)}
                 />
               </div>
               <div className="my-2 mt-4">
-                <Label htmlFor={`hsn-${id}`}>
-                  HSN <span className="text-red-600">*</span>
-                </Label>
-                <Input
-                  type="text"
+                <SGFormField
                   name="hsn"
-                  id={`hsn-${id}`}
-                  placeholder=""
+                  label="HSN"
+                  type="text"
                   required
-                  className="mt-2"
-                  value={hsn}
-                  onChange={(event) => handleChange(index, event)}
+                  onChangeFn={(event) => handleChange(index, event)}
                 />
               </div>
               <div className="my-2 mt-4">
-                <Label htmlFor={`qty-${id}`}>
-                  QTY <span className="text-red-600">*</span>
-                </Label>
-                <Input
-                  type="text"
+                <SGFormField
                   name="qty"
-                  id={`qty-${id}`}
-                  placeholder=""
-                  required
-                  className="mt-2"
-                  value={qty}
-                  onChange={(event) => handleChange(index, event)}
-                />
-              </div>
-              <div className="my-2 mt-4 md:col-span-2">
-                <Label htmlFor={`unitPrice-${id}`}>
-                  Unit Price(INR) <span className="text-red-600">*</span>
-                </Label>
-                <Input
+                  label="QTY"
                   type="text"
-                  name="unitPrice"
-                  id={`unitPrice-${id}`}
-                  placeholder=""
                   required
-                  className="mt-2 w-10/12"
-                  value={unitPrice}
-                  onChange={(event) => handleChange(index, event)}
+                  onChangeFn={(event) => handleChange(index, event)}
                 />
               </div>
-              <div id="igst" className="m-2 mt-4">
+              <div className="my-2 mt-4 md:col-span-1">
+                <SGFormField
+                  name="unitPrice"
+                  label="Unit Price"
+                  type="text"
+                  required
+                  onChangeFn={(event) => handleChange(index, event)}
+                />
+              </div>
+              <div id="igst" className="mt-6 md:col-span-2">
                 <Label htmlFor="igst">
                   IGST <span className="text-red-600">*</span>
                 </Label>

@@ -1,4 +1,4 @@
-export function CalculatedWeight() {
+export function CalculatedWeightForm() {
   return (
     <>
       <div className="grid gap-2 md:gap-4 grid-cols-3 m-4 p-4 justify-center">

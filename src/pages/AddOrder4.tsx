@@ -1,5 +1,5 @@
 import Service from "@/components/elements/Service";
-import { CalculatedWeight } from "@/components/templates/CalculatedWeight";
+import { CalculatedWeightForm } from "@/components/templates/CalculatedWeightForm";
 import LeftTab from "@/components/templates/LeftTab";
 
 export default function AddOrder4() {
@@ -51,7 +51,7 @@ export default function AddOrder4() {
             </p>
           </div>
           <div>
-            <CalculatedWeight />
+            <CalculatedWeightForm />
           </div>
           <div>
             {availableServices.map((item, index) => (

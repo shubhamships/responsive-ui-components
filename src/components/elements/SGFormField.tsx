@@ -9,7 +9,7 @@ interface SGFormFieldProps {
   required?: boolean;
   placeholder?: string;
   className?: string;
-  inputValue: string;
+  inputValue?: string;
   onChangeFn: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -18,7 +18,7 @@ export default function SGFormField({
   label,
   type,
   required,
-  placeholder = "Enter Text . . .",
+  placeholder = "",
   className,
   inputValue,
   onChangeFn,

@@ -22,7 +22,7 @@ export default function AddOrder3() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOderDimensionForm({
       ...oderDimensionForm,
-      [e.target.id]: e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
 
