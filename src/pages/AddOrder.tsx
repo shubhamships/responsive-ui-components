@@ -30,13 +30,17 @@ export default function AddOrder() {
     countryBilling: "",
   });
   const [check, setCheck] = useState(true);
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBillingForm({
       ...billingForm,
       [e.target.id]: e.target.value,
     });
   };
+
+  // const billingFormData = [];
+  // for (const [key, value] of Object.entries(billingForm)) {
+  //   billingFormData.push(`${key}: ${value}\n`);
+  // }
   const billingFormData = Object.entries(billingForm);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -54,9 +58,7 @@ export default function AddOrder() {
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheck(e.target.checked);
-
-    // If checkbox is checked, copying shipping address to billing address
-    if (e.target.checked || e.target.defaultChecked) {
+    if (e.target.checked) {
       setBillingForm({
         ...billingForm,
         address1Billing: billingForm.address1,
@@ -92,6 +94,7 @@ export default function AddOrder() {
                       defaultChecked={true}
                       onChange={handleCheckboxChange}
                       className="mr-2"
+                      id="checkbox"
                     />
                     Billing and shipping address are same.
                   </Label>
@@ -106,6 +109,7 @@ export default function AddOrder() {
                 <div className="flex flex-col items-center justify-center mt-4 mb-2">
                   <DialogData
                     content={JSON.stringify(billingFormData)}
+                    // content={billingFormData}
                     handleSubmit={handleSubmit}
                   />
                 </div>
