@@ -1,5 +1,4 @@
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import BillingForm from "@/components/templates/BillingForm";
 import ShippingForm from "@/components/templates/ShippingForm";
@@ -38,11 +37,11 @@ export default function AddOrder() {
       [e.target.id]: e.target.value,
     });
   };
+  const billingFormData = Object.entries(billingForm);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(billingForm);
-    alert(JSON.stringify(billingForm));
+    console.log(billingFormData);
     navigateTo("/add-order2");
   };
 
@@ -57,7 +56,7 @@ export default function AddOrder() {
     setCheck(e.target.checked);
 
     // If checkbox is checked, copying shipping address to billing address
-    if (e.target.checked) {
+    if (e.target.checked || e.target.defaultChecked) {
       setBillingForm({
         ...billingForm,
         address1Billing: billingForm.address1,
@@ -105,8 +104,10 @@ export default function AddOrder() {
                   />
                 )}
                 <div className="flex flex-col items-center justify-center mt-4 mb-2">
-                  {/* <Button type="submit">Continue</Button> */}
-                  <DialogData content={JSON.stringify(billingForm)} />
+                  <DialogData
+                    content={JSON.stringify(billingFormData)}
+                    handleSubmit={handleSubmit}
+                  />
                 </div>
               </form>
             </div>

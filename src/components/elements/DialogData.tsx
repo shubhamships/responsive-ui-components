@@ -1,6 +1,5 @@
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -11,24 +10,24 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 
-export function DialogData({ content }) {
+export function DialogData({ content, handleSubmit }) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="outline">Show Dialog</Button>
+        <Button className="bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded">
+          Continue
+        </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            <div className="flex text-wrap truncate w-fit">
-              <p className="text-wrap overflow-auto">{content}</p>
-            </div>
-          </AlertDialogDescription>
         </AlertDialogHeader>
+        <AlertDialogDescription>{content}</AlertDialogDescription>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+          <div className="flex flex-row gap-10 mt-4 mb-2">
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <Button onClick={handleSubmit}>Continue</Button>
+          </div>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

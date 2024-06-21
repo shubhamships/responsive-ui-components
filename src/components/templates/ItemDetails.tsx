@@ -34,11 +34,11 @@ export default function ItemDetails({
                   type="text"
                   name="prodName"
                   id={`prodName-${id}`}
-                  placeholder="Enter Product Name"
+                  placeholder=""
                   required
                   className="mt-2"
                   value={prodName}
-                  onChange={(evnt) => handleChange(index, evnt)}
+                  onChange={(event) => handleChange(index, event)}
                 />
               </div>
               <div className="my-2 mt-4">
@@ -53,7 +53,7 @@ export default function ItemDetails({
                   required
                   className="mt-2"
                   value={sku}
-                  onChange={(evnt) => handleChange(index, evnt)}
+                  onChange={(event) => handleChange(index, event)}
                 />
               </div>
               <div className="my-2 mt-4">
@@ -68,7 +68,7 @@ export default function ItemDetails({
                   required
                   className="mt-2"
                   value={hsn}
-                  onChange={(evnt) => handleChange(index, evnt)}
+                  onChange={(event) => handleChange(index, event)}
                 />
               </div>
               <div className="my-2 mt-4">
@@ -83,12 +83,12 @@ export default function ItemDetails({
                   required
                   className="mt-2"
                   value={qty}
-                  onChange={(evnt) => handleChange(index, evnt)}
+                  onChange={(event) => handleChange(index, event)}
                 />
               </div>
               <div className="my-2 mt-4 md:col-span-2">
                 <Label htmlFor={`unitPrice-${id}`}>
-                  Price per Unit <span className="text-red-600">*</span>
+                  Unit Price(INR) <span className="text-red-600">*</span>
                 </Label>
                 <Input
                   type="text"
@@ -96,9 +96,9 @@ export default function ItemDetails({
                   id={`unitPrice-${id}`}
                   placeholder=""
                   required
-                  className="mt-2"
+                  className="mt-2 w-10/12"
                   value={unitPrice}
-                  onChange={(evnt) => handleChange(index, evnt)}
+                  onChange={(event) => handleChange(index, event)}
                 />
               </div>
               <div id="igst" className="m-2 mt-4">

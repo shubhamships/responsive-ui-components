@@ -1,11 +1,11 @@
 import OrderDetails from "@/components/templates/OrderDetails";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import ItemDetails from "@/components/templates/ItemDetails";
 import { useNavigate } from "react-router-dom";
 import LeftTab from "@/components/templates/LeftTab";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { DialogData } from "@/components/elements/DialogData";
 
 export default function AddOrder2() {
   const [orderForm, setOrderForm] = useState({
@@ -35,11 +35,11 @@ export default function AddOrder2() {
       [id]: value,
     });
   };
+  const orderFormData = Object.entries(orderForm);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(orderForm);
-    alert(JSON.stringify(orderForm));
+    console.log(orderFormData);
     navigateTo("/add-order3");
   };
 
@@ -119,7 +119,10 @@ export default function AddOrder2() {
                 </button>
               </div>
               <div className="flex flex-col items-center justify-center mt-4 mb-2">
-                <Button type="submit">Continue</Button>
+                <DialogData
+                  content={JSON.stringify(orderFormData)}
+                  handleSubmit={handleSubmit}
+                />
               </div>
             </form>
           </div>

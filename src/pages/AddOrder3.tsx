@@ -1,8 +1,8 @@
 import OrderDimensionField from "@/components/elements/OrderDimensionField";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import LeftTab from "@/components/templates/LeftTab";
+import { DialogData } from "@/components/elements/DialogData";
 
 export default function AddOrder3() {
   const [oderDimensionForm, setOderDimensionForm] = useState({
@@ -25,10 +25,12 @@ export default function AddOrder3() {
       [e.target.id]: e.target.value,
     });
   };
+
+  const orderDimensionFormData = Object.entries(oderDimensionForm);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert(JSON.stringify(oderDimensionForm));
-    console.log(oderDimensionForm);
+    console.log(orderDimensionFormData);
     navigateTo("/add-order4");
   };
   return (
@@ -52,7 +54,7 @@ export default function AddOrder3() {
           <div>
             <div className="m-4 px-2">
               <form onSubmit={handleSubmit}>
-                <div className="flex flex-col md:flex-row md:gap-6">
+                <div className="flex flex-col md:flex-row md:gap-3">
                   {shipDetails.map((item, index) => (
                     <OrderDimensionField
                       key={index}
@@ -64,7 +66,10 @@ export default function AddOrder3() {
                   ))}
                 </div>
                 <div className="flex flex-col items-center justify-center mt-8 mb-2">
-                  <Button type="submit">Continue</Button>
+                  <DialogData
+                    content={JSON.stringify(orderDimensionFormData)}
+                    handleSubmit={handleSubmit}
+                  />
                 </div>
               </form>
             </div>
