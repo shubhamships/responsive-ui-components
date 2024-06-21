@@ -8,11 +8,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import SGFormField from "../elements/SGFormField";
+import SGFormSelect from "../elements/SGFormSelect";
 
 export default function BuyerShippingDetailsForm({
   handleInputChange,
   billingForm,
   handleFormInputChange,
+  handleFormInputChange2,
 }) {
   return (
     <>
@@ -88,6 +90,21 @@ export default function BuyerShippingDetailsForm({
             </SelectContent>
           </Select>
         </div>
+
+        <SGFormSelect
+          name="country"
+          label="Select Country"
+          required
+          onChangeFn={(name) =>
+            handleFormInputChange2(name, billingForm.country)
+          }
+          placeholder="Select Country"
+          data={[
+            { key: "afgan", value: "Afganistan" },
+            { key: "uk", value: "UK" },
+          ]}
+        />
+
         {billingForm.country === "afghanistan" ? (
           <>
             <SGFormField

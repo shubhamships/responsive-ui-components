@@ -20,7 +20,7 @@ export default function OrderDetailsForm({
       <div className="mt-4 mb-4 font-bold text-cyan-500 text-2xl">
         Order Details
       </div>
-      <div className="grid md:grid-cols-3 md:gap-3">
+      <div className="grid md:grid-cols-3 md:gap-3j">
         <SGFormField
           name="invoiceNumber"
           label="Invoice Number"

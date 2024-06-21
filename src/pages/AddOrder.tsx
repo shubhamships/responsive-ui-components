@@ -14,7 +14,7 @@ export default function AddOrder() {
     phone: "",
     alternatePhone: "",
     email: "",
-    country: "",
+    country: "dsghdshgsdgh",
     address1: "",
     landmark: "",
     address2: "",
@@ -54,6 +54,16 @@ export default function AddOrder() {
     });
   };
 
+  const handleFormInputChange2 = (name: string, value: string) => {
+    // const { name, value } = e.target;
+    console.log(billingForm.country);
+    setBillingForm({
+      ...billingForm,
+      [name]: value,
+    });
+    console.log("selected", name, value);
+  };
+
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheck(e.target.checked);
     if (e.target.checked) {
@@ -84,6 +94,7 @@ export default function AddOrder() {
                   billingForm={billingForm}
                   handleInputChange={handleInputChange}
                   handleFormInputChange={handleFormInputChange}
+                  handleFormInputChange2={handleFormInputChange2}
                 />
                 <div className="m-4 mb-8">
                   <Label className="text-cyan-600 font-bold">
