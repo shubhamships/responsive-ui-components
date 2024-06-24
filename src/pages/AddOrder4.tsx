@@ -3,6 +3,7 @@ import { CalculatedWeightForm } from "@/components/templates/CalculatedWeightFor
 import LeftTab from "@/components/templates/LeftTab";
 
 export default function AddOrder4() {
+  //defining the services data for mapping
   const availableServices = [
     {
       name: "UPS",
@@ -28,11 +29,13 @@ export default function AddOrder4() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="md:col-span-1">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+        {/* defining space for left tab to be 1/4 */}
+        <div className="lg:col-span-1">
           <LeftTab />
         </div>
-        <div className="md:col-span-3">
+        {/* defining space for form tab to be 3/4 */}
+        <div className="lg:col-span-3">
           <div className="m-4 p-2">
             <p className="font-bold text-cyan-500 text-2xl mb-2">
               Select Shipping Partner
@@ -51,9 +54,11 @@ export default function AddOrder4() {
             </p>
           </div>
           <div>
+            {/* component for showing the calculated weight in volume and weight analysis */}
             <CalculatedWeightForm />
           </div>
           <div>
+            {/* defining the available services for the courier */}
             {availableServices.map((item, index) => (
               <div key={index}>
                 <Service

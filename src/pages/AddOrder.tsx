@@ -7,7 +7,9 @@ import BuyerShippingDetailsForm from "@/components/templates/BuyerShippingDetail
 import BuyerBillingDetailsForm from "@/components/templates/BuyerBillingDetailsForm";
 
 export default function AddOrder() {
+  //navigation function
   const navigateTo = useNavigate();
+  //defining form schema
   const [billingForm, setBillingForm] = useState({
     firstName: "",
     lastName: "",
@@ -32,20 +34,30 @@ export default function AddOrder() {
     stateBilling: "",
     countryBilling: "",
   });
+  //defining variables for checkbox and show dialog
   const [check, setCheck] = useState(true);
+  const [showDialog, setShowDialog] = useState(false);
+  //function for updating form data
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBillingForm({
       ...billingForm,
       [e.target.name]: e.target.value,
     });
   };
+  //modifying the form data for dialog box
   const billingFormData = Object.entries(billingForm);
+  //function for handling form submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(billingFormData);
+    console.log(billingForm);
+    setShowDialog(true);
+  };
+  //function for handling submit dialog box and navigating to other page
+  const handleSubmitDialog = () => {
+    setShowDialog(false);
     navigateTo("/add-order2");
   };
-
+  //validating condition to auto fill values if checkbox is checked
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheck(e.target.checked);
     if (e.target.checked) {
@@ -61,22 +73,25 @@ export default function AddOrder() {
       });
     }
   };
-
   return (
     <>
       <main className="p-4">
         <div className="m-4 px-2">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="md:col-span-1">
+          {/* defining space for left tab to be 1/4 */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+            <div className="lg:col-span-1">
               <LeftTab />
             </div>
-            <div className="md:col-span-3">
+            {/* defining space for form tab to be 3/4 */}
+            <div className="lg:col-span-3">
               <form onSubmit={handleSubmit}>
+                {/* buyer shipping details form */}
                 <BuyerShippingDetailsForm
                   billingForm={billingForm}
                   handleInputChange={handleInputChange}
                   setBillingForm={setBillingForm}
                 />
+                {/* checkbox field for checking if shipping and billing address are same */}
                 <div className="m-4 mb-8">
                   <Label className="text-cyan-600 font-bold">
                     <input
@@ -89,6 +104,7 @@ export default function AddOrder() {
                     Billing and shipping address are same.
                   </Label>
                 </div>
+                {/* if the checkbox is not checked, then rendering buyer billing details form */}
                 {check === false && (
                   <BuyerBillingDetailsForm
                     billingForm={billingForm}
@@ -96,12 +112,22 @@ export default function AddOrder() {
                     setBillingForm={setBillingForm}
                   />
                 )}
+                {/* form submit button */}
                 <div className="flex flex-col items-center justify-center mt-4 mb-2">
+                  <button
+                    type="submit"
+                    className="bg bg-blue-600 p-2 text-white rounded"
+                  >
+                    Continue
+                  </button>
+                </div>
+                {/* if the form submission is valid, then opening the dialog box */}
+                {showDialog && (
                   <DialogData
                     content={JSON.stringify(billingFormData)}
-                    handleSubmit={handleSubmit}
+                    handleSubmit={handleSubmitDialog}
                   />
-                </div>
+                )}
               </form>
             </div>
           </div>

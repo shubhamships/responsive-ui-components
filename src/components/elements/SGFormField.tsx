@@ -12,7 +12,6 @@ interface SGFormFieldProps {
   inputValue?: string;
   onChangeFn: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
-
 export default function SGFormField({
   name,
   label,

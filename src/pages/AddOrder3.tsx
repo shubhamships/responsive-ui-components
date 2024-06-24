@@ -5,41 +5,53 @@ import LeftTab from "@/components/templates/LeftTab";
 import { DialogData } from "@/components/elements/DialogData";
 
 export default function AddOrder3() {
+  //defining the form schema
   const [oderDimensionForm, setOderDimensionForm] = useState({
     weight: "",
     length: "",
     breadth: "",
     height: "",
   });
+  //navigation function
   const navigateTo = useNavigate();
-
+  //defining the select fields for the input units
   const shipDetails = [
     { title: "Weight", unit: "KG" },
     { title: "Length", unit: "CM" },
     { title: "Breadth", unit: "CM" },
     { title: "Height", unit: "CM" },
   ];
+  //function to handle form submission data
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOderDimensionForm({
       ...oderDimensionForm,
       [e.target.name]: e.target.value,
     });
   };
-
+  //state variable for the dialog box
+  const [showDialog, setShowDialog] = useState(false);
+  //function for handling the submit dialog box
+  const handleSubmitDialog = () => {
+    setShowDialog(false);
+    navigateTo("/add-order4");
+  };
+  //modifying data to show in dialog box
   const orderDimensionFormData = Object.entries(oderDimensionForm);
-
+  //function to handle form submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(orderDimensionFormData);
-    navigateTo("/add-order4");
+    console.log(oderDimensionForm);
+    setShowDialog(true);
   };
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="md:col-span-1">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+        {/* defining space for left tab to be 1/4 */}
+        <div className="lg:col-span-1">
           <LeftTab />
         </div>
-        <div className="md:col-span-3">
+        {/* defining space for form tab to be 3/4 */}
+        <div className="lg:col-span-3">
           <div className="m-4">
             <p className="font-bold text-cyan-500 text-2xl mb-2">
               Shipment Details
@@ -55,6 +67,7 @@ export default function AddOrder3() {
             <div className="m-4 px-2">
               <form onSubmit={handleSubmit}>
                 <div className="flex flex-col md:flex-row md:gap-3">
+                  {/* mapping the input fields for order dimensional input fields */}
                   {shipDetails.map((item, index) => (
                     <OrderDimensionField
                       key={index}
@@ -65,11 +78,21 @@ export default function AddOrder3() {
                     />
                   ))}
                 </div>
+                {/* button for form submission */}
                 <div className="flex flex-col items-center justify-center mt-8 mb-2">
-                  <DialogData
-                    content={JSON.stringify(orderDimensionFormData)}
-                    handleSubmit={handleSubmit}
-                  />
+                  <button
+                    type="submit"
+                    className="bg bg-blue-600 p-2 text-white rounded"
+                  >
+                    Continue
+                  </button>
+                  {/* dialog box when form submission is valid */}
+                  {showDialog && (
+                    <DialogData
+                      content={JSON.stringify(orderDimensionFormData)}
+                      handleSubmit={handleSubmitDialog}
+                    />
+                  )}
                 </div>
               </form>
             </div>

@@ -8,6 +8,7 @@ import OrderDetailsForm from "@/components/templates/OrderDetailsForm";
 import ItemDetailsForm from "@/components/templates/ItemDetailsForm";
 
 export default function AddOrder2() {
+  //initial values for the array object for item details
   const itemFormInitialValue = {
     id: 1,
     prodName: "",
@@ -17,7 +18,7 @@ export default function AddOrder2() {
     unitPrice: "",
     igst: "",
   };
-
+  //form schema for the AddOrder2 form
   const [orderForm, setOrderForm] = useState({
     invoiceNumber: "",
     invoiceDate: "",
@@ -26,10 +27,11 @@ export default function AddOrder2() {
     ioss: "",
     itemDetails: [itemFormInitialValue],
   });
+  //modifying the form data content for dialog box
   const orderFormData = Object.entries(orderForm);
-
+  //navigation funtion
   const navigateTo = useNavigate();
-
+  //function to update the form data
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setOrderForm({
@@ -37,12 +39,20 @@ export default function AddOrder2() {
       [name]: value,
     });
   };
-
+  //state variable for dialog box
+  const [showDialog, setShowDialog] = useState(false);
+  //function for handling form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(orderForm);
+    setShowDialog(true);
+  };
+  //function for handling dialog box
+  const handleSubmitDialog = () => {
+    setShowDialog(false);
     navigateTo("/add-order3");
   };
+  //function to update the form data
   const handleChange = (index, event) => {
     const { name, value } = event.target;
     const list = [...orderForm.itemDetails];
@@ -55,6 +65,7 @@ export default function AddOrder2() {
       itemDetails: list,
     });
   };
+  //function to add a new set of inputs when add button is pressed in itemDetails
   const addInputField = () => {
     const maxId = Math.max(...orderForm.itemDetails.map((item) => item.id));
     const newId = maxId + 1;
@@ -74,6 +85,7 @@ export default function AddOrder2() {
       ],
     });
   };
+  //function to remove a set of inputs when remove button is pressed in itemDetails
   const removeInputFields = (id) => {
     const updatedList = orderForm.itemDetails.filter((item) => item.id !== id);
     setOrderForm({
@@ -81,27 +93,30 @@ export default function AddOrder2() {
       itemDetails: updatedList,
     });
   };
-
   return (
     <>
       <main className="m-4 px-2">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="md:col-span-1">
+        {/* defining space for left tab to be 1/4 */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+          <div className="lg:col-span-1">
             <LeftTab />
           </div>
-          <div className="md:col-span-3">
+          {/* defining space for form tab to be 3/4 */}
+          <div className="lg:col-span-3">
             <form onSubmit={handleSubmit}>
               <OrderDetailsForm
                 orderForm={orderForm}
                 setOrderForm={setOrderForm}
                 handleInputChange={handleInputChange}
               />
+              {/* item details form for item Details */}
               <ItemDetailsForm
                 itemForm={orderForm.itemDetails}
                 handleChange={handleChange}
                 setItemForm={setOrderForm}
                 removeInputFields={removeInputFields}
               />
+              {/* button to add new input field set */}
               <div className="mt-2">
                 <button
                   type="button"
@@ -111,11 +126,21 @@ export default function AddOrder2() {
                   <FontAwesomeIcon icon={faPlus} />
                 </button>
               </div>
+              {/* submit button to handle the form submission */}
               <div className="flex flex-col items-center justify-center mt-4 mb-2">
-                <DialogData
-                  content={JSON.stringify(orderFormData)}
-                  handleSubmit={handleSubmit}
-                />
+                <button
+                  type="submit"
+                  className="bg bg-blue-600 p-2 text-white rounded"
+                >
+                  Continue
+                </button>
+                {/* dialog box to open if the form submission is valid */}
+                {showDialog && (
+                  <DialogData
+                    content={JSON.stringify(orderFormData)}
+                    handleSubmit={handleSubmitDialog}
+                  />
+                )}
               </div>
             </form>
           </div>

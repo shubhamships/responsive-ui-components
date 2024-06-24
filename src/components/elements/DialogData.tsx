@@ -6,18 +6,12 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 
 export function DialogData({ content, handleSubmit }) {
   return (
-    <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button className="bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded">
-          Continue
-        </Button>
-      </AlertDialogTrigger>
+    <AlertDialog defaultOpen>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
