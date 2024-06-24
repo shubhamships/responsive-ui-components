@@ -29,12 +29,6 @@ export default function AddOrder2() {
       [e.target.name]: e.target.value,
     });
   };
-  const handleFormInputChange = (name: string, value: string) => {
-    setOrderForm({
-      ...orderForm,
-      [name]: value,
-    });
-  };
   const orderFormData = Object.entries(orderForm);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -101,13 +95,13 @@ export default function AddOrder2() {
               <OrderDetailsForm
                 orderForm={orderForm}
                 handleInputChange={handleInputChange}
-                handleFormInputChange={handleFormInputChange}
+                setOrderForm={setOrderForm}
               />
               <ItemDetailsForm
                 removeInputFields={removeInputFields}
                 itemForm={itemForm}
                 handleChange={handleChange}
-                handleFormInputChange={handleFormInputChange}
+                setItemForm={setItemForm}
               />
               <div className="mt-2">
                 <button

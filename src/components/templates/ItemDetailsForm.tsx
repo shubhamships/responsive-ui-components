@@ -1,21 +1,19 @@
-import { Label } from "@radix-ui/react-label";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import SGFormField from "../elements/SGFormField";
+import SGFormSelect from "../elements/SGFormSelect";
 export default function ItemDetailsForm({
-  handleFormInputChange,
   removeInputFields,
   itemForm,
+  setItemForm,
   handleChange,
 }) {
+  const selectIGST = [
+    { key: "0%", value: "0%" },
+    { key: "3%", value: "3%" },
+    { key: "5%", value: "5%" },
+    { key: "7%", value: "7%" },
+  ];
   return (
     <>
       <div className="mt-4 mb-4 font-bold text-cyan-500 text-2xl">
@@ -69,29 +67,14 @@ export default function ItemDetailsForm({
                   onChangeFn={(event) => handleChange(index, event)}
                 />
               </div>
-              <div id="igst" className="mt-6 md:col-span-2">
-                <Label htmlFor="igst">
-                  IGST <span className="text-red-600">*</span>
-                </Label>
-                <Select
-                  onValueChange={(value) =>
-                    handleFormInputChange("igst", value)
-                  }
-                >
-                  <SelectTrigger className="w-full mt-2">
-                    <SelectValue placeholder="" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectItem value="0%">0%</SelectItem>
-                      <SelectItem value="3%">3%</SelectItem>
-                      <SelectItem value="5%">5%</SelectItem>
-                      <SelectItem value="12%">12%</SelectItem>
-                      <SelectItem value="18%">18%</SelectItem>
-                      <SelectItem value="28%">28%</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
+              <div className="my-2 mt-4">
+                <SGFormSelect
+                  name="igst"
+                  label="IGST"
+                  placeholder="IGST"
+                  data={selectIGST}
+                  setSelectValueObj={setItemForm}
+                />
               </div>
               <div className="mt-2 mb-4">
                 {itemForm.length !== 1 && (

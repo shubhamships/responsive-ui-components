@@ -1,49 +1,36 @@
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import SGFormField from "../elements/SGFormField";
+import SGFormSelect from "../elements/SGFormSelect";
 
 export default function BuyerBillingDetailsForm({
   handleInputChange,
   billingForm,
-  handleFormInputChange,
+  setBillingForm,
 }) {
+  const selectCountry = [
+    { key: "afghanistan", value: "Afghanistan" },
+    { key: "alandislands", value: "Aland Islands" },
+    { key: "albania", value: "Albania" },
+    { key: "algeria", value: "Algeria" },
+  ];
+  const selectState = [
+    { key: "delhi", value: "Delhi" },
+    { key: "banglore", value: "Banglore" },
+    { key: "pune", value: "Pune" },
+  ];
+
   return (
     <>
       <div className="mt-4 mb-4 font-bold text-cyan-500 text-2xl">
         Buyer Billing Details
       </div>
       <div className="grid md:grid-cols-3 md:gap-6">
-        <div id="selectcountryBilling" className="m-2">
-          <Label htmlFor="countryBilling">
-            Select Country <span className="text-red-600">*</span>
-          </Label>
-          <Select
-            onValueChange={(value) =>
-              handleFormInputChange("countryBilling", value)
-            }
-          >
-            <SelectTrigger className="w-full mt-2">
-              <SelectValue placeholder="Select Country" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectItem value="afghanistan">Afghanistan (AFG)</SelectItem>
-                <SelectItem value="alandislands">
-                  Aland Islands (ALA)
-                </SelectItem>
-                <SelectItem value="albania">Albania (ALB)</SelectItem>
-                <SelectItem value="algeria">Algeria (DZA)</SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div>
+        <SGFormSelect
+          name="countryBilling"
+          label="Country"
+          placeholder="Select Country"
+          data={selectCountry}
+          setSelectValueObj={setBillingForm}
+        />
         <SGFormField
           name="address1Billing"
           label="Address 1"
@@ -89,27 +76,13 @@ export default function BuyerBillingDetailsForm({
           inputValue={billingForm.cityBilling}
           onChangeFn={handleInputChange}
         />
-        <div id="selectstateBilling" className="m-2">
-          <Label htmlFor="stateBilling">
-            Select State <span className="text-red-600">*</span>
-          </Label>
-          <Select
-            onValueChange={(value) =>
-              handleFormInputChange("stateBilling", value)
-            }
-          >
-            <SelectTrigger className="w-full mt-2">
-              <SelectValue placeholder="Select State" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectItem value="delhi">Delhi</SelectItem>
-                <SelectItem value="uttarPradesh">Uttar Pradesh</SelectItem>
-                <SelectItem value="banglore">Banglore</SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div>
+        <SGFormSelect
+          name="stateBilling"
+          label="State"
+          placeholder="Select State"
+          data={selectState}
+          setSelectValueObj={setBillingForm}
+        />
       </div>
     </>
   );

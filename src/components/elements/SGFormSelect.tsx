@@ -1,12 +1,11 @@
-import { Label } from "@radix-ui/react-label";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@radix-ui/react-select";
+} from "@/components/ui/select";
+import { Label } from "../ui/label";
 
 interface SelectItems {
   key: string;
@@ -16,35 +15,34 @@ interface SelectItems {
 interface SGFormSelectProps {
   name: string;
   label: string;
-  required?: boolean;
   placeholder?: string;
   data: SelectItems[];
-  onChangeFn?: (fieldName: string, value: string) => void;
+  setSelectValueObj: (prev: any) => void;
 }
 export default function SGFormSelect({
+  data,
   name,
   label,
-  required,
   placeholder,
-  data,
+  setSelectValueObj,
 }: SGFormSelectProps) {
+  const onSelectChange = (value) => {
+    setSelectValueObj((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
     <div className="m-2">
-      <Label htmlFor={name}>
-        {label} {required ? <span className="text-red-600">*</span> : null}
-      </Label>
-      <Select name={name}>
-        <SelectTrigger className="w-full mt-2">
+      <Label htmlFor={name}>{label}</Label>
+      <Select onValueChange={onSelectChange}>
+        <SelectTrigger>
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
-          <SelectGroup>
-            {data.map((item) => (
-              <SelectItem key={item.key} value={item.key}>
-                {item.value}
-              </SelectItem>
-            ))}
-          </SelectGroup>
+          {data.map((item) => (
+            <SelectItem value={item.key} key={item.key}>
+              {item.value}
+            </SelectItem>
+          ))}
         </SelectContent>
       </Select>
     </div>

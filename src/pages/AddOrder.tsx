@@ -14,7 +14,7 @@ export default function AddOrder() {
     phone: "",
     alternatePhone: "",
     email: "",
-    country: "dsghdshgsdgh",
+    country: "",
     address1: "",
     landmark: "",
     address2: "",
@@ -40,28 +40,10 @@ export default function AddOrder() {
     });
   };
   const billingFormData = Object.entries(billingForm);
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(billingFormData);
     navigateTo("/add-order2");
-  };
-
-  const handleFormInputChange = (name: string, value: string) => {
-    setBillingForm({
-      ...billingForm,
-      [name]: value,
-    });
-  };
-
-  const handleFormInputChange2 = (name: string, value: string) => {
-    // const { name, value } = e.target;
-    console.log(billingForm.country);
-    setBillingForm({
-      ...billingForm,
-      [name]: value,
-    });
-    console.log("selected", name, value);
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -93,8 +75,7 @@ export default function AddOrder() {
                 <BuyerShippingDetailsForm
                   billingForm={billingForm}
                   handleInputChange={handleInputChange}
-                  handleFormInputChange={handleFormInputChange}
-                  handleFormInputChange2={handleFormInputChange2}
+                  setBillingForm={setBillingForm}
                 />
                 <div className="m-4 mb-8">
                   <Label className="text-cyan-600 font-bold">
@@ -112,7 +93,7 @@ export default function AddOrder() {
                   <BuyerBillingDetailsForm
                     billingForm={billingForm}
                     handleInputChange={handleInputChange}
-                    handleFormInputChange={handleFormInputChange}
+                    setBillingForm={setBillingForm}
                   />
                 )}
                 <div className="flex flex-col items-center justify-center mt-4 mb-2">
