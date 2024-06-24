@@ -1,6 +1,5 @@
 import SGFormField from "../elements/SGFormField";
 import SGFormSelect from "../elements/SGFormSelect";
-
 export default function BuyerBillingDetailsForm({
   handleInputChange,
   billingForm,
@@ -17,7 +16,6 @@ export default function BuyerBillingDetailsForm({
     { key: "banglore", value: "Banglore" },
     { key: "pune", value: "Pune" },
   ];
-
   return (
     <>
       <div className="mt-4 mb-4 font-bold text-cyan-500 text-2xl">
@@ -28,6 +26,7 @@ export default function BuyerBillingDetailsForm({
           name="countryBilling"
           label="Country"
           placeholder="Select Country"
+          required={true}
           data={selectCountry}
           setSelectValueObj={setBillingForm}
         />
@@ -79,6 +78,7 @@ export default function BuyerBillingDetailsForm({
         <SGFormSelect
           name="stateBilling"
           label="State"
+          required={true}
           placeholder="Select State"
           data={selectState}
           setSelectValueObj={setBillingForm}

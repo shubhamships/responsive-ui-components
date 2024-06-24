@@ -8,79 +8,85 @@ import OrderDetailsForm from "@/components/templates/OrderDetailsForm";
 import ItemDetailsForm from "@/components/templates/ItemDetailsForm";
 
 export default function AddOrder2() {
-  const [orderForm, setOrderForm] = useState({
-    invoiceNumber: "",
-    invoiceDate: "",
-    invoiceCurrency: "",
-    orderRef: "",
-    ioss: "",
+  const itemFormInitialValue = {
+    id: 1,
     prodName: "",
     sku: "",
     hsn: "",
     qty: "",
     unitPrice: "",
     igst: "",
-  });
-  const navigateTo = useNavigate();
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setOrderForm({
-      ...orderForm,
-      [e.target.name]: e.target.value,
-    });
   };
+
+  const [orderForm, setOrderForm] = useState({
+    invoiceNumber: "",
+    invoiceDate: "",
+    invoiceCurrency: "",
+    orderRef: "",
+    ioss: "",
+    itemDetails: [itemFormInitialValue],
+  });
   const orderFormData = Object.entries(orderForm);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const navigateTo = useNavigate();
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setOrderForm({
+      ...orderForm,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(orderFormData);
+    console.log(orderForm);
     navigateTo("/add-order3");
   };
-
-  //Trying for dynamic inputs
-  const [itemForm, setItemForm] = useState([
-    { id: 1, prodName: "", sku: "", hsn: "", qty: "", unitPrice: "", igst: "" },
-  ]);
   const handleChange = (index, event) => {
     const { name, value } = event.target;
-    const list = [...itemForm];
-    list[index][name] = value;
-    setItemForm(list);
-
-    // Updating corresponding fields in orderForm
-    const updatedOrderForm = {
-      ...orderForm,
-      prodName: list[index].prodName,
-      sku: list[index].sku,
-      hsn: list[index].hsn,
-      qty: list[index].qty,
-      unitPrice: list[index].unitPrice,
-      igst: list[index].igst,
+    const list = [...orderForm.itemDetails];
+    // console.log(list[index], "list index here");
+    list[index] = {
+      ...list[index],
+      [name]: value,
     };
-    setOrderForm(updatedOrderForm);
+    setOrderForm({
+      ...orderForm,
+      itemDetails: list,
+    });
   };
-
   const addInputField = () => {
-    const maxId = Math.max(...itemForm.map((item) => item.id));
+    const maxId = Math.max(...orderForm.itemDetails.map((item) => item.id));
     const newId = maxId + 1;
-    setItemForm([
-      ...itemForm,
-      {
-        id: newId,
-        prodName: "",
-        sku: "",
-        hsn: "",
-        qty: "",
-        unitPrice: "",
-        igst: "",
-      },
-    ]);
+    setOrderForm({
+      ...orderForm,
+      itemDetails: [
+        ...orderForm.itemDetails,
+        {
+          id: newId,
+          prodName: "",
+          sku: "",
+          hsn: "",
+          qty: "",
+          unitPrice: "",
+          igst: "",
+        },
+      ],
+    });
   };
+  // const removeInputFields = (index) => {
+  //   const rows = [...itemForm];
+  //   rows.splice(index, 1);
+  //   setItemForm(rows);
+  // };
 
-  const removeInputFields = (index) => {
-    const rows = [...itemForm];
-    rows.splice(index, 1);
-    setItemForm(rows);
+  const removeInputFields = (id) => {
+    const updatedList = orderForm.itemDetails.filter((item) => item.id !== id);
+    setOrderForm({
+      ...orderForm,
+      itemDetails: updatedList,
+    });
   };
 
   return (
@@ -94,14 +100,14 @@ export default function AddOrder2() {
             <form onSubmit={handleSubmit}>
               <OrderDetailsForm
                 orderForm={orderForm}
-                handleInputChange={handleInputChange}
                 setOrderForm={setOrderForm}
+                handleInputChange={handleInputChange}
               />
               <ItemDetailsForm
-                removeInputFields={removeInputFields}
-                itemForm={itemForm}
+                itemForm={orderForm.itemDetails}
                 handleChange={handleChange}
-                setItemForm={setItemForm}
+                setItemForm={setOrderForm}
+                removeInputFields={removeInputFields}
               />
               <div className="mt-2">
                 <button

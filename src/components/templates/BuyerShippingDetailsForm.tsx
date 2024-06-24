@@ -73,6 +73,7 @@ export default function BuyerShippingDetailsForm({
           label="Country"
           placeholder="Select Country"
           data={selectCountry}
+          required={true}
           setSelectValueObj={setBillingForm}
         />
         {billingForm.country === "afghanistan" ? (
@@ -157,6 +158,7 @@ export default function BuyerShippingDetailsForm({
         <SGFormSelect
           name="state"
           label="State"
+          required={true}
           placeholder="Select State"
           data={selectState}
           setSelectValueObj={setBillingForm}

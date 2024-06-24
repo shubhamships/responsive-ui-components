@@ -22,7 +22,7 @@ export default function ItemDetailsForm({
       <div className="m-2 font-medium text-sm">
         {itemForm.map((data, index) => {
           return (
-            <div key={index} className="grid grid-cols-1 md:grid-cols-8">
+            <div key={data.id} className="grid grid-cols-1 md:grid-cols-8">
               <div className="my-2 mt-4 md:col-span-2">
                 <SGFormField
                   name="prodName"
@@ -72,6 +72,7 @@ export default function ItemDetailsForm({
                   name="igst"
                   label="IGST"
                   placeholder="IGST"
+                  required={true}
                   data={selectIGST}
                   setSelectValueObj={setItemForm}
                 />
@@ -79,7 +80,7 @@ export default function ItemDetailsForm({
               <div className="mt-2 mb-4">
                 {itemForm.length !== 1 && (
                   <button
-                    onClick={() => removeInputFields(index)}
+                    onClick={() => removeInputFields(data.id)}
                     className="btn bg-red-500 rounded-full text-white px-2 py-1"
                   >
                     <FontAwesomeIcon icon={faXmark} />
