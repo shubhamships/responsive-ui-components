@@ -1,16 +1,20 @@
-import FormField from "@/components/elements/FormField";
-import SGFormField from "@/components/elements/SGFormField";
+// import FormField from "@/components/elements/FormField";
+// import SGFormField from "@/components/elements/SGFormField";
+import SGFormSelect from "@/components/elements/SGFormSelect";
 import { useState } from "react";
 export default function Home() {
-  const [data, setData] = useState({ firstName: "", lastName: "" });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+  
+  const selectData = [{key:"ready", value:"Ready"},{key:"shipped", value:"Shipped"}]
 
+  const [formObj,setFormObj] = useState({status:"", "state":""})
+
+  console.log(formObj)
   return (
     <div id="firstName">
-      <SGFormField
+      <SGFormSelect name="status" label="Status" placeholder="Select" data={selectData}  setSelectValueObj={setFormObj}
+       />
+      {/* <SGFormField
         type="text"
         placeholder="Enter First Name"
         label="First Name"
@@ -26,7 +30,7 @@ export default function Home() {
         name="lastName"
         inputValue={data.lastName}
         onChangeFn={handleInputChange}
-      />
+      /> */}
     </div>
   );
 }

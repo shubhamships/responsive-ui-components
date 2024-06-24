@@ -63,7 +63,6 @@ export default function AddOrder() {
     });
     console.log("selected", name, value);
   };
-
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheck(e.target.checked);
     if (e.target.checked) {
