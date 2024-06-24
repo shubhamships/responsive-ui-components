@@ -58,7 +58,7 @@ export default function ItemDetailsForm({
                   onChangeFn={(event) => handleChange(index, event)}
                 />
               </div>
-              <div className="my-2 mt-4 md:col-span-1">
+              <div className="my-2 mt-4 md:col-span-2">
                 <SGFormField
                   name="unitPrice"
                   label="Unit Price"

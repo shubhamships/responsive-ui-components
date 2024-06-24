@@ -46,7 +46,6 @@ export default function AddOrder2() {
   const handleChange = (index, event) => {
     const { name, value } = event.target;
     const list = [...orderForm.itemDetails];
-    // console.log(list[index], "list index here");
     list[index] = {
       ...list[index],
       [name]: value,
@@ -75,12 +74,6 @@ export default function AddOrder2() {
       ],
     });
   };
-  // const removeInputFields = (index) => {
-  //   const rows = [...itemForm];
-  //   rows.splice(index, 1);
-  //   setItemForm(rows);
-  // };
-
   const removeInputFields = (id) => {
     const updatedList = orderForm.itemDetails.filter((item) => item.id !== id);
     setOrderForm({
@@ -92,11 +85,11 @@ export default function AddOrder2() {
   return (
     <>
       <main className="m-4 px-2">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="md:col-span-1">
             <LeftTab />
           </div>
-          <div className="md:col-span-2">
+          <div className="md:col-span-3">
             <form onSubmit={handleSubmit}>
               <OrderDetailsForm
                 orderForm={orderForm}

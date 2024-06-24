@@ -28,11 +28,11 @@ export default function AddOrder4() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="md:col-span-1">
           <LeftTab />
         </div>
-        <div className="md:col-span-2">
+        <div className="md:col-span-3">
           <div className="m-4 p-2">
             <p className="font-bold text-cyan-500 text-2xl mb-2">
               Select Shipping Partner
