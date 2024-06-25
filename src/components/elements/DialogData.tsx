@@ -9,17 +9,19 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 
-export function DialogData({ content, handleSubmit }) {
+export function DialogData({ content, handleSubmit, onCancel }) {
   return (
     <AlertDialog defaultOpen>
-      <AlertDialogContent>
+      <AlertDialogContent className="max-w-lg">
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
         </AlertDialogHeader>
-        <AlertDialogDescription>{content}</AlertDialogDescription>
+        <AlertDialogDescription className="overflow-auto max-h-fit">
+          <pre className="whitespace-pre-wrap">{content}</pre>
+        </AlertDialogDescription>
         <AlertDialogFooter>
           <div className="flex flex-row gap-10 mt-4 mb-2">
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel onClick={onCancel}>Cancel</AlertDialogCancel>
             <Button onClick={handleSubmit}>Continue</Button>
           </div>
         </AlertDialogFooter>

@@ -29,7 +29,7 @@ export default function AddOrder2() {
   });
   //modifying the form data content for dialog box
   const orderFormData = Object.entries(orderForm);
-  //navigation funtion
+  //navigation function
   const navigateTo = useNavigate();
   //function to update the form data
   const handleInputChange = (e) => {

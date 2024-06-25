@@ -9,14 +9,9 @@ import BuyerBillingDetailsForm from "@/components/templates/BuyerBillingDetailsF
 export default function AddOrder() {
   //navigation function
   const navigateTo = useNavigate();
-  //defining form schema
-  const [billingForm, setBillingForm] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    alternatePhone: "",
-    email: "",
-    country: "",
+  //initial values for the array object for item details
+  const shippingFormInitialValue = {
+    id: 1,
     address1: "",
     landmark: "",
     address2: "",
@@ -25,25 +20,35 @@ export default function AddOrder() {
     locality: "",
     pincode: "",
     city: "",
+    country: "",
     state: "",
+  };
+  const billingFormInitialValue = {
+    id: 1,
     address1Billing: "",
     landmarkBilling: "",
     address2Billing: "",
     pincodeBilling: "",
     cityBilling: "",
-    stateBilling: "",
-    countryBilling: "",
+  };
+  const profileInitialValue = {
+    id: 1,
+    firstName: "",
+    lastName: "",
+    phone: "",
+    alternatePhone: "",
+    email: "",
+  };
+  //defining form schema
+  const [billingForm, setBillingForm] = useState({
+    profileDetails: [profileInitialValue],
+    shippingDetails: [shippingFormInitialValue],
+    billingDetails: [billingFormInitialValue],
   });
   //defining variables for checkbox and show dialog
   const [check, setCheck] = useState(true);
   const [showDialog, setShowDialog] = useState(false);
-  //function for updating form data
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setBillingForm({
-      ...billingForm,
-      [e.target.name]: e.target.value,
-    });
-  };
+
   //modifying the form data for dialog box
   const billingFormData = Object.entries(billingForm);
   //function for handling form submission
@@ -57,22 +62,69 @@ export default function AddOrder() {
     setShowDialog(false);
     navigateTo("/add-order2");
   };
-  //validating condition to auto fill values if checkbox is checked
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCheck(e.target.checked);
-    if (e.target.checked) {
-      setBillingForm({
-        ...billingForm,
-        address1Billing: billingForm.address1,
-        landmarkBilling: billingForm.landmark,
-        address2Billing: billingForm.address2,
-        pincodeBilling: billingForm.pincode,
-        cityBilling: billingForm.city,
-        stateBilling: billingForm.state,
-        countryBilling: billingForm.country,
-      });
+  //function to update the form data
+  const handleChange = (index, event) => {
+    const { name, value } = event.target;
+    const list = [...billingForm.shippingDetails];
+    list[index] = {
+      ...list[index],
+      [name]: value,
+    };
+    setBillingForm((prev) => ({
+      ...prev,
+      shippingDetails: list,
+    }));
+  };
+  const handleChange2 = (index, event) => {
+    const { name, value } = event.target;
+    const list = [...billingForm.billingDetails];
+    list[index] = {
+      ...list[index],
+      [name]: value,
+    };
+    setBillingForm((prev) => ({
+      ...prev,
+      billingDetails: list,
+    }));
+  };
+  const handleChange3 = (index, event) => {
+    const { name, value } = event.target;
+    const list = [...billingForm.profileDetails];
+    list[index] = {
+      ...list[index],
+      [name]: value,
+    };
+    setBillingForm((prev) => ({
+      ...prev,
+      profileDetails: list,
+    }));
+  };
+
+  const handleCheckboxChangeCheck = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const isChecked = e.target.checked;
+    setCheck(isChecked);
+
+    if (isChecked) {
+      setBillingForm((prev) => ({
+        ...prev,
+        billingDetails: [
+          {
+            ...prev.billingDetails[0],
+            address1Billing: prev.shippingDetails[0].address1,
+            landmarkBilling: prev.shippingDetails[0].landmark,
+            address2Billing: prev.shippingDetails[0].address2,
+            pincodeBilling: prev.shippingDetails[0].pincode,
+            cityBilling: prev.shippingDetails[0].city,
+            stateBilling: prev.shippingDetails[0].state,
+            countryBilling: prev.shippingDetails[0].country,
+          },
+        ],
+      }));
     }
   };
+
   return (
     <>
       <main className="p-4">
@@ -88,7 +140,8 @@ export default function AddOrder() {
                 {/* buyer shipping details form */}
                 <BuyerShippingDetailsForm
                   billingForm={billingForm}
-                  handleInputChange={handleInputChange}
+                  handleChange={handleChange}
+                  handleChange3={handleChange3}
                   setBillingForm={setBillingForm}
                 />
                 {/* checkbox field for checking if shipping and billing address are same */}
@@ -97,7 +150,7 @@ export default function AddOrder() {
                     <input
                       type="checkbox"
                       defaultChecked={true}
-                      onChange={handleCheckboxChange}
+                      onChange={handleCheckboxChangeCheck}
                       className="mr-2"
                       id="checkbox"
                     />
@@ -108,7 +161,7 @@ export default function AddOrder() {
                 {check === false && (
                   <BuyerBillingDetailsForm
                     billingForm={billingForm}
-                    handleInputChange={handleInputChange}
+                    handleChange={handleChange2}
                     setBillingForm={setBillingForm}
                   />
                 )}
@@ -126,6 +179,7 @@ export default function AddOrder() {
                   <DialogData
                     content={JSON.stringify(billingFormData)}
                     handleSubmit={handleSubmitDialog}
+                    onCancel={() => setShowDialog(false)}
                   />
                 )}
               </form>
