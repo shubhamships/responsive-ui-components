@@ -48,11 +48,10 @@ export default function BuyerShippingDetailsForm({
         <SGFormField
           name="phone"
           label="Phone Number"
-          type="tel"
+          type="number"
           required
-          pattern="\S(.*\S)?"
-          // pattern="[0-9]{10}"
           placeholder="Enter Number"
+          minLength={2}
           inputValue={profileDetailsForm.phone}
           onChangeFn={handleChangeProfileDetails}
         />

@@ -36,32 +36,28 @@ export default function AddOrder3() {
   const handleSubmitDialog = () => {
     setShowDialog(false);
     setShowSuccess(true);
-
     // navigateTo("/add-order4");
   };
-
   const finalPage = () => {
     navigateTo("/add-order4");
   };
-
   const cancelBox = () => {
     setShowSuccess(false);
   };
   //modifying data to show in dialog box
   const orderDimensionFormData = Object.entries(oderDimensionForm);
-  //function to handle form submission
-  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   console.log(oderDimensionForm);
-  //   setShowDialog(true);
-  // };
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  // function to handle form submission
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    console.log(oderDimensionForm);
+    axiosDataHandle(oderDimensionForm);
+    setShowDialog(true);
+  };
+  const axiosDataHandle = async (data) => {
     try {
       const response = await axios.post(
         "https://jsonplaceholder.typicode.com/posts",
-        { oderDimensionForm }
+        { data }
       );
       console.log("Form data posted successfully:", response.data);
       setShowDialog(true);

@@ -2,7 +2,6 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { DialogData } from "@/components/elements/DialogData";
-import axios from "axios";
 import BuyerShippingDetailsForm from "@/components/templates/BuyerShippingDetailsForm";
 import BuyerBillingDetailsForm from "@/components/templates/BuyerBillingDetailsForm";
 import LeftTab1 from "@/components/templates/LeftTab1";
@@ -58,37 +57,19 @@ export default function AddOrder() {
   };
 
   // function for handling form submission
-  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   console.log(
-  //     "Profile Details",
-  //     profileDetailsForm,
-  //     "Billing Details",
-  //     billingDetailsForm,
-  //     "Shipping Details",
-  //     shipDetailsForm
-  //   );
-  //   setShowDialog(true);
-  // };
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        "https://jsonplaceholder.typicode.com/posts",
-        {
-          profileDetailsForm,
-          billingDetailsForm,
-          shipDetailsForm,
-        }
-      );
-      console.log("Form data posted successfully:", response.data);
-      setShowDialog(true);
-    } catch (error) {
-      console.error("Error submitting form data:", error);
-      alert("Failed to submit form data. Please try again.");
-    }
+    console.log(
+      "Profile Details",
+      profileDetailsForm,
+      "Billing Details",
+      billingDetailsForm,
+      "Shipping Details",
+      shipDetailsForm
+    );
+    setShowDialog(true);
   };
+
   const handleSubmitDialog = () => {
     setShowDialog(false);
     navigateTo("/add-order2");

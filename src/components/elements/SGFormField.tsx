@@ -1,3 +1,4 @@
+import React from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -11,8 +12,11 @@ interface SGFormFieldProps {
   className?: string;
   inputValue?: string;
   pattern?: string;
+  minLength?: number; // Corrected to camelCase minLength
+  maxLength?: number; // Added maxLength
   onChangeFn: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
 export default function SGFormField({
   name,
   label,
@@ -20,6 +24,8 @@ export default function SGFormField({
   required,
   placeholder = "",
   className,
+  minLength,
+  maxLength,
   inputValue,
   pattern,
   onChangeFn,
@@ -33,9 +39,11 @@ export default function SGFormField({
       <Input
         type={type}
         name={name}
+        minLength={minLength}
+        maxLength={maxLength}
         pattern={pattern}
         placeholder={placeholder}
-        required
+        required={required}
         className={cn("mt-2", className)}
         value={inputValue}
         onChange={onChangeFn}
