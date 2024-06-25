@@ -76,14 +76,7 @@ export default function BuyerShippingDetailsForm({
           inputValue={profileDetailsForm.email}
           onChangeFn={handleChangeProfileDetails}
         />
-        <SGFormSelect
-          name="country"
-          label="Country"
-          placeholder="Select Country"
-          data={selectCountry}
-          required={true}
-          setSelectValueObj={setShipDetailsForm}
-        />
+
         {setShipDetailsForm.country === "afghanistan" ? (
           <>
             <SGFormField
@@ -152,16 +145,6 @@ export default function BuyerShippingDetailsForm({
           </>
         )}
         <SGFormField
-          name="pincode"
-          label="Pincode"
-          type="text"
-          required
-          pattern="\S(.*\S)?"
-          placeholder="Enter Pincode"
-          inputValue={shipDetailsForm.pincode}
-          onChangeFn={handleChangeShippingDetails}
-        />
-        <SGFormField
           name="city"
           label="City"
           type="text"
@@ -177,6 +160,24 @@ export default function BuyerShippingDetailsForm({
           required={true}
           placeholder="Select State"
           data={selectState}
+          setSelectValueObj={setShipDetailsForm}
+        />
+        <SGFormField
+          name="pincode"
+          label="Pincode"
+          type="text"
+          required
+          pattern="\S(.*\S)?"
+          placeholder="Enter Pincode"
+          inputValue={shipDetailsForm.pincode}
+          onChangeFn={handleChangeShippingDetails}
+        />
+        <SGFormSelect
+          name="country"
+          label="Country"
+          placeholder="Select Country"
+          data={selectCountry}
+          required={true}
           setSelectValueObj={setShipDetailsForm}
         />
       </div>

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LeftTab from "@/components/templates/LeftTab";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { DialogData } from "@/components/elements/DialogData";
 import OrderDetailsForm from "@/components/templates/OrderDetailsForm";
 import ItemDetailsForm from "@/components/templates/ItemDetailsForm";
+import LeftTab2 from "@/components/templates/LaftTab2";
 
 export default function AddOrder2() {
   //initial values for the array object for item details
@@ -99,7 +99,7 @@ export default function AddOrder2() {
         {/* defining space for left tab to be 1/4 */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           <div className="lg:col-span-1">
-            <LeftTab />
+            <LeftTab2 orderForm={orderForm} />
           </div>
           {/* defining space for form tab to be 3/4 */}
           <div className="lg:col-span-3">

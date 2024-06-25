@@ -22,14 +22,6 @@ export default function BuyerBillingDetailsForm({
         Buyer Billing Details
       </div>
       <div className="grid md:grid-cols-3 md:gap-6">
-        <SGFormSelect
-          name="countryBilling"
-          label="Country"
-          placeholder="Select Country"
-          required={true}
-          data={selectCountry}
-          setSelectValueObj={setBillingDetailsForm}
-        />
         <SGFormField
           name="address1Billing"
           label="Address 1"
@@ -59,17 +51,7 @@ export default function BuyerBillingDetailsForm({
           placeholder="Enter Landmark"
           inputValue={billingDetailsForm.landmarkBilling}
           onChangeFn={handleInputBillingDetailsChange}
-        />
-        <SGFormField
-          name="pincodeBilling"
-          label="Pincode"
-          type="text"
-          required
-          pattern="\S(.*\S)?"
-          placeholder="Enter Pincode"
-          inputValue={billingDetailsForm.pincodeBilling}
-          onChangeFn={handleInputBillingDetailsChange}
-        />
+        />{" "}
         <SGFormField
           name="cityBilling"
           label="City"
@@ -86,6 +68,24 @@ export default function BuyerBillingDetailsForm({
           required={true}
           placeholder="Select State"
           data={selectState}
+          setSelectValueObj={setBillingDetailsForm}
+        />
+        <SGFormField
+          name="pincodeBilling"
+          label="Pincode"
+          type="text"
+          required
+          pattern="\S(.*\S)?"
+          placeholder="Enter Pincode"
+          inputValue={billingDetailsForm.pincodeBilling}
+          onChangeFn={handleInputBillingDetailsChange}
+        />
+        <SGFormSelect
+          name="countryBilling"
+          label="Country"
+          placeholder="Select Country"
+          required={true}
+          data={selectCountry}
           setSelectValueObj={setBillingDetailsForm}
         />
       </div>

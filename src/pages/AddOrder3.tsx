@@ -1,8 +1,8 @@
 import OrderDimensionField from "@/components/elements/OrderDimensionField";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LeftTab from "@/components/templates/LeftTab";
 import { DialogData } from "@/components/elements/DialogData";
+import LeftTab3 from "@/components/templates/LeftTab3";
 
 export default function AddOrder3() {
   //defining the form schema
@@ -48,7 +48,7 @@ export default function AddOrder3() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         {/* defining space for left tab to be 1/4 */}
         <div className="lg:col-span-1">
-          <LeftTab />
+          <LeftTab3 oderDimensionForm={oderDimensionForm} />
         </div>
         {/* defining space for form tab to be 3/4 */}
         <div className="lg:col-span-3">

@@ -1,10 +1,10 @@
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LeftTab from "@/components/templates/LeftTab";
 import { DialogData } from "@/components/elements/DialogData";
 import BuyerShippingDetailsForm from "@/components/templates/BuyerShippingDetailsForm";
 import BuyerBillingDetailsForm from "@/components/templates/BuyerBillingDetailsForm";
+import LeftTab1 from "@/components/templates/LeftTab1";
 
 export default function AddOrder() {
   //navigation function
@@ -123,7 +123,11 @@ export default function AddOrder() {
           {/* defining space for left tab to be 1/4 */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
             <div className="lg:col-span-1">
-              <LeftTab />
+              <LeftTab1
+                profileDetailsForm={profileDetailsForm}
+                shipDetailsForm={shipDetailsForm}
+                billingDetailsForm={billingDetailsForm}
+              />
             </div>
             {/* defining space for form tab to be 3/4 */}
             <div className="lg:col-span-3">
