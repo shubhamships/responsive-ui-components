@@ -4,8 +4,8 @@ import SGFormSelect from "../elements/SGFormSelect";
 export default function BuyerShippingDetailsForm({
   billingForm,
   setBillingForm,
-  handleChange,
-  handleChange3,
+  handleChangeShippingDetails,
+  handleChangeProfileDetails,
 }) {
   const selectCountry = [
     { key: "afghanistan", value: "Afghanistan" },
@@ -31,7 +31,7 @@ export default function BuyerShippingDetailsForm({
           required
           placeholder="Enter First Name"
           inputValue={billingForm.profileDetails[0].firstName}
-          onChangeFn={(event) => handleChange3(0, event)}
+          onChangeFn={(event) => handleChangeProfileDetails(0, event)}
         />
         <SGFormField
           name="lastName"
@@ -40,7 +40,7 @@ export default function BuyerShippingDetailsForm({
           required
           placeholder="Enter Last Name"
           inputValue={billingForm.profileDetails[0].lastName}
-          onChangeFn={(event) => handleChange3(0, event)}
+          onChangeFn={(event) => handleChangeProfileDetails(0, event)}
         />
         <SGFormField
           name="phone"
@@ -49,7 +49,7 @@ export default function BuyerShippingDetailsForm({
           required
           placeholder="Enter Number"
           inputValue={billingForm.profileDetails[0].phone}
-          onChangeFn={(event) => handleChange3(0, event)}
+          onChangeFn={(event) => handleChangeProfileDetails(0, event)}
         />
         <SGFormField
           name="alternatePhone"
@@ -58,7 +58,7 @@ export default function BuyerShippingDetailsForm({
           required
           placeholder="Enter Number"
           inputValue={billingForm.profileDetails[0].alternatePhone}
-          onChangeFn={(event) => handleChange3(0, event)}
+          onChangeFn={(event) => handleChangeProfileDetails(0, event)}
         />
         <SGFormField
           name="email"
@@ -67,7 +67,7 @@ export default function BuyerShippingDetailsForm({
           required
           placeholder="Enter Email"
           inputValue={billingForm.profileDetails[0].email}
-          onChangeFn={(event) => handleChange3(0, event)}
+          onChangeFn={(event) => handleChangeProfileDetails(0, event)}
         />
         <SGFormSelect
           name="country"
@@ -86,7 +86,7 @@ export default function BuyerShippingDetailsForm({
               required
               placeholder="Enter House Number"
               inputValue={billingForm.shippingDetails[0].houseNumber}
-              onChangeFn={(event) => handleChange(0, event)}
+              onChangeFn={(event) => handleChangeShippingDetails(0, event)}
             />
             <SGFormField
               name="locality"
@@ -95,7 +95,7 @@ export default function BuyerShippingDetailsForm({
               required
               placeholder="Enter Locality"
               inputValue={billingForm.shippingDetails[0].locality}
-              onChangeFn={(event) => handleChange(0, event)}
+              onChangeFn={(event) => handleChangeShippingDetails(0, event)}
             />
             <SGFormField
               name="street"
@@ -104,7 +104,7 @@ export default function BuyerShippingDetailsForm({
               required
               placeholder="Enter Street Name"
               inputValue={billingForm.shippingDetails[0].street}
-              onChangeFn={(event) => handleChange(0, event)}
+              onChangeFn={(event) => handleChangeShippingDetails(0, event)}
             />
           </>
         ) : (
@@ -116,7 +116,7 @@ export default function BuyerShippingDetailsForm({
               required
               placeholder="Enter Address 1"
               inputValue={billingForm.shippingDetails[0].address1}
-              onChangeFn={(event) => handleChange(0, event)}
+              onChangeFn={(event) => handleChangeShippingDetails(0, event)}
             />
             <SGFormField
               name="address2"
@@ -125,7 +125,7 @@ export default function BuyerShippingDetailsForm({
               required
               placeholder="Enter Address 2"
               inputValue={billingForm.shippingDetails[0].address2}
-              onChangeFn={(event) => handleChange(0, event)}
+              onChangeFn={(event) => handleChangeShippingDetails(0, event)}
             />
             <SGFormField
               name="landmark"
@@ -134,7 +134,7 @@ export default function BuyerShippingDetailsForm({
               required
               placeholder="Enter Landmark"
               inputValue={billingForm.shippingDetails[0].landmark}
-              onChangeFn={(event) => handleChange(0.0, event)}
+              onChangeFn={(event) => handleChangeShippingDetails(0.0, event)}
             />
           </>
         )}
@@ -145,7 +145,7 @@ export default function BuyerShippingDetailsForm({
           required
           placeholder="Enter Pincode"
           inputValue={billingForm.shippingDetails[0].pincode}
-          onChangeFn={(event) => handleChange(0, event)}
+          onChangeFn={(event) => handleChangeShippingDetails(0, event)}
         />
         <SGFormField
           name="city"
@@ -154,7 +154,7 @@ export default function BuyerShippingDetailsForm({
           required
           placeholder="Enter City"
           inputValue={billingForm.shippingDetails[0].city}
-          onChangeFn={(event) => handleChange(0, event)}
+          onChangeFn={(event) => handleChangeShippingDetails(0, event)}
         />
         <SGFormSelect
           name="state"

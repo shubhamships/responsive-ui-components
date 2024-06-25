@@ -17,7 +17,7 @@ export function DialogData({ content, handleSubmit, onCancel }) {
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
         </AlertDialogHeader>
         <AlertDialogDescription className="overflow-auto max-h-fit">
-          <pre className="whitespace-pre-wrap">{content}</pre>
+          {content}
         </AlertDialogDescription>
         <AlertDialogFooter>
           <div className="flex flex-row gap-10 mt-4 mb-2">

@@ -63,7 +63,7 @@ export default function AddOrder() {
     navigateTo("/add-order2");
   };
   //function to update the form data
-  const handleChange = (index, event) => {
+  const handleChangeShippingDetails = (index, event) => {
     const { name, value } = event.target;
     const list = [...billingForm.shippingDetails];
     list[index] = {
@@ -75,7 +75,7 @@ export default function AddOrder() {
       shippingDetails: list,
     }));
   };
-  const handleChange2 = (index, event) => {
+  const handleChangeBillingDetails = (index, event) => {
     const { name, value } = event.target;
     const list = [...billingForm.billingDetails];
     list[index] = {
@@ -87,7 +87,7 @@ export default function AddOrder() {
       billingDetails: list,
     }));
   };
-  const handleChange3 = (index, event) => {
+  const handleChangeProfileDetails = (index, event) => {
     const { name, value } = event.target;
     const list = [...billingForm.profileDetails];
     list[index] = {
@@ -140,8 +140,8 @@ export default function AddOrder() {
                 {/* buyer shipping details form */}
                 <BuyerShippingDetailsForm
                   billingForm={billingForm}
-                  handleChange={handleChange}
-                  handleChange3={handleChange3}
+                  handleChangeShippingDetails={handleChangeShippingDetails}
+                  handleChangeProfileDetails={handleChangeProfileDetails}
                   setBillingForm={setBillingForm}
                 />
                 {/* checkbox field for checking if shipping and billing address are same */}
@@ -161,7 +161,7 @@ export default function AddOrder() {
                 {check === false && (
                   <BuyerBillingDetailsForm
                     billingForm={billingForm}
-                    handleChange={handleChange2}
+                    handleChangeBillingDetails={handleChangeBillingDetails}
                     setBillingForm={setBillingForm}
                   />
                 )}

@@ -3,7 +3,7 @@ import SGFormSelect from "../elements/SGFormSelect";
 export default function BuyerBillingDetailsForm({
   billingForm,
   setBillingForm,
-  handleChange,
+  handleChangeBillingDetails,
 }) {
   const selectCountry = [
     { key: "afghanistan", value: "Afghanistan" },
@@ -37,7 +37,7 @@ export default function BuyerBillingDetailsForm({
           required
           placeholder="Enter Address"
           inputValue={billingForm.billingDetails[0].address1Billing}
-          onChangeFn={(event) => handleChange(0, event)}
+          onChangeFn={(event) => handleChangeBillingDetails(0, event)}
         />
         <SGFormField
           name="address2Billing"
@@ -46,7 +46,7 @@ export default function BuyerBillingDetailsForm({
           required
           placeholder="Enter Address"
           inputValue={billingForm.billingDetails[0].address2Billing}
-          onChangeFn={(event) => handleChange(0, event)}
+          onChangeFn={(event) => handleChangeBillingDetails(0, event)}
         />
         <SGFormField
           name="landmarkBilling"
@@ -55,7 +55,7 @@ export default function BuyerBillingDetailsForm({
           required
           placeholder="Enter Landmark"
           inputValue={billingForm.billingDetails[0].landmarkBilling}
-          onChangeFn={(event) => handleChange(0, event)}
+          onChangeFn={(event) => handleChangeBillingDetails(0, event)}
         />
         <SGFormField
           name="pincodeBilling"
@@ -64,7 +64,7 @@ export default function BuyerBillingDetailsForm({
           required
           placeholder="Enter Pincode"
           inputValue={billingForm.billingDetails[0].pincodeBilling}
-          onChangeFn={(event) => handleChange(0, event)}
+          onChangeFn={(event) => handleChangeBillingDetails(0, event)}
         />
         <SGFormField
           name="cityBilling"
@@ -73,7 +73,7 @@ export default function BuyerBillingDetailsForm({
           required
           placeholder="Enter City"
           inputValue={billingForm.billingDetails[0].cityBilling}
-          onChangeFn={(event) => handleChange(0, event)}
+          onChangeFn={(event) => handleChangeBillingDetails(0, event)}
         />
         <SGFormSelect
           name="stateBilling"

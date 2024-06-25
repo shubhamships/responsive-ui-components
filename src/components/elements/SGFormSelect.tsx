@@ -4,6 +4,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  SelectGroup,
+  SelectLabel,
 } from "@/components/ui/select";
 import { Label } from "../ui/label";
 interface SelectItems {
@@ -16,7 +18,7 @@ interface SGFormSelectProps {
   placeholder?: string;
   required?: boolean;
   data: SelectItems[];
-  setSelectValueObj: (prev: any) => void;
+  setSelectValueObj: (prev) => void;
 }
 export default function SGFormSelect({
   data,
@@ -41,11 +43,14 @@ export default function SGFormSelect({
             <SelectValue placeholder={placeholder} />
           </SelectTrigger>
           <SelectContent>
-            {data.map((item) => (
-              <SelectItem value={item.key} key={item.key}>
-                {item.value}
-              </SelectItem>
-            ))}
+            <SelectGroup>
+              <SelectLabel>{label}</SelectLabel>
+              {data.map((item) => (
+                <SelectItem value={item.key} key={item.key}>
+                  {item.value}
+                </SelectItem>
+              ))}
+            </SelectGroup>
           </SelectContent>
         </Select>
       </div>
