@@ -6,6 +6,7 @@ import { DialogData } from "@/components/elements/DialogData";
 import OrderDetailsForm from "@/components/templates/OrderDetailsForm";
 import ItemDetailsForm from "@/components/templates/ItemDetailsForm";
 import LeftTab2 from "@/components/templates/LaftTab2";
+import axios from "axios";
 
 export default function AddOrder2() {
   //initial values for the array object for item details
@@ -42,10 +43,27 @@ export default function AddOrder2() {
   //state variable for dialog box
   const [showDialog, setShowDialog] = useState(false);
   //function for handling form submission
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(orderForm);
+  //   setShowDialog(true);
+  // };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(orderForm);
-    setShowDialog(true);
+
+    try {
+      const response = await axios.post(
+        "https://jsonplaceholder.typicode.com/posts",
+        {
+          orderForm,
+        }
+      );
+      console.log("Form data posted successfully:", response.data);
+      setShowDialog(true);
+    } catch (error) {
+      console.error("Error submitting form data:", error);
+      alert("Failed to submit form data. Please try again.");
+    }
   };
   //function for handling dialog box
   const handleSubmitDialog = () => {
