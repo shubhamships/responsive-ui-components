@@ -1,9 +1,9 @@
 import SGFormField from "../elements/SGFormField";
 import SGFormSelect from "../elements/SGFormSelect";
 export default function BuyerBillingDetailsForm({
-  billingForm,
-  setBillingForm,
-  handleChangeBillingDetails,
+  billingDetailsForm,
+  setBillingDetailsForm,
+  handleInputBillingDetailsChange,
 }) {
   const selectCountry = [
     { key: "afghanistan", value: "Afghanistan" },
@@ -28,52 +28,57 @@ export default function BuyerBillingDetailsForm({
           placeholder="Select Country"
           required={true}
           data={selectCountry}
-          setSelectValueObj={setBillingForm}
+          setSelectValueObj={setBillingDetailsForm}
         />
         <SGFormField
           name="address1Billing"
           label="Address 1"
           type="text"
           required
+          pattern="\S(.*\S)?"
           placeholder="Enter Address"
-          inputValue={billingForm.billingDetails[0].address1Billing}
-          onChangeFn={(event) => handleChangeBillingDetails(0, event)}
+          inputValue={billingDetailsForm.address1Billing}
+          onChangeFn={handleInputBillingDetailsChange}
         />
         <SGFormField
           name="address2Billing"
           label="Address 2"
           type="text"
           required
+          pattern="\S(.*\S)?"
           placeholder="Enter Address"
-          inputValue={billingForm.billingDetails[0].address2Billing}
-          onChangeFn={(event) => handleChangeBillingDetails(0, event)}
+          inputValue={billingDetailsForm.address2Billing}
+          onChangeFn={handleInputBillingDetailsChange}
         />
         <SGFormField
           name="landmarkBilling"
           label="Landmark"
           type="text"
+          pattern="\S(.*\S)?"
           required
           placeholder="Enter Landmark"
-          inputValue={billingForm.billingDetails[0].landmarkBilling}
-          onChangeFn={(event) => handleChangeBillingDetails(0, event)}
+          inputValue={billingDetailsForm.landmarkBilling}
+          onChangeFn={handleInputBillingDetailsChange}
         />
         <SGFormField
           name="pincodeBilling"
           label="Pincode"
           type="text"
           required
+          pattern="\S(.*\S)?"
           placeholder="Enter Pincode"
-          inputValue={billingForm.billingDetails[0].pincodeBilling}
-          onChangeFn={(event) => handleChangeBillingDetails(0, event)}
+          inputValue={billingDetailsForm.pincodeBilling}
+          onChangeFn={handleInputBillingDetailsChange}
         />
         <SGFormField
           name="cityBilling"
           label="City"
+          pattern="\S(.*\S)?"
           type="text"
           required
           placeholder="Enter City"
-          inputValue={billingForm.billingDetails[0].cityBilling}
-          onChangeFn={(event) => handleChangeBillingDetails(0, event)}
+          inputValue={billingDetailsForm.cityBilling}
+          onChangeFn={handleInputBillingDetailsChange}
         />
         <SGFormSelect
           name="stateBilling"
@@ -81,7 +86,7 @@ export default function BuyerBillingDetailsForm({
           required={true}
           placeholder="Select State"
           data={selectState}
-          setSelectValueObj={setBillingForm}
+          setSelectValueObj={setBillingDetailsForm}
         />
       </div>
     </>

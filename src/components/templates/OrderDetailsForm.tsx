@@ -21,6 +21,7 @@ export default function OrderDetailsForm({
           name="invoiceNumber"
           label="Invoice Number"
           type="text"
+          pattern="\S(.*\S)?"
           required
           placeholder="Enter Invoice Number"
           inputValue={orderForm.invoiceNumber}
@@ -30,6 +31,7 @@ export default function OrderDetailsForm({
           name="invoiceDate"
           label="Invoice Date"
           type="date"
+          pattern="\S(.*\S)?"
           required
           placeholder="Enter Invoice Date"
           inputValue={orderForm.invoiceDate}
@@ -46,6 +48,7 @@ export default function OrderDetailsForm({
           name="orderRef"
           label="Order Id/Ref."
           type="text"
+          pattern="\S(.*\S)?"
           required
           placeholder="Enter Order Id/Ref."
           inputValue={orderForm.orderRef}
@@ -54,6 +57,7 @@ export default function OrderDetailsForm({
         <SGFormField
           name="ioss"
           label="IOSS"
+          pattern="\S(.*\S)?"
           type="text"
           required
           placeholder="Enter IOSS"

@@ -28,6 +28,7 @@ export default function ItemDetailsForm({
                   name="prodName"
                   label="Product"
                   type="text"
+                  pattern="\S(.*\S)?"
                   required
                   onChangeFn={(event) => handleChange(index, event)}
                 />
@@ -36,6 +37,7 @@ export default function ItemDetailsForm({
                 <SGFormField
                   name="sku"
                   label="SKU"
+                  pattern="\S(.*\S)?"
                   type="text"
                   onChangeFn={(event) => handleChange(index, event)}
                 />
@@ -44,6 +46,7 @@ export default function ItemDetailsForm({
                 <SGFormField
                   name="hsn"
                   label="HSN"
+                  pattern="\S(.*\S)?"
                   type="text"
                   required
                   onChangeFn={(event) => handleChange(index, event)}
@@ -54,6 +57,7 @@ export default function ItemDetailsForm({
                   name="qty"
                   label="QTY"
                   type="text"
+                  pattern="\S(.*\S)?"
                   required
                   onChangeFn={(event) => handleChange(index, event)}
                 />
@@ -63,6 +67,7 @@ export default function ItemDetailsForm({
                   name="unitPrice"
                   label="Unit Price"
                   type="text"
+                  pattern="\S(.*\S)?"
                   required
                   onChangeFn={(event) => handleChange(index, event)}
                 />
