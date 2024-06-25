@@ -25,7 +25,7 @@ export default function AddOrder3() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOderDimensionForm({
       ...oderDimensionForm,
-      [e.target.name]: e.target.value,
+      [e.target.id]: e.target.value,
     });
   };
   //state variable for the dialog box
@@ -91,6 +91,7 @@ export default function AddOrder3() {
                     <DialogData
                       content={JSON.stringify(orderDimensionFormData)}
                       handleSubmit={handleSubmitDialog}
+                      onCancel={() => setShowDialog(false)}
                     />
                   )}
                 </div>

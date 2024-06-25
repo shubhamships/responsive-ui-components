@@ -10,6 +10,7 @@ interface SGFormFieldProps {
   placeholder?: string;
   className?: string;
   inputValue?: string;
+  pattern?: string;
   onChangeFn: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export default function SGFormField({
@@ -20,6 +21,7 @@ export default function SGFormField({
   placeholder = "",
   className,
   inputValue,
+  pattern,
   onChangeFn,
 }: SGFormFieldProps) {
   return (
@@ -31,6 +33,7 @@ export default function SGFormField({
       <Input
         type={type}
         name={name}
+        pattern={pattern}
         placeholder={placeholder}
         required
         className={cn("mt-2", className)}

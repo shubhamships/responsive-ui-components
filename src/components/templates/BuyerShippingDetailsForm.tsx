@@ -47,6 +47,7 @@ export default function BuyerShippingDetailsForm({
           label="Phone Number"
           type="tel"
           required
+          pattern="[0-9]{10}"
           placeholder="Enter Number"
           inputValue={billingForm.profileDetails[0].phone}
           onChangeFn={(event) => handleChangeProfileDetails(0, event)}
@@ -56,6 +57,7 @@ export default function BuyerShippingDetailsForm({
           label="Alternate Number"
           type="tel"
           required
+          pattern="[0-9]{10}"
           placeholder="Enter Number"
           inputValue={billingForm.profileDetails[0].alternatePhone}
           onChangeFn={(event) => handleChangeProfileDetails(0, event)}

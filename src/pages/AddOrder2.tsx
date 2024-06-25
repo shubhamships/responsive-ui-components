@@ -139,6 +139,7 @@ export default function AddOrder2() {
                   <DialogData
                     content={JSON.stringify(orderFormData)}
                     handleSubmit={handleSubmitDialog}
+                    onCancel={() => setShowDialog(false)}
                   />
                 )}
               </div>

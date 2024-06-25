@@ -62,7 +62,7 @@ export default function AddOrder() {
     setShowDialog(false);
     navigateTo("/add-order2");
   };
-  //function to update the form data
+  //function to update the shippingDetails
   const handleChangeShippingDetails = (index, event) => {
     const { name, value } = event.target;
     const list = [...billingForm.shippingDetails];
@@ -75,6 +75,7 @@ export default function AddOrder() {
       shippingDetails: list,
     }));
   };
+  //function to update the billingDetails
   const handleChangeBillingDetails = (index, event) => {
     const { name, value } = event.target;
     const list = [...billingForm.billingDetails];
@@ -87,6 +88,7 @@ export default function AddOrder() {
       billingDetails: list,
     }));
   };
+  //function to update the profileDetails
   const handleChangeProfileDetails = (index, event) => {
     const { name, value } = event.target;
     const list = [...billingForm.profileDetails];
