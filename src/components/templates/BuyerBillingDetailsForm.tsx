@@ -38,7 +38,8 @@ export default function BuyerBillingDetailsForm({
               type="text"
               required
               pattern="\S(.*\S)?"
-              placeholder="Enter Address"
+              message="Don't add spaces at beginning or end"
+              placeholder="Enter Houe No."
               inputValue={billingDetailsForm.houseBilling}
               onChangeFn={handleInputBillingDetailsChange}
             />
@@ -46,19 +47,21 @@ export default function BuyerBillingDetailsForm({
               name="localityBilling"
               label="Locality"
               type="text"
+              message="Don't add spaces at beginning or end"
               required
               pattern="\S(.*\S)?"
-              placeholder="Enter Address"
+              placeholder="Enter Locality"
               inputValue={billingDetailsForm.localityBilling}
               onChangeFn={handleInputBillingDetailsChange}
             />
             <SGFormField
               name="streetBilling"
               label="Street"
+              message="Don't add spaces at beginning or end"
               type="text"
               pattern="\S(.*\S)?"
               required
-              placeholder="Enter Landmark"
+              placeholder="Enter Street"
               inputValue={billingDetailsForm.streetBilling}
               onChangeFn={handleInputBillingDetailsChange}
             />
@@ -70,6 +73,7 @@ export default function BuyerBillingDetailsForm({
               label="Address 1"
               type="text"
               required
+              message="Don't add spaces at beginning or end"
               pattern="\S(.*\S)?"
               placeholder="Enter Address"
               inputValue={billingDetailsForm.address1Billing}
@@ -79,6 +83,7 @@ export default function BuyerBillingDetailsForm({
               name="address2Billing"
               label="Address 2"
               type="text"
+              message="Don't add spaces at beginning or end"
               required
               pattern="\S(.*\S)?"
               placeholder="Enter Address"
@@ -88,6 +93,7 @@ export default function BuyerBillingDetailsForm({
             <SGFormField
               name="landmarkBilling"
               label="Landmark"
+              message="Don't add spaces at beginning or end"
               type="text"
               pattern="\S(.*\S)?"
               required
@@ -103,6 +109,7 @@ export default function BuyerBillingDetailsForm({
           pattern="\S(.*\S)?"
           type="text"
           required
+          message="Don't add spaces at beginning or end"
           placeholder="Enter City"
           inputValue={billingDetailsForm.cityBilling}
           onChangeFn={handleInputBillingDetailsChange}
@@ -119,6 +126,7 @@ export default function BuyerBillingDetailsForm({
           name="pincodeBilling"
           label="Pincode"
           type="text"
+          message="Enter digits of length 6"
           required
           pattern="[0-9]{6}"
           placeholder="Enter Pincode"

@@ -10,6 +10,7 @@ interface SGFormFieldProps {
   required?: boolean;
   placeholder?: string;
   className?: string;
+  message?: string;
   minLength?: number;
   maxLength?: number;
   pattern?: string;
@@ -24,6 +25,7 @@ export default function SGFormField({
   required,
   placeholder = "",
   className,
+  message,
   minLength,
   maxLength,
   pattern,
@@ -32,19 +34,29 @@ export default function SGFormField({
 }: SGFormFieldProps) {
   const [error, setError] = useState<string>("");
 
-  const handleInvalid = (event: React.FormEvent<HTMLInputElement>) => {
-    if (event.currentTarget.validity.valueMissing) {
-      setError("Field is required");
-    } else if (pattern && event.currentTarget.validity.patternMismatch) {
-      setError(`Invalid format. Please enter in correct format.`);
+  const handleInvalid = (message, event: React.FormEvent<HTMLInputElement>) => {
+    if (
+      event.currentTarget.validity.patternMismatch ||
+      event.currentTarget.validity.valueMissing
+    ) {
+      setError(
+        message ? message : `Invalid format. Please enter in correct format.`
+      );
     } else {
       setError("Invalid input.");
     }
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (message, event) => {
+    if (
+      event.currentTarget.validity.patternMismatch ||
+      event.currentTarget.validity.valueMissing
+    ) {
+      handleInvalid(message, event);
+    } else {
+      setError("");
+    }
     onChangeFn(event);
-    setError("");
   };
 
   return (
@@ -63,8 +75,8 @@ export default function SGFormField({
         required={required}
         className={cn("mt-2", className)}
         value={inputValue}
-        onChange={handleChange}
-        onInvalid={handleInvalid}
+        onChange={(event) => handleChange(message, event)}
+        onInvalid={(event) => handleInvalid(message, event)}
       />
       {error && <span className="text-red-600">{error}</span>}
     </div>

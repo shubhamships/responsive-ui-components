@@ -13,16 +13,9 @@ import {
 export default function ItemDetailsForm({
   removeInputFields,
   itemForm,
-  // setItemForm,
   handleChange,
   handleFormInputChange,
 }) {
-  // const selectIGST = [
-  //   { key: "0%", value: "0%" },
-  //   { key: "3%", value: "3%" },
-  //   { key: "5%", value: "5%" },
-  //   { key: "7%", value: "7%" },
-  // ];
   return (
     <>
       <div className="mt-4 mb-4 font-bold text-cyan-500 text-2xl">
@@ -37,6 +30,7 @@ export default function ItemDetailsForm({
                   name="prodName"
                   label="Product"
                   type="text"
+                  message="Don't add spaces at beginning or end"
                   pattern="\S(.*\S)?"
                   required
                   onChangeFn={(event) => handleChange(index, event)}
@@ -46,6 +40,7 @@ export default function ItemDetailsForm({
                 <SGFormField
                   name="sku"
                   label="SKU"
+                  message="Don't add spaces at beginning or end"
                   pattern="\S(.*\S)?"
                   type="text"
                   onChangeFn={(event) => handleChange(index, event)}
@@ -55,6 +50,7 @@ export default function ItemDetailsForm({
                 <SGFormField
                   name="hsn"
                   label="HSN"
+                  message="Don't add spaces at beginning or end"
                   pattern="\S(.*\S)?"
                   type="text"
                   required
@@ -65,6 +61,7 @@ export default function ItemDetailsForm({
                 <SGFormField
                   name="qty"
                   label="QTY"
+                  message="Only digits allowed"
                   type="number"
                   pattern="\S(.*\S)?"
                   required
@@ -76,6 +73,7 @@ export default function ItemDetailsForm({
                   name="unitPrice"
                   label="Unit Price"
                   type="number"
+                  message="Only digits allowed"
                   pattern="\S(.*\S)?"
                   required
                   onChangeFn={(event) => handleChange(index, event)}

@@ -29,6 +29,7 @@ export default function BuyerShippingDetailsForm({
           name="firstName"
           label="First Name"
           type="text"
+          message="Don't add spaces at beginning or end"
           required
           pattern="\S(.*\S)?"
           placeholder="Enter First Name"
@@ -39,6 +40,7 @@ export default function BuyerShippingDetailsForm({
           name="lastName"
           label="Last Name"
           type="text"
+          message="Don't add spaces at beginning or end"
           required
           pattern="\S(.*\S)?"
           placeholder="Enter Last Name"
@@ -49,6 +51,7 @@ export default function BuyerShippingDetailsForm({
           name="phone"
           label="Phone Number"
           type="text"
+          message="Add digits of length 10"
           required
           placeholder="Enter Number"
           pattern="[0-9]{10}"
@@ -60,6 +63,7 @@ export default function BuyerShippingDetailsForm({
           name="alternatePhone"
           label="Alternate Number"
           type="text"
+          message="Add digits of length 10"
           required
           pattern="[0-9]{10}"
           placeholder="Enter Number"
@@ -70,6 +74,7 @@ export default function BuyerShippingDetailsForm({
           name="email"
           label="Email"
           type="email"
+          message="Add email in form mail@email.com"
           required
           placeholder="Enter Email"
           inputValue={profileDetailsForm.email}
@@ -90,6 +95,7 @@ export default function BuyerShippingDetailsForm({
               label="House Number"
               type="text"
               pattern="\S(.*\S)?"
+              message="Don't add spaces at beginning or end"
               required
               placeholder="Enter House Number"
               inputValue={shipDetailsForm.houseNumber}
@@ -98,6 +104,7 @@ export default function BuyerShippingDetailsForm({
             <SGFormField
               name="locality"
               label="Locality"
+              message="Don't add spaces at beginning or end"
               type="text"
               pattern="\S(.*\S)?"
               required
@@ -108,6 +115,7 @@ export default function BuyerShippingDetailsForm({
             <SGFormField
               name="street"
               label="Street Name"
+              message="Don't add spaces at beginning or end"
               type="text"
               pattern="\S(.*\S)?"
               required
@@ -120,6 +128,7 @@ export default function BuyerShippingDetailsForm({
           <>
             <SGFormField
               name="address1"
+              message="Don't add spaces at beginning or end"
               label="Address 1"
               type="text"
               pattern="\S(.*\S)?"
@@ -132,6 +141,7 @@ export default function BuyerShippingDetailsForm({
               name="address2"
               label="Address 2"
               type="text"
+              message="Don't add spaces at beginning or end"
               pattern="\S(.*\S)?"
               required
               placeholder="Enter Address 2"
@@ -142,6 +152,7 @@ export default function BuyerShippingDetailsForm({
               name="landmark"
               label="Landmark"
               type="text"
+              message="Don't add spaces at beginning or end"
               pattern="\S(.*\S)?"
               required
               placeholder="Enter Landmark"
@@ -153,6 +164,7 @@ export default function BuyerShippingDetailsForm({
         <SGFormField
           name="city"
           label="City"
+          message="Don't add spaces at beginning or end"
           type="text"
           pattern="\S(.*\S)?"
           required
@@ -172,6 +184,7 @@ export default function BuyerShippingDetailsForm({
           name="pincode"
           label="Pincode"
           type="text"
+          message="Enter digits of length 6"
           required
           pattern="[0-9]{6}"
           placeholder="Enter Pincode"

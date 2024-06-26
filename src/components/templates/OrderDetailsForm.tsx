@@ -21,6 +21,7 @@ export default function OrderDetailsForm({
           name="invoiceNumber"
           label="Invoice Number"
           type="number"
+          message="Only digits allowed"
           pattern="\S(.*\S)?"
           required
           placeholder="Enter Invoice Number"
@@ -48,6 +49,7 @@ export default function OrderDetailsForm({
           name="orderRef"
           label="Order Id/Ref."
           type="text"
+          message="Don't add spaces at beginning or end"
           pattern="\S(.*\S)?"
           required
           placeholder="Enter Order Id/Ref."
@@ -57,6 +59,7 @@ export default function OrderDetailsForm({
         <SGFormField
           name="ioss"
           label="IOSS"
+          message="Don't add spaces at beginning or end"
           pattern="\S(.*\S)?"
           type="text"
           required
