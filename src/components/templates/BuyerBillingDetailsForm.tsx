@@ -22,36 +22,81 @@ export default function BuyerBillingDetailsForm({
         Buyer Billing Details
       </div>
       <div className="grid md:grid-cols-3 md:gap-6">
-        <SGFormField
-          name="address1Billing"
-          label="Address 1"
-          type="text"
-          required
-          pattern="\S(.*\S)?"
-          placeholder="Enter Address"
-          inputValue={billingDetailsForm.address1Billing}
-          onChangeFn={handleInputBillingDetailsChange}
+        <SGFormSelect
+          name="countryBilling"
+          label="Country"
+          placeholder="Select Country"
+          required={true}
+          data={selectCountry}
+          setSelectValueObj={setBillingDetailsForm}
         />
-        <SGFormField
-          name="address2Billing"
-          label="Address 2"
-          type="text"
-          required
-          pattern="\S(.*\S)?"
-          placeholder="Enter Address"
-          inputValue={billingDetailsForm.address2Billing}
-          onChangeFn={handleInputBillingDetailsChange}
-        />
-        <SGFormField
-          name="landmarkBilling"
-          label="Landmark"
-          type="text"
-          pattern="\S(.*\S)?"
-          required
-          placeholder="Enter Landmark"
-          inputValue={billingDetailsForm.landmarkBilling}
-          onChangeFn={handleInputBillingDetailsChange}
-        />{" "}
+        {billingDetailsForm.countryBilling === "afghanistan" ? (
+          <>
+            <SGFormField
+              name="houseBilling"
+              label="House Number"
+              type="text"
+              required
+              pattern="\S(.*\S)?"
+              placeholder="Enter Address"
+              inputValue={billingDetailsForm.houseBilling}
+              onChangeFn={handleInputBillingDetailsChange}
+            />
+            <SGFormField
+              name="localityBilling"
+              label="Locality"
+              type="text"
+              required
+              pattern="\S(.*\S)?"
+              placeholder="Enter Address"
+              inputValue={billingDetailsForm.localityBilling}
+              onChangeFn={handleInputBillingDetailsChange}
+            />
+            <SGFormField
+              name="streetBilling"
+              label="Street"
+              type="text"
+              pattern="\S(.*\S)?"
+              required
+              placeholder="Enter Landmark"
+              inputValue={billingDetailsForm.streetBilling}
+              onChangeFn={handleInputBillingDetailsChange}
+            />
+          </>
+        ) : (
+          <>
+            <SGFormField
+              name="address1Billing"
+              label="Address 1"
+              type="text"
+              required
+              pattern="\S(.*\S)?"
+              placeholder="Enter Address"
+              inputValue={billingDetailsForm.address1Billing}
+              onChangeFn={handleInputBillingDetailsChange}
+            />
+            <SGFormField
+              name="address2Billing"
+              label="Address 2"
+              type="text"
+              required
+              pattern="\S(.*\S)?"
+              placeholder="Enter Address"
+              inputValue={billingDetailsForm.address2Billing}
+              onChangeFn={handleInputBillingDetailsChange}
+            />
+            <SGFormField
+              name="landmarkBilling"
+              label="Landmark"
+              type="text"
+              pattern="\S(.*\S)?"
+              required
+              placeholder="Enter Landmark"
+              inputValue={billingDetailsForm.landmarkBilling}
+              onChangeFn={handleInputBillingDetailsChange}
+            />
+          </>
+        )}
         <SGFormField
           name="cityBilling"
           label="City"
@@ -73,22 +118,12 @@ export default function BuyerBillingDetailsForm({
         <SGFormField
           name="pincodeBilling"
           label="Pincode"
-          type="number"
-          minLength={6}
-          maxLength={6}
+          type="text"
           required
-          pattern="\S(.*\S)?"
+          pattern="[0-9]{6}"
           placeholder="Enter Pincode"
           inputValue={billingDetailsForm.pincodeBilling}
           onChangeFn={handleInputBillingDetailsChange}
-        />
-        <SGFormSelect
-          name="countryBilling"
-          label="Country"
-          placeholder="Select Country"
-          required={true}
-          data={selectCountry}
-          setSelectValueObj={setBillingDetailsForm}
         />
       </div>
     </>

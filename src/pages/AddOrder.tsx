@@ -18,6 +18,9 @@ export default function AddOrder() {
     address2Billing: "",
     pincodeBilling: "",
     cityBilling: "",
+    houseBilling: "",
+    streetBilling: "",
+    localityBilling: "",
   });
   const [profileDetailsForm, setProfileDetailsForm] = useState({
     id: 1,
@@ -112,6 +115,9 @@ export default function AddOrder() {
         cityBilling: shipDetailsForm.city,
         stateBilling: shipDetailsForm.state,
         countryBilling: shipDetailsForm.country,
+        houseBilling: shipDetailsForm.houseNumber,
+        localityBilling: shipDetailsForm.locality,
+        streetBilling: shipDetailsForm.street,
       }));
     }
   };

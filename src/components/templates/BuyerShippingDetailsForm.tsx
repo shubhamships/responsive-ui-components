@@ -14,7 +14,7 @@ export default function BuyerShippingDetailsForm({
     { key: "albania", value: "Albania" },
     { key: "algeria", value: "Algeria" },
   ];
-  const selectState = [
+  const listStatesData = [
     { key: "delhi", value: "Delhi" },
     { key: "banglore", value: "Banglore" },
     { key: "pune", value: "Pune" },
@@ -53,15 +53,13 @@ export default function BuyerShippingDetailsForm({
           placeholder="Enter Number"
           pattern="[0-9]{10}"
           inputValue={profileDetailsForm.phone}
-          minLength={10}
-          maxLength={10}
           onChangeFn={handleChangeProfileDetails}
         />
 
         <SGFormField
           name="alternatePhone"
           label="Alternate Number"
-          type="number"
+          type="text"
           required
           pattern="[0-9]{10}"
           placeholder="Enter Number"
@@ -77,8 +75,15 @@ export default function BuyerShippingDetailsForm({
           inputValue={profileDetailsForm.email}
           onChangeFn={handleChangeProfileDetails}
         />
-
-        {setShipDetailsForm.country === "afghanistan" ? (
+        <SGFormSelect
+          name="country"
+          label="Country"
+          placeholder="Select Country"
+          data={selectCountry}
+          required={true}
+          setSelectValueObj={setShipDetailsForm}
+        />
+        {shipDetailsForm.country === "afghanistan" ? (
           <>
             <SGFormField
               name="houseNumber"
@@ -160,28 +165,18 @@ export default function BuyerShippingDetailsForm({
           label="State"
           required={true}
           placeholder="Select State"
-          data={selectState}
+          data={listStatesData}
           setSelectValueObj={setShipDetailsForm}
         />
         <SGFormField
           name="pincode"
           label="Pincode"
-          type="number"
-          maxLength={6}
-          minLength={6}
+          type="text"
           required
-          pattern="\S(.*\S)?"
+          pattern="[0-9]{6}"
           placeholder="Enter Pincode"
           inputValue={shipDetailsForm.pincode}
           onChangeFn={handleChangeShippingDetails}
-        />
-        <SGFormSelect
-          name="country"
-          label="Country"
-          placeholder="Select Country"
-          data={selectCountry}
-          required={true}
-          setSelectValueObj={setShipDetailsForm}
         />
       </div>
     </>

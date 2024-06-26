@@ -36,10 +36,19 @@ export default function LeftTab1({
           <div className="mb-4">
             <p className="text-white">Shipping Address</p>
             <p className="text-gray-300">
-              {shipDetailsForm.address1} {shipDetailsForm.address2}{" "}
-              {shipDetailsForm.landmark} {shipDetailsForm.city}{" "}
-              {shipDetailsForm.state} {shipDetailsForm.pincode}{" "}
-              {shipDetailsForm.country}
+              {shipDetailsForm.country === "afghanistan" ? (
+                <>
+                  {shipDetailsForm.houseNumber} {shipDetailsForm.street}{" "}
+                  {shipDetailsForm.locality}{" "}
+                </>
+              ) : (
+                <>
+                  {shipDetailsForm.address1} {shipDetailsForm.address2}{" "}
+                  {shipDetailsForm.landmark}{" "}
+                </>
+              )}
+              {shipDetailsForm.city} {shipDetailsForm.state}{" "}
+              {shipDetailsForm.pincode} {shipDetailsForm.country}
             </p>
           </div>
         </div>
@@ -47,9 +56,19 @@ export default function LeftTab1({
           <div className="mb-4">
             <p className="text-white">Billing Address</p>
             <p className="text-gray-300">
-              {billingDetailsForm.address1Billing}{" "}
-              {billingDetailsForm.address2Billing}{" "}
-              {billingDetailsForm.landmarkBilling}{" "}
+              {billingDetailsForm.countryBilling === "afghanistan" ? (
+                <>
+                  {billingDetailsForm.houseBilling}{" "}
+                  {billingDetailsForm.streetBilling}{" "}
+                  {billingDetailsForm.localityBilling}{" "}
+                </>
+              ) : (
+                <>
+                  {billingDetailsForm.address1Billing}{" "}
+                  {billingDetailsForm.address2Billing}{" "}
+                  {billingDetailsForm.landmarkBilling}{" "}
+                </>
+              )}
               {billingDetailsForm.cityBilling} {billingDetailsForm.stateBilling}{" "}
               {billingDetailsForm.pincodeBilling}{" "}
               {billingDetailsForm.countryBilling}
