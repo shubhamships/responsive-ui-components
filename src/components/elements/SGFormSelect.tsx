@@ -5,9 +5,10 @@ import {
   SelectTrigger,
   SelectValue,
   SelectGroup,
-  SelectLabel,
+  // SelectLabel,
 } from "@/components/ui/select";
 import { Label } from "../ui/label";
+import { useState } from "react";
 interface SelectItems {
   key: string;
   value: string;
@@ -28,7 +29,17 @@ export default function SGFormSelect({
   required,
   setSelectValueObj,
 }: SGFormSelectProps) {
+  const [selectValue, setSelectValue] = useState(false);
+  const [touched, setTouched] = useState(false);
+
   const onSelectChange = (value) => {
+    if (value === "Select") {
+      setSelectValue(true);
+    } else {
+      setSelectValue(false);
+      setTouched(false);
+    }
+    setTouched(true);
     setSelectValueObj((prev) => ({ ...prev, [name]: value }));
   };
   return (
@@ -39,12 +50,20 @@ export default function SGFormSelect({
       </Label>
       <div className="mt-2">
         <Select onValueChange={onSelectChange} required>
-          <SelectTrigger>
+          <SelectTrigger
+            className={`ring-1 ${
+              selectValue
+                ? "ring-destructive"
+                : touched
+                ? "ring-constructive"
+                : ""
+            }`}
+          >
             <SelectValue placeholder={placeholder} />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel>{label}</SelectLabel>
+              <SelectItem value="Select">Select {label}</SelectItem>
               {data.map((item) => (
                 <SelectItem value={item.key} key={item.key}>
                   {item.value}
@@ -53,6 +72,11 @@ export default function SGFormSelect({
             </SelectGroup>
           </SelectContent>
         </Select>
+        {selectValue && (
+          <div className="mt-2">
+            <p className="text-red-600">Select {label}</p>
+          </div>
+        )}
       </div>
     </div>
   );

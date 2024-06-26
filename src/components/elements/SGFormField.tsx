@@ -33,8 +33,12 @@ export default function SGFormField({
   onChangeFn,
 }: SGFormFieldProps) {
   const [error, setError] = useState<string>("");
+  const [touched, setTouched] = useState<boolean>(false);
 
-  const handleInvalid = (message, event: React.FormEvent<HTMLInputElement>) => {
+  const handleInvalid = (
+    message: string | undefined,
+    event: React.FormEvent<HTMLInputElement>
+  ) => {
     if (
       event.currentTarget.validity.patternMismatch ||
       event.currentTarget.validity.valueMissing
@@ -45,9 +49,13 @@ export default function SGFormField({
     } else {
       setError("Invalid input.");
     }
+    setTouched(true);
   };
 
-  const handleChange = (message, event) => {
+  const handleChange = (
+    message: string | undefined,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     if (
       event.currentTarget.validity.patternMismatch ||
       event.currentTarget.validity.valueMissing
@@ -57,6 +65,7 @@ export default function SGFormField({
       setError("");
     }
     onChangeFn(event);
+    setTouched(true);
   };
 
   return (
@@ -73,12 +82,21 @@ export default function SGFormField({
         pattern={pattern}
         placeholder={placeholder}
         required={required}
-        className={cn("mt-2", className)}
+        className={cn(
+          "mt-2",
+          touched && error && "ring-1 ring-destructive",
+          touched && !error && "ring-1 ring-constructive",
+          className
+        )}
         value={inputValue}
         onChange={(event) => handleChange(message, event)}
         onInvalid={(event) => handleInvalid(message, event)}
       />
-      {error && <span className="text-red-600">{error}</span>}
+      {error && (
+        <div className="mt-2">
+          <span className="text-red-600">{error}</span>
+        </div>
+      )}
     </div>
   );
 }

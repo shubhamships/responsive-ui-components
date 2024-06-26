@@ -84,6 +84,7 @@ export default function ItemDetailsForm({
                   IGST <span className="text-red-600">*</span>
                 </Label>
                 <Select
+                  required
                   onValueChange={(value) => handleFormInputChange(index, value)}
                 >
                   <SelectTrigger className="w-full mt-2">
@@ -91,6 +92,7 @@ export default function ItemDetailsForm({
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
+                      <SelectItem value="Select">IGST</SelectItem>
                       <SelectItem value="0%">0%</SelectItem>
                       <SelectItem value="3%">3%</SelectItem>
                       <SelectItem value="5%">5%</SelectItem>
