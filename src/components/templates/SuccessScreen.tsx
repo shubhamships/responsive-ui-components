@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 
-export default function SuccessScreen({ finalPage, cancelBox }) {
+export default function SuccessScreen({ cancelBox }) {
   return (
     <AlertDialog defaultOpen>
       <AlertDialogContent className="max-w-lg">
@@ -34,7 +34,7 @@ export default function SuccessScreen({ finalPage, cancelBox }) {
               </Button>
             </div>
             <div>
-              <Button onClick={finalPage}>Continue</Button>
+              <Button onClick={cancelBox}>Okay</Button>
             </div>
           </div>
         </AlertDialogFooter>

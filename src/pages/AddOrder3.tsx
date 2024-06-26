@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { DialogData } from "@/components/elements/DialogData";
 import LeftTab3 from "@/components/templates/LeftTab3";
 import axios from "axios";
-import SuccessScreen from "@/components/templates/SuccessScreen";
 export default function AddOrder3() {
   //defining the form schema
   const [oderDimensionForm, setOderDimensionForm] = useState({
@@ -31,19 +30,12 @@ export default function AddOrder3() {
   };
   //state variable for the dialog box
   const [showDialog, setShowDialog] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
   //function for handling the submit dialog box
   const handleSubmitDialog = () => {
     setShowDialog(false);
-    setShowSuccess(true);
-    // navigateTo("/add-order4");
-  };
-  const finalPage = () => {
     navigateTo("/add-order4");
   };
-  const cancelBox = () => {
-    setShowSuccess(false);
-  };
+
   //modifying data to show in dialog box
   const orderDimensionFormData = Object.entries(oderDimensionForm);
   // function to handle form submission
@@ -115,12 +107,6 @@ export default function AddOrder3() {
                       content={JSON.stringify(orderDimensionFormData)}
                       handleSubmit={handleSubmitDialog}
                       onCancel={() => setShowDialog(false)}
-                    />
-                  )}
-                  {showSuccess && (
-                    <SuccessScreen
-                      finalPage={finalPage}
-                      cancelBox={cancelBox}
                     />
                   )}
                 </div>
