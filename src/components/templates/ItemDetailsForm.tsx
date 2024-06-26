@@ -1,19 +1,28 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import SGFormField from "../elements/SGFormField";
-import SGFormSelect from "../elements/SGFormSelect";
+import { Label } from "@/components/ui/label"; // import SGFormSelect from "../elements/SGFormSelect";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 export default function ItemDetailsForm({
   removeInputFields,
   itemForm,
-  setItemForm,
+  // setItemForm,
   handleChange,
+  handleFormInputChange,
 }) {
-  const selectIGST = [
-    { key: "0%", value: "0%" },
-    { key: "3%", value: "3%" },
-    { key: "5%", value: "5%" },
-    { key: "7%", value: "7%" },
-  ];
+  // const selectIGST = [
+  //   { key: "0%", value: "0%" },
+  //   { key: "3%", value: "3%" },
+  //   { key: "5%", value: "5%" },
+  //   { key: "7%", value: "7%" },
+  // ];
   return (
     <>
       <div className="mt-4 mb-4 font-bold text-cyan-500 text-2xl">
@@ -56,7 +65,7 @@ export default function ItemDetailsForm({
                 <SGFormField
                   name="qty"
                   label="QTY"
-                  type="text"
+                  type="number"
                   pattern="\S(.*\S)?"
                   required
                   onChangeFn={(event) => handleChange(index, event)}
@@ -66,21 +75,30 @@ export default function ItemDetailsForm({
                 <SGFormField
                   name="unitPrice"
                   label="Unit Price"
-                  type="text"
+                  type="number"
                   pattern="\S(.*\S)?"
                   required
                   onChangeFn={(event) => handleChange(index, event)}
                 />
               </div>
-              <div className="my-2 mt-4">
-                <SGFormSelect
-                  name="igst"
-                  label="IGST"
-                  placeholder="IGST"
-                  required={true}
-                  data={selectIGST}
-                  setSelectValueObj={setItemForm}
-                />
+              <div id="selectState" className="m-2 lg:mt-6">
+                <Label htmlFor="state">
+                  IGST <span className="text-red-600">*</span>
+                </Label>
+                <Select
+                  onValueChange={(value) => handleFormInputChange(index, value)}
+                >
+                  <SelectTrigger className="w-full mt-2">
+                    <SelectValue placeholder="IGST" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem value="0%">0%</SelectItem>
+                      <SelectItem value="3%">3%</SelectItem>
+                      <SelectItem value="5%">5%</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
               </div>
               <div className="mt-2 mb-4">
                 {itemForm.length !== 1 && (

@@ -20,7 +20,7 @@ export default function OrderDetailsForm({
         <SGFormField
           name="invoiceNumber"
           label="Invoice Number"
-          type="text"
+          type="number"
           pattern="\S(.*\S)?"
           required
           placeholder="Enter Invoice Number"

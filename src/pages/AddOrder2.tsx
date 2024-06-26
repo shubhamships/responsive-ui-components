@@ -47,6 +47,18 @@ export default function AddOrder2() {
     console.log(orderForm);
     setShowDialog(true);
   };
+  const handleFormInputChange = (index, value) => {
+    const list = [...orderForm.itemDetails];
+    list[index] = {
+      ...list[index],
+      igst: value,
+    };
+    setOrderForm({
+      ...orderForm,
+      itemDetails: list,
+    });
+  };
+
   //function for handling dialog box
   const handleSubmitDialog = () => {
     setShowDialog(false);
@@ -113,7 +125,7 @@ export default function AddOrder2() {
               <ItemDetailsForm
                 itemForm={orderForm.itemDetails}
                 handleChange={handleChange}
-                setItemForm={setOrderForm}
+                handleFormInputChange={handleFormInputChange}
                 removeInputFields={removeInputFields}
               />
               {/* button to add new input field set */}

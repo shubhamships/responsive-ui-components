@@ -48,20 +48,22 @@ export default function BuyerShippingDetailsForm({
         <SGFormField
           name="phone"
           label="Phone Number"
-          type="number"
+          type="text"
           required
           placeholder="Enter Number"
-          minLength={2}
+          pattern="[0-9]{10}"
           inputValue={profileDetailsForm.phone}
+          minLength={10}
+          maxLength={10}
           onChangeFn={handleChangeProfileDetails}
         />
+
         <SGFormField
           name="alternatePhone"
           label="Alternate Number"
-          type="tel"
-          pattern="\S(.*\S)?"
+          type="number"
           required
-          // pattern="[0-9]{10}"
+          pattern="[0-9]{10}"
           placeholder="Enter Number"
           inputValue={profileDetailsForm.alternatePhone}
           onChangeFn={handleChangeProfileDetails}
@@ -164,7 +166,9 @@ export default function BuyerShippingDetailsForm({
         <SGFormField
           name="pincode"
           label="Pincode"
-          type="text"
+          type="number"
+          maxLength={6}
+          minLength={6}
           required
           pattern="\S(.*\S)?"
           placeholder="Enter Pincode"

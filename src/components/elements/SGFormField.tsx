@@ -12,8 +12,8 @@ interface SGFormFieldProps {
   className?: string;
   inputValue?: string;
   pattern?: string;
-  minLength?: number; // Corrected to camelCase minLength
-  maxLength?: number; // Added maxLength
+  minLength?: number;
+  maxLength?: number;
   onChangeFn: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

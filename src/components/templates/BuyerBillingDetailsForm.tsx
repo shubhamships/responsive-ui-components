@@ -73,7 +73,9 @@ export default function BuyerBillingDetailsForm({
         <SGFormField
           name="pincodeBilling"
           label="Pincode"
-          type="text"
+          type="number"
+          minLength={6}
+          maxLength={6}
           required
           pattern="\S(.*\S)?"
           placeholder="Enter Pincode"

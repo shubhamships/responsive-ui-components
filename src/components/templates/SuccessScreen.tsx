@@ -14,6 +14,12 @@ export default function SuccessScreen({ finalPage, cancelBox }) {
       <AlertDialogContent className="max-w-lg">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-xl font-bold text-center">
+            <div className="flex justify-center scale-50">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfz3upZJUzgki4bn27faJf6gPIIo7Yo5HxZg&s"
+                alt="success"
+              />
+            </div>
             Thank you for submitting the form
           </AlertDialogTitle>
         </AlertDialogHeader>

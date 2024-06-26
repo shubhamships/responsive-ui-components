@@ -16,7 +16,7 @@ export default function OrderDimensionField({
         <div className="flex">
           <div>
             <Input
-              type="text"
+              type="number"
               id={title.toLowerCase()}
               placeholder=""
               required
