@@ -4,9 +4,8 @@ export default function Service({ company, cost, duration }) {
   const handleInputChange = () => {
     console.log({ company, cost, duration });
   };
-
   return (
-    <div className="m-4 p-2 border border-dashed border-gray-400 lg:m-8 flex items-center">
+    <div className="m-4 p-4 border border-dashed border-gray-400 lg:m-8 flex items-center">
       <label className="flex items-center w-full justify-between">
         <div className="w-8 h-8 mr-4 flex items-center justify-left">
           <Input

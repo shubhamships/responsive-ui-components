@@ -75,7 +75,13 @@ export default function AddOrder() {
 
   const handleSubmitDialog = () => {
     setShowDialog(false);
-    navigateTo("/add-order2");
+    navigateTo("/add-order2", {
+      state: {
+        profileDetailsForm,
+        shipDetailsForm,
+        billingDetailsForm,
+      },
+    });
   };
   const handleInputProfileChange = (e) => {
     const { name, value } = e.target;
@@ -128,7 +134,7 @@ export default function AddOrder() {
         <div className="m-4 px-2">
           {/* defining space for left tab to be 1/4 */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-1 lg:overflow-y-auto max-h-[600px]">
               <LeftTab1
                 profileDetailsForm={profileDetailsForm}
                 shipDetailsForm={shipDetailsForm}

@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 export default function LeftTab2({ orderForm }) {
   return (
-    <Card className="lg:mt-8">
+    <Card>
       <div className="bg-slate-500 p-2 rounded-lg m-1 text-wrap overflow-auto">
         <h2 className="text-xl font-semibold text-white mb-4">ORDER DETAILS</h2>
         <div className="grid grid-cols-1 gap-2">

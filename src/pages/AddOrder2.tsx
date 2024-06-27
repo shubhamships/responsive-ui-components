@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { DialogData } from "@/components/elements/DialogData";
 import OrderDetailsForm from "@/components/templates/OrderDetailsForm";
 import ItemDetailsForm from "@/components/templates/ItemDetailsForm";
 import LeftTab2 from "@/components/templates/LeftTab2";
+import LeftTab1 from "@/components/templates/LeftTab1";
 
 export default function AddOrder2() {
   //initial values for the array object for item details
@@ -18,6 +19,7 @@ export default function AddOrder2() {
     unitPrice: "",
     igst: "",
   };
+  const { state } = useLocation();
   //form schema for the AddOrder2 form
   const [orderForm, setOrderForm] = useState({
     invoiceNumber: "",
@@ -31,6 +33,7 @@ export default function AddOrder2() {
   const orderFormData = Object.entries(orderForm);
   //navigation function
   const navigateTo = useNavigate();
+
   //function to update the form data
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -61,7 +64,17 @@ export default function AddOrder2() {
   //function for handling dialog box
   const handleSubmitDialog = () => {
     setShowDialog(false);
-    navigateTo("/add-order3");
+    navigateTo("/add-order3", {
+      state: {
+        ...state,
+        orderForm: {
+          ...orderForm,
+          profileDetailsForm: state.profileDetailsForm,
+          shipDetailsForm: state.shipDetailsForm,
+          billingDetailsForm: state.billingDetailsForm,
+        },
+      },
+    });
   };
   //function to update the form data
   const handleChange = (index, event) => {
@@ -109,7 +122,12 @@ export default function AddOrder2() {
       <main className="m-4 px-2">
         {/* defining space for left tab to be 1/4 */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 lg:overflow-y-auto max-h-[600px]">
+            <LeftTab1
+              profileDetailsForm={state.profileDetailsForm}
+              shipDetailsForm={state.shipDetailsForm}
+              billingDetailsForm={state.billingDetailsForm}
+            />
             <LeftTab2 orderForm={orderForm} />
           </div>
           {/* defining space for form tab to be 3/4 */}

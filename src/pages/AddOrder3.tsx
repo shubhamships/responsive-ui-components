@@ -1,9 +1,11 @@
 import OrderDimensionField from "@/components/elements/OrderDimensionField";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { DialogData } from "@/components/elements/DialogData";
 import LeftTab3 from "@/components/templates/LeftTab3";
 import axios from "axios";
+import LeftTab1 from "@/components/templates/LeftTab1";
+import LeftTab2 from "@/components/templates/LeftTab2";
 export default function AddOrder3() {
   //defining the form schema
   const [oderDimensionForm, setOderDimensionForm] = useState({
@@ -14,6 +16,8 @@ export default function AddOrder3() {
   });
   //navigation function
   const navigateTo = useNavigate();
+  const { state } = useLocation();
+
   //defining the select fields for the input units
   const shipDetails = [
     { title: "Weight", unit: "KG" },
@@ -30,10 +34,19 @@ export default function AddOrder3() {
   };
   //state variable for the dialog box
   const [showDialog, setShowDialog] = useState(false);
+
   //function for handling the submit dialog box
   const handleSubmitDialog = () => {
     setShowDialog(false);
-    navigateTo("/add-order4");
+    navigateTo("/add-order4", {
+      state: {
+        ...state,
+        orderForm: {
+          ...state.orderForm,
+        },
+        oderDimensionForm,
+      },
+    });
   };
 
   //modifying data to show in dialog box
@@ -62,7 +75,13 @@ export default function AddOrder3() {
     <>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         {/* defining space for left tab to be 1/4 */}
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1 lg:overflow-y-auto max-h-[600px]">
+          <LeftTab1
+            profileDetailsForm={state.profileDetailsForm}
+            shipDetailsForm={state.shipDetailsForm}
+            billingDetailsForm={state.billingDetailsForm}
+          />
+          <LeftTab2 orderForm={state.orderForm} />
           <LeftTab3 oderDimensionForm={oderDimensionForm} />
         </div>
         {/* defining space for form tab to be 3/4 */}

@@ -90,12 +90,17 @@
 // }
 import Service from "@/components/elements/Service";
 import { CalculatedWeightForm } from "@/components/templates/CalculatedWeightForm";
-import LeftTab from "@/components/templates/LeftTab";
+import LeftTab4 from "@/components/templates/LeftTab4";
+import LeftTab1 from "@/components/templates/LeftTab1";
+import LeftTab2 from "@/components/templates/LeftTab2";
+import LeftTab3 from "@/components/templates/LeftTab3";
 import SuccessScreen from "@/components/templates/SuccessScreen";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function AddOrder4() {
+  const { state } = useLocation();
   const availableServices = [
     {
       name: "UPS",
@@ -132,8 +137,15 @@ export default function AddOrder4() {
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        <div className="lg:col-span-1">
-          <LeftTab />
+        <div className="lg:col-span-1 lg:overflow-y-auto max-h-[600px]">
+          <LeftTab1
+            profileDetailsForm={state.profileDetailsForm}
+            shipDetailsForm={state.shipDetailsForm}
+            billingDetailsForm={state.billingDetailsForm}
+          />
+          <LeftTab2 orderForm={state.orderForm} />
+          <LeftTab3 oderDimensionForm={state.oderDimensionForm} />
+          <LeftTab4 />
         </div>
         <div className="lg:col-span-3">
           <div className="m-4 p-2">
