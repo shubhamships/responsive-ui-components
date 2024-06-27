@@ -47,8 +47,9 @@ export default function LeftTab1({
                   {shipDetailsForm.landmark}{" "}
                 </>
               )}
-              {shipDetailsForm.city} {shipDetailsForm.state}{" "}
-              {shipDetailsForm.pincode} {shipDetailsForm.country}
+              {shipDetailsForm.city}
+              {shipDetailsForm.state} {shipDetailsForm.pincode}
+              {shipDetailsForm.country}
             </p>
           </div>
         </div>

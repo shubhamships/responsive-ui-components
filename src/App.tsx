@@ -4,7 +4,6 @@ import AddOrder from "@/pages/AddOrder";
 import AddOrder2 from "@/pages/AddOrder2";
 import AddOrder3 from "./pages/AddOrder3";
 import AddOrder4 from "./pages/AddOrder4";
-
 const router = createBrowserRouter([
   {
     path: "/",

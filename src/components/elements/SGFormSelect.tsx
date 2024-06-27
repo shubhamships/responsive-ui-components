@@ -40,6 +40,8 @@ export default function SGFormSelect({
       setTouched(false);
     }
     setTouched(true);
+    //dispatch select field redux action to change [name] fields value
+    // dispatch({ type: "shippingdetails/changeCOuntry' })
     setSelectValueObj((prev) => ({ ...prev, [name]: value }));
   };
   return (

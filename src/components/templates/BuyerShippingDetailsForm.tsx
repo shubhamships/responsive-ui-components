@@ -1,12 +1,12 @@
 import SGFormField from "../elements/SGFormField";
 import SGFormSelect from "../elements/SGFormSelect";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 
 export default function BuyerShippingDetailsForm({
-  profileDetailsForm,
   setShipDetailsForm,
-  handleChangeShippingDetails,
-  shipDetailsForm,
   handleChangeProfileDetails,
+  handleChangeShippingDetails,
 }) {
   const selectCountry = [
     { key: "afghanistan", value: "Afghanistan" },
@@ -19,12 +19,15 @@ export default function BuyerShippingDetailsForm({
     { key: "banglore", value: "Banglore" },
     { key: "pune", value: "Pune" },
   ];
+
+  const profileDetailsForm = useSelector((state: RootState) => state.profile);
+  const shipDetailsForm = useSelector((state: RootState) => state.shipDetails);
   return (
     <>
       <div className="my-4 font-bold text-cyan-500 text-2xl">
         Buyer Shipping Details
       </div>
-      <div className=" grid md:grid-cols-3 md:gap-3">
+      <div className="grid md:grid-cols-3 md:gap-3">
         <SGFormField
           name="firstName"
           label="First Name"
@@ -58,7 +61,6 @@ export default function BuyerShippingDetailsForm({
           inputValue={profileDetailsForm.phone}
           onChangeFn={handleChangeProfileDetails}
         />
-
         <SGFormField
           name="alternatePhone"
           label="Alternate Number"
@@ -85,7 +87,7 @@ export default function BuyerShippingDetailsForm({
           label="Country"
           placeholder="Select Country"
           data={selectCountry}
-          required={true}
+          required
           setSelectValueObj={setShipDetailsForm}
         />
         {shipDetailsForm.country === "afghanistan" ? (
@@ -175,7 +177,7 @@ export default function BuyerShippingDetailsForm({
         <SGFormSelect
           name="state"
           label="State"
-          required={true}
+          required
           placeholder="Select State"
           data={listStatesData}
           setSelectValueObj={setShipDetailsForm}
