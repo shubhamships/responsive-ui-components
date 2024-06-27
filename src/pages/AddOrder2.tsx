@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { DialogData } from "@/components/elements/DialogData";
 import OrderDetailsForm from "@/components/templates/OrderDetailsForm";
 import ItemDetailsForm from "@/components/templates/ItemDetailsForm";
 import LeftTab2 from "@/components/templates/LeftTab2";
@@ -29,11 +28,8 @@ export default function AddOrder2() {
     ioss: "",
     itemDetails: [itemFormInitialValue],
   });
-  //modifying the form data content for dialog box
-  const orderFormData = Object.entries(orderForm);
   //navigation function
   const navigateTo = useNavigate();
-
   //function to update the form data
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -42,28 +38,10 @@ export default function AddOrder2() {
       [name]: value,
     });
   };
-  //state variable for dialog box
-  const [showDialog, setShowDialog] = useState(false);
   //function for handling form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(orderForm);
-    setShowDialog(true);
-  };
-  const handleFormInputChange = (index, value) => {
-    const list = [...orderForm.itemDetails];
-    list[index] = {
-      ...list[index],
-      igst: value,
-    };
-    setOrderForm({
-      ...orderForm,
-      itemDetails: list,
-    });
-  };
-  //function for handling dialog box
-  const handleSubmitDialog = () => {
-    setShowDialog(false);
     navigateTo("/add-order3", {
       state: {
         ...state,
@@ -74,6 +52,17 @@ export default function AddOrder2() {
           billingDetailsForm: state.billingDetailsForm,
         },
       },
+    });
+  };
+  const handleFormInputChange = (index, value) => {
+    const list = [...orderForm.itemDetails];
+    list[index] = {
+      ...list[index],
+      igst: value,
+    };
+    setOrderForm({
+      ...orderForm,
+      itemDetails: list,
     });
   };
   //function to update the form data
@@ -122,7 +111,7 @@ export default function AddOrder2() {
       <main className="m-4 px-2">
         {/* defining space for left tab to be 1/4 */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-          <div className="lg:col-span-1 lg:overflow-y-auto max-h-[600px]">
+          <div className="lg:col-span-1 lg:overflow-y-auto lg:max-h-[600px]">
             <LeftTab1
               profileDetailsForm={state.profileDetailsForm}
               shipDetailsForm={state.shipDetailsForm}
@@ -163,14 +152,6 @@ export default function AddOrder2() {
                 >
                   Continue
                 </button>
-                {/* dialog box to open if the form submission is valid */}
-                {showDialog && (
-                  <DialogData
-                    content={JSON.stringify(orderFormData)}
-                    handleSubmit={handleSubmitDialog}
-                    onCancel={() => setShowDialog(false)}
-                  />
-                )}
               </div>
             </form>
           </div>

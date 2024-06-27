@@ -92,7 +92,6 @@ export default function ItemDetailsForm({
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
-                      <SelectItem value="Select">IGST</SelectItem>
                       <SelectItem value="0%">0%</SelectItem>
                       <SelectItem value="3%">3%</SelectItem>
                       <SelectItem value="5%">5%</SelectItem>

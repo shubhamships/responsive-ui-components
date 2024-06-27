@@ -1,7 +1,6 @@
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { DialogData } from "@/components/elements/DialogData";
 import BuyerShippingDetailsForm from "@/components/templates/BuyerShippingDetailsForm";
 import BuyerBillingDetailsForm from "@/components/templates/BuyerBillingDetailsForm";
 import LeftTab1 from "@/components/templates/LeftTab1";
@@ -9,7 +8,6 @@ import LeftTab1 from "@/components/templates/LeftTab1";
 export default function AddOrder() {
   //navigation function
   const navigateTo = useNavigate();
-
   //defining form schema - TIP - can separate the complex data values in one simple useState
   const [billingDetailsForm, setBillingDetailsForm] = useState({
     id: 1,
@@ -30,7 +28,6 @@ export default function AddOrder() {
     alternatePhone: "",
     email: "",
   });
-
   const [shipDetailsForm, setShipDetailsForm] = useState({
     id: 1,
     address1: "",
@@ -44,21 +41,8 @@ export default function AddOrder() {
     country: "",
     state: "",
   });
-
   //defining variables for checkbox and show dialog
   const [check, setCheck] = useState(true);
-  const [showDialog, setShowDialog] = useState(false);
-
-  //modifying the form data for dialog box
-  const billingDetailsFormData = Object.entries(billingDetailsForm);
-  const shippingDetailsFormData = Object.entries(shipDetailsForm);
-  const profileDetailsFormData = Object.entries(profileDetailsForm);
-  const contentData = {
-    billingDetailsFormData,
-    profileDetailsFormData,
-    shippingDetailsFormData,
-  };
-
   // function for handling form submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -70,11 +54,6 @@ export default function AddOrder() {
       "Shipping Details",
       shipDetailsForm
     );
-    setShowDialog(true);
-  };
-
-  const handleSubmitDialog = () => {
-    setShowDialog(false);
     navigateTo("/add-order2", {
       state: {
         profileDetailsForm,
@@ -127,7 +106,6 @@ export default function AddOrder() {
       }));
     }
   };
-
   return (
     <>
       <main className="p-4">
@@ -184,14 +162,6 @@ export default function AddOrder() {
                     Continue
                   </button>
                 </div>
-                {/* if the form submission is valid, then opening the dialog box */}
-                {showDialog && (
-                  <DialogData
-                    content={JSON.stringify(contentData)}
-                    handleSubmit={handleSubmitDialog}
-                    onCancel={() => setShowDialog(false)}
-                  />
-                )}
               </form>
             </div>
           </div>

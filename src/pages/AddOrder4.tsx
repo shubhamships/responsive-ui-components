@@ -136,8 +136,8 @@ export default function AddOrder4() {
 
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        <div className="lg:col-span-1 lg:overflow-y-auto max-h-[600px]">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 m-4">
+        <div className="lg:col-span-1 lg:overflow-y-auto lg:max-h-[600px]">
           <LeftTab1
             profileDetailsForm={state.profileDetailsForm}
             shipDetailsForm={state.shipDetailsForm}
@@ -148,7 +148,7 @@ export default function AddOrder4() {
           <LeftTab4 />
         </div>
         <div className="lg:col-span-3">
-          <div className="m-4 p-2">
+          <div className="m-2 p-2">
             <p className="font-bold text-cyan-500 text-2xl mb-2">
               Select Shipping Partner
             </p>
@@ -158,7 +158,7 @@ export default function AddOrder4() {
               the shipper. Rates are inclusive of covid & fuel surcharge,
               exclusive of GST and ex-Delhi Hub
             </p>
-            <p className="text-md font-medium mt-3 mb-5">
+            <p className="text-md font-medium my-2">
               If you need more info, please call/whatsapp at
               <a href="#" className="text-cyan-500 text-sm ml-1">
                 011-422 77 777.
