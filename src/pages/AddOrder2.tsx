@@ -12,6 +12,7 @@ import {
   updateOrderInvoiceCurrency,
   updateOrderItemField,
 } from "@/redux/actions";
+import { ItemForm } from "@/redux/interfaces";
 
 export default function AddOrder2() {
   const profileDetailsForm = useSelector((state: RootState) => state.profile);
@@ -35,53 +36,53 @@ export default function AddOrder2() {
     navigateTo("/add-order3");
   };
   const handleFormInputChange = (index, value) => {
-    const list = [...orderForm.itemDetails];
+    const list = [...orderForm.itemForm];
     list[index] = {
       ...list[index],
       igst: value,
     };
-    dispatch(updateOrderItemField(orderForm.itemDetails, list));
+    dispatch(updateOrderItemField(list));
   };
-  console.log(orderForm.itemDetails);
-  //function to update the form data
+  //function to update the form data inside the item details
   const handleChange = (index, event) => {
     const { name, value } = event.target;
-    const list = [...orderForm.itemDetails];
+    const list = [...orderForm.itemForm]; //not an array use object only
     list[index] = {
       ...list[index],
       [name]: value,
     };
-    dispatch(updateOrderItemField(orderForm.itemDetails, list));
+    dispatch(updateOrderItemField(list));
   };
 
   const handleInvoiceCurrency = (selectedCurrency: string) => {
     dispatch(updateOrderInvoiceCurrency(selectedCurrency));
   };
 
-  //function to add a new set of inputs when add button is pressed in itemDetails
+  //function to add a new set of inputs when add button is pressed in itemForm
   const addInputField = () => {
-    const maxId = Math.max(...orderForm.itemDetails.map((item) => item.id));
-    const newId = maxId + 1;
-    // setOrderForm({
-    //   ...orderForm,
-    //   itemDetails: [
-    //     ...orderForm.itemDetails,
-    //     {
-    //       id: newId,
-    //       prodName: "",
-    //       sku: "",
-    //       hsn: "",
-    //       qty: "",
-    //       unitPrice: "",
-    //       igst: "",
-    //     },
-    //   ],
-    // });
+    const maxId = Math.max(...orderForm.itemForm.map((item) => item.id)); // Find the maximum id in the current itemForm array
+    const newId = maxId + 1; // Generate a new id for the new item
+
+    const newItem: ItemForm = {
+      id: newId,
+      prodName: "",
+      sku: "",
+      hsn: "",
+      qty: "",
+      unitPrice: "",
+      igst: "",
+    };
+
+    // Create a new array with the existing items and the new item
+    const updatedItemForm = [...orderForm.itemForm, newItem];
+    // Dispatch an action to update the itemForm in the Redux state
+    dispatch(updateOrderItemField(updatedItemForm));
   };
-  //function to remove a set of inputs when remove button is pressed in itemDetails
+
+  //function to remove a set of inputs when remove button is pressed in itemForm
   const removeInputFields = (id) => {
-    const updatedList = orderForm.itemDetails.filter((item) => item.id !== id);
-    dispatch(updateOrderItemField(orderForm.itemDetails, updatedList));
+    const updatedList = orderForm.itemForm.filter((item) => item.id !== id);
+    dispatch(updateOrderItemField(updatedList));
   };
   return (
     <>
@@ -106,7 +107,7 @@ export default function AddOrder2() {
               />
               {/* item details form for item Details */}
               <ItemDetailsForm
-                itemForm={orderForm.itemDetails}
+                itemForm={orderForm.itemForm}
                 handleChange={handleChange}
                 handleFormInputChange={handleFormInputChange}
                 removeInputFields={removeInputFields}

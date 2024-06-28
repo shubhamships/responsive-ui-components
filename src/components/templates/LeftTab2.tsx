@@ -31,7 +31,7 @@ export default function LeftTab2({ orderForm }) {
       <div className="bg-slate-500 p-2 rounded-lg m-1 text-wrap overflow-auto">
         <h2 className="text-xl font-semibold text-white mb-4">ITEM DETAILS</h2>
         <div className="grid grid-cols-1 gap-2">
-          {orderForm.itemDetails.map((item, index) => (
+          {orderForm.itemForm.map((item, index) => (
             <div key={index} className="mb-2">
               <p className="text-white">Product Name - {item.prodName}</p>
               <p className="text-sm text-white">SKU- {item.sku}</p>

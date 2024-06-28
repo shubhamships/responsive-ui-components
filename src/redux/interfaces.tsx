@@ -89,7 +89,7 @@ interface OrderFormState {
   invoiceCurrency: string;
   orderRef: string;
   ioss: string;
-  itemDetails: ItemForm[];
+  itemForm: ItemForm[];
 }
 export const orderFormInitialState: OrderFormState = {
   invoiceNumber: "",
@@ -97,7 +97,9 @@ export const orderFormInitialState: OrderFormState = {
   invoiceCurrency: "",
   orderRef: "",
   ioss: "",
-  itemDetails: [],
+  itemForm: [
+    { id: 1, prodName: "", sku: "", hsn: "", qty: "", unitPrice: "", igst: "" },
+  ],
 };
 
 //ORDER DIMENSION DETAILS FORM INTERFACE

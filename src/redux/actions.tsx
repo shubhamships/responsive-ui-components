@@ -7,6 +7,7 @@ import {
   UPDATE_ORDER_FORM_DETAIL,
   UPDATE_ORDER_FORM_INVOICE_CURRENCY,
   UPDATE_ORDER_FORM_ITEM_DETAIL,
+  UPDATE_ORDER_FORM_ITEM_DETAIL_ADD,
   UPDATE_PROFILE_DETAIL,
   UPDATE_SHIPPING_COUNTRY,
   UPDATE_SHIPPING_STATE,
@@ -62,13 +63,11 @@ export const updateOrderField = (fieldName: string, value: string) => ({
   payload: { fieldName, value },
 });
 // ACTION TO UPDATE ITEM DETAILS IN ORDER-> ITEM DETAILS DETAILS FORM
-export const updateOrderItemField = (
-  array: ItemForm[],
-  updatedArray: ItemForm[]
-) => ({
+export const updateOrderItemField = (updatedItemForm: ItemForm[]) => ({
   type: UPDATE_ORDER_FORM_ITEM_DETAIL,
-  payload: { array, updatedArray },
+  payload: updatedItemForm,
 });
+
 // ACTION TO UPDATE INVOICE CURRENCY VALUE IN ORDER DETAILS FORM
 export const updateOrderInvoiceCurrency = (invoiceCurrency: string) => ({
   type: UPDATE_ORDER_FORM_INVOICE_CURRENCY,
@@ -81,4 +80,10 @@ export const updateOrderDimensionField = (
 ) => ({
   type: UPDATE_ORDER_DIMENSION_FORM,
   payload: { fieldName, value },
+});
+
+// ACTION TO UPDATE ITEM DETAILS IN ORDER-> ITEM DETAILS DETAILS FORM ----------------------
+export const addItemForm = (itemList: ItemForm[]) => ({
+  type: UPDATE_ORDER_FORM_ITEM_DETAIL_ADD,
+  payload: itemList,
 });

@@ -11,6 +11,8 @@ import {
   UPDATE_ORDER_FORM_ITEM_DETAIL,
   UPDATE_ORDER_FORM_INVOICE_CURRENCY,
   UPDATE_ORDER_DIMENSION_FORM,
+  UPDATE_ORDER_FORM_ITEM_DETAIL_ADD,
+  UPDATE_ORDER_FORM_ITEM_DETAIL_REMOVE,
 } from "./constants";
 import {
   billInitialState,
@@ -93,9 +95,10 @@ export const orderReducer = (state = orderFormInitialState, action) => {
         [action.payload.fieldName]: action.payload.value,
       };
     case UPDATE_ORDER_FORM_ITEM_DETAIL:
+      console.log(action.payload);
       return {
         ...state,
-        [action.payload.array]: action.payload.updatedArray,
+        itemForm: action.payload,
       };
     case UPDATE_ORDER_FORM_INVOICE_CURRENCY:
       return {
@@ -117,6 +120,17 @@ export const orderDimensionReducer = (
       return {
         ...state,
         [action.payload.fieldName]: action.payload.value,
+      };
+
+    case UPDATE_ORDER_FORM_ITEM_DETAIL_ADD: //************************ */
+      return {
+        ...state,
+        itemForm: action.payload,
+      };
+    case UPDATE_ORDER_FORM_ITEM_DETAIL_REMOVE:
+      return {
+        ...state,
+        itemForm: action.payload,
       };
     default:
       return state;
