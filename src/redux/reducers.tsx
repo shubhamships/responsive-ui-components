@@ -7,12 +7,16 @@ import {
   UPDATE_SHIPPING_COUNTRY,
   UPDATE_SHIPPING_STATE,
   UPDATE_SHIP_DETAIL,
+  UPDATE_ORDER_FORM_DETAIL,
+  UPDATE_ORDER_FORM_ITEM_DETAIL,
+  UPDATE_ORDER_FORM_INVOICE_CURRENCY,
 } from "./constants";
 import {
   billInitialState,
   profileInitialState,
   shipInitialState,
-} from "./store";
+  orderFormInitialState,
+} from "./interfaces";
 
 export const profileReducer = (state = profileInitialState, action) => {
   switch (action.type) {
@@ -69,6 +73,28 @@ export const billReducer = (state = billInitialState, action) => {
       return {
         ...state,
         stateBilling: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const orderReducer = (state = orderFormInitialState, action) => {
+  switch (action.type) {
+    case UPDATE_ORDER_FORM_DETAIL:
+      return {
+        ...state,
+        [action.payload.fieldName]: action.payload.value,
+      };
+    case UPDATE_ORDER_FORM_ITEM_DETAIL:
+      return {
+        ...state,
+        [action.payload.array]: action.payload.updatedArray,
+      };
+    case UPDATE_ORDER_FORM_INVOICE_CURRENCY:
+      return {
+        ...state,
+        invoiceCurrency: action.payload,
       };
     default:
       return state;

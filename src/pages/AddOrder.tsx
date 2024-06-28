@@ -30,13 +30,7 @@ export default function AddOrder() {
     console.log("Profile Details", profileDetailsForm);
     console.log("Billing Details", billingDetailsForm);
     console.log("Shipping Details", shipDetailsForm);
-    navigateTo("/add-order2", {
-      state: {
-        profileDetailsForm,
-        shipDetailsForm,
-        billingDetailsForm,
-      },
-    });
+    navigateTo("/add-order2");
   };
   // profile form input change
   const handleInputProfileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

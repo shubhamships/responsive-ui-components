@@ -3,11 +3,15 @@ import {
   UPDATE_BILLING_STATE,
   UPDATE_BILL_DETAIL,
   UPDATE_BILL_MULTIPLE_DETAIL,
+  UPDATE_ORDER_FORM_DETAIL,
+  UPDATE_ORDER_FORM_INVOICE_CURRENCY,
+  UPDATE_ORDER_FORM_ITEM_DETAIL,
   UPDATE_PROFILE_DETAIL,
   UPDATE_SHIPPING_COUNTRY,
   UPDATE_SHIPPING_STATE,
   UPDATE_SHIP_DETAIL,
 } from "./constants";
+import { ItemForm } from "./interfaces";
 
 export const updateProfileField = (fieldName: string, value: string) => ({
   type: UPDATE_PROFILE_DETAIL,
@@ -49,4 +53,22 @@ export const updateBillingCountry = (countryBilling: string) => ({
 export const updateBillingState = (stateBilling: string) => ({
   type: UPDATE_BILLING_STATE,
   payload: stateBilling,
+});
+
+export const updateOrderField = (fieldName: string, value: string) => ({
+  type: UPDATE_ORDER_FORM_DETAIL,
+  payload: { fieldName, value },
+});
+
+export const updateOrderItemField = (
+  array: ItemForm[],
+  updatedArray: ItemForm[]
+) => ({
+  type: UPDATE_ORDER_FORM_ITEM_DETAIL,
+  payload: { array, updatedArray },
+});
+
+export const updateOrderInvoiceCurrency = (invoiceCurrency: string) => ({
+  type: UPDATE_ORDER_FORM_INVOICE_CURRENCY,
+  payload: invoiceCurrency,
 });

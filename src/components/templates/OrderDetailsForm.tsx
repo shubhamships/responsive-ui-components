@@ -3,7 +3,7 @@ import SGFormSelect from "../elements/SGFormSelect";
 export default function OrderDetailsForm({
   handleInputChange,
   orderForm,
-  setOrderForm,
+  handleInvoiceCurrency,
 }) {
   const selectCurrency = [
     { key: "inr", value: "INR" },
@@ -43,7 +43,7 @@ export default function OrderDetailsForm({
           label="Invoice Currency"
           placeholder="Currency"
           data={selectCurrency}
-          setSelectValueObj={setOrderForm}
+          setSelectValueObj={handleInvoiceCurrency}
         />
         <SGFormField
           name="orderRef"

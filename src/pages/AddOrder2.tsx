@@ -6,38 +6,34 @@ import OrderDetailsForm from "@/components/templates/OrderDetailsForm";
 import ItemDetailsForm from "@/components/templates/ItemDetailsForm";
 import LeftTab2 from "@/components/templates/LeftTab2";
 import LeftTab1 from "@/components/templates/LeftTab1";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import {
+  updateOrderField,
+  updateOrderInvoiceCurrency,
+  updateOrderItemField,
+} from "@/redux/actions";
 
 export default function AddOrder2() {
-  //initial values for the array object for item details
-  const itemFormInitialValue = {
-    id: 1,
-    prodName: "",
-    sku: "",
-    hsn: "",
-    qty: "",
-    unitPrice: "",
-    igst: "",
-  };
   const { state } = useLocation();
-  //form schema for the AddOrder2 form
-  const [orderForm, setOrderForm] = useState({
-    invoiceNumber: "",
-    invoiceDate: "",
-    invoiceCurrency: "",
-    orderRef: "",
-    ioss: "",
-    itemDetails: [itemFormInitialValue],
-  });
+  const profileDetailsForm = useSelector((state: RootState) => state.profile);
+  const shipDetailsForm = useSelector((state: RootState) => state.shipDetails);
+  const billingDetailsForm = useSelector(
+    (state: RootState) => state.billDetails
+  );
+
+  console.log(profileDetailsForm, "uidawnnnn");
+
+  const orderForm = useSelector((state: RootState) => state.orderDetails);
+  const dispatch = useDispatch();
   //navigation function
   const navigateTo = useNavigate();
   //function to update the form data
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setOrderForm({
-      ...orderForm,
-      [name]: value,
-    });
+    dispatch(updateOrderField(name, value));
   };
+
   //function for handling form submission
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,10 +56,7 @@ export default function AddOrder2() {
       ...list[index],
       igst: value,
     };
-    setOrderForm({
-      ...orderForm,
-      itemDetails: list,
-    });
+    dispatch(updateOrderItemField(orderForm.itemDetails, list));
   };
   //function to update the form data
   const handleChange = (index, event) => {
@@ -73,38 +66,41 @@ export default function AddOrder2() {
       ...list[index],
       [name]: value,
     };
-    setOrderForm({
-      ...orderForm,
-      itemDetails: list,
-    });
+    dispatch(updateOrderItemField(orderForm.itemDetails, list));
   };
+
+  const handleInvoiceCurrency = (selectedCurrency: string) => {
+    dispatch(updateOrderInvoiceCurrency(selectedCurrency));
+  };
+
   //function to add a new set of inputs when add button is pressed in itemDetails
   const addInputField = () => {
     const maxId = Math.max(...orderForm.itemDetails.map((item) => item.id));
     const newId = maxId + 1;
-    setOrderForm({
-      ...orderForm,
-      itemDetails: [
-        ...orderForm.itemDetails,
-        {
-          id: newId,
-          prodName: "",
-          sku: "",
-          hsn: "",
-          qty: "",
-          unitPrice: "",
-          igst: "",
-        },
-      ],
-    });
+    // setOrderForm({
+    //   ...orderForm,
+    //   itemDetails: [
+    //     ...orderForm.itemDetails,
+    //     {
+    //       id: newId,
+    //       prodName: "",
+    //       sku: "",
+    //       hsn: "",
+    //       qty: "",
+    //       unitPrice: "",
+    //       igst: "",
+    //     },
+    //   ],
+    // });
   };
   //function to remove a set of inputs when remove button is pressed in itemDetails
   const removeInputFields = (id) => {
     const updatedList = orderForm.itemDetails.filter((item) => item.id !== id);
-    setOrderForm({
-      ...orderForm,
-      itemDetails: updatedList,
-    });
+    // setOrderForm({
+    //   ...orderForm,
+    //   itemDetails: updatedList,
+    // });
+    dispatch(updateOrderItemField(orderForm.itemDetails, updatedList));
   };
   return (
     <>
@@ -113,9 +109,9 @@ export default function AddOrder2() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           <div className="lg:col-span-1 lg:overflow-y-auto lg:max-h-[600px]">
             <LeftTab1
-              profileDetailsForm={state.profileDetailsForm}
-              shipDetailsForm={state.shipDetailsForm}
-              billingDetailsForm={state.billingDetailsForm}
+              profileDetailsForm={profileDetailsForm}
+              shipDetailsForm={shipDetailsForm}
+              billingDetailsForm={billingDetailsForm}
             />
             <LeftTab2 orderForm={orderForm} />
           </div>
@@ -124,7 +120,7 @@ export default function AddOrder2() {
             <form onSubmit={handleSubmit}>
               <OrderDetailsForm
                 orderForm={orderForm}
-                setOrderForm={setOrderForm}
+                handleInvoiceCurrency={handleInvoiceCurrency}
                 handleInputChange={handleInputChange}
               />
               {/* item details form for item Details */}
