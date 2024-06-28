@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
   billReducer,
+  orderDimensionReducer,
   orderReducer,
   profileReducer,
   shipReducer,
@@ -10,6 +11,7 @@ import {
   profileInitialState,
   shipInitialState,
   orderFormInitialState,
+  orderDimensionInitialState,
 } from "./interfaces";
 
 //GlobalStore {"profile":"", "billingdeails" }
@@ -20,12 +22,14 @@ const store = configureStore({
     shipDetails: shipReducer,
     billDetails: billReducer,
     orderDetails: orderReducer,
+    orderDimensionDetails: orderDimensionReducer,
   },
   preloadedState: {
     profile: profileInitialState,
     shipDetails: shipInitialState,
     billDetails: billInitialState,
     orderDetails: orderFormInitialState,
+    orderDimensionDetails: orderDimensionInitialState,
   },
 });
 

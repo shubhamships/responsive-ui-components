@@ -91,3 +91,16 @@ export const orderFormInitialState: OrderFormState = {
   ioss: "",
   itemDetails: [],
 };
+
+interface OrderDimensionState {
+  height: string;
+  weight: string;
+  length: string;
+  breadth: string;
+}
+export const orderDimensionInitialState: OrderDimensionState = {
+  height: "",
+  weight: "",
+  length: "",
+  breadth: "",
+};

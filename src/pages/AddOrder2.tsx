@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import OrderDetailsForm from "@/components/templates/OrderDetailsForm";
@@ -15,15 +14,11 @@ import {
 } from "@/redux/actions";
 
 export default function AddOrder2() {
-  const { state } = useLocation();
   const profileDetailsForm = useSelector((state: RootState) => state.profile);
   const shipDetailsForm = useSelector((state: RootState) => state.shipDetails);
   const billingDetailsForm = useSelector(
     (state: RootState) => state.billDetails
   );
-
-  console.log(profileDetailsForm, "uidawnnnn");
-
   const orderForm = useSelector((state: RootState) => state.orderDetails);
   const dispatch = useDispatch();
   //navigation function
@@ -33,22 +28,11 @@ export default function AddOrder2() {
     const { name, value } = e.target;
     dispatch(updateOrderField(name, value));
   };
-
   //function for handling form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(orderForm);
-    navigateTo("/add-order3", {
-      state: {
-        ...state,
-        orderForm: {
-          ...orderForm,
-          profileDetailsForm: state.profileDetailsForm,
-          shipDetailsForm: state.shipDetailsForm,
-          billingDetailsForm: state.billingDetailsForm,
-        },
-      },
-    });
+    navigateTo("/add-order3");
   };
   const handleFormInputChange = (index, value) => {
     const list = [...orderForm.itemDetails];
@@ -58,6 +42,7 @@ export default function AddOrder2() {
     };
     dispatch(updateOrderItemField(orderForm.itemDetails, list));
   };
+  console.log(orderForm.itemDetails);
   //function to update the form data
   const handleChange = (index, event) => {
     const { name, value } = event.target;
@@ -96,10 +81,6 @@ export default function AddOrder2() {
   //function to remove a set of inputs when remove button is pressed in itemDetails
   const removeInputFields = (id) => {
     const updatedList = orderForm.itemDetails.filter((item) => item.id !== id);
-    // setOrderForm({
-    //   ...orderForm,
-    //   itemDetails: updatedList,
-    // });
     dispatch(updateOrderItemField(orderForm.itemDetails, updatedList));
   };
   return (

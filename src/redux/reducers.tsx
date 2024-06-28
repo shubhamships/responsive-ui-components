@@ -10,12 +10,14 @@ import {
   UPDATE_ORDER_FORM_DETAIL,
   UPDATE_ORDER_FORM_ITEM_DETAIL,
   UPDATE_ORDER_FORM_INVOICE_CURRENCY,
+  UPDATE_ORDER_DIMENSION_FORM,
 } from "./constants";
 import {
   billInitialState,
   profileInitialState,
   shipInitialState,
   orderFormInitialState,
+  orderDimensionInitialState,
 } from "./interfaces";
 
 export const profileReducer = (state = profileInitialState, action) => {
@@ -95,6 +97,21 @@ export const orderReducer = (state = orderFormInitialState, action) => {
       return {
         ...state,
         invoiceCurrency: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const orderDimensionReducer = (
+  state = orderDimensionInitialState,
+  action
+) => {
+  switch (action.type) {
+    case UPDATE_ORDER_DIMENSION_FORM:
+      return {
+        ...state,
+        [action.payload.fieldName]: action.payload.value,
       };
     default:
       return state;

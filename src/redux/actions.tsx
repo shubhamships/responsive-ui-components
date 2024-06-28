@@ -3,6 +3,7 @@ import {
   UPDATE_BILLING_STATE,
   UPDATE_BILL_DETAIL,
   UPDATE_BILL_MULTIPLE_DETAIL,
+  UPDATE_ORDER_DIMENSION_FORM,
   UPDATE_ORDER_FORM_DETAIL,
   UPDATE_ORDER_FORM_INVOICE_CURRENCY,
   UPDATE_ORDER_FORM_ITEM_DETAIL,
@@ -71,4 +72,12 @@ export const updateOrderItemField = (
 export const updateOrderInvoiceCurrency = (invoiceCurrency: string) => ({
   type: UPDATE_ORDER_FORM_INVOICE_CURRENCY,
   payload: invoiceCurrency,
+});
+
+export const updateOrderDimensionField = (
+  fieldName: string,
+  value: string
+) => ({
+  type: UPDATE_ORDER_DIMENSION_FORM,
+  payload: { fieldName, value },
 });
