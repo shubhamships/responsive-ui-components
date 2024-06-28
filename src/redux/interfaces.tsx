@@ -1,3 +1,6 @@
+//ALL THE INTERFACES OF DIFFERENT FORMS ARE DEFINED HERE
+
+//PROFILE DETAILS FORM INTERFACE
 interface ProfileState {
   id: number;
   firstName: string;
@@ -14,6 +17,8 @@ export const profileInitialState: ProfileState = {
   alternatePhone: "",
   email: "",
 };
+
+//SHIPPING DETAILS FORM INTERFACE
 interface ShipDetailsState {
   id: number;
   address1: string;
@@ -40,6 +45,8 @@ export const shipInitialState: ShipDetailsState = {
   country: "",
   state: "",
 };
+
+//BILLING DETAILS FORM INTERFACE
 interface BillDetailsState {
   id: number;
   address1Billing: string;
@@ -65,6 +72,7 @@ export const billInitialState: BillDetailsState = {
   countryBilling: "",
 };
 
+//ORDER DETAILS FORM INTERFACE
 export interface ItemForm {
   id: number;
   prodName: string;
@@ -92,6 +100,7 @@ export const orderFormInitialState: OrderFormState = {
   itemDetails: [],
 };
 
+//ORDER DIMENSION DETAILS FORM INTERFACE
 interface OrderDimensionState {
   height: string;
   weight: string;

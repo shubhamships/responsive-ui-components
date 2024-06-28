@@ -20,6 +20,7 @@ import {
   orderDimensionInitialState,
 } from "./interfaces";
 
+//REDUCER FOR PROFILE DETAILS FORM
 export const profileReducer = (state = profileInitialState, action) => {
   switch (action.type) {
     case UPDATE_PROFILE_DETAIL:
@@ -32,6 +33,7 @@ export const profileReducer = (state = profileInitialState, action) => {
   }
 };
 
+//REDUCER FOR SHIPPING DETAILS FORM
 export const shipReducer = (state = shipInitialState, action) => {
   switch (action.type) {
     case UPDATE_SHIP_DETAIL:
@@ -54,6 +56,7 @@ export const shipReducer = (state = shipInitialState, action) => {
   }
 };
 
+//REDUCER FOR BILLING DETAILS FORM
 export const billReducer = (state = billInitialState, action) => {
   switch (action.type) {
     case UPDATE_BILL_DETAIL:
@@ -81,6 +84,7 @@ export const billReducer = (state = billInitialState, action) => {
   }
 };
 
+//REDUCER FOR ORDER DETAILS FORM
 export const orderReducer = (state = orderFormInitialState, action) => {
   switch (action.type) {
     case UPDATE_ORDER_FORM_DETAIL:
@@ -103,6 +107,7 @@ export const orderReducer = (state = orderFormInitialState, action) => {
   }
 };
 
+//REDUCER FOR ORDER DIMENSION DETAILS FORM
 export const orderDimensionReducer = (
   state = orderDimensionInitialState,
   action

@@ -14,8 +14,6 @@ import {
   orderDimensionInitialState,
 } from "./interfaces";
 
-//GlobalStore {"profile":"", "billingdeails" }
-
 const store = configureStore({
   reducer: {
     profile: profileReducer,
