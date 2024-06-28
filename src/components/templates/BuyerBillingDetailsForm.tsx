@@ -2,8 +2,9 @@ import SGFormField from "../elements/SGFormField";
 import SGFormSelect from "../elements/SGFormSelect";
 export default function BuyerBillingDetailsForm({
   billingDetailsForm,
-  setBillingDetailsForm,
   handleInputBillingDetailsChange,
+  handleSelectCountryBillingChange,
+  handleSelectStateBillingChange,
 }) {
   const selectCountry = [
     { key: "afghanistan", value: "Afghanistan" },
@@ -28,7 +29,7 @@ export default function BuyerBillingDetailsForm({
           placeholder="Select Country"
           required={true}
           data={selectCountry}
-          setSelectValueObj={setBillingDetailsForm}
+          setSelectValueObj={handleSelectCountryBillingChange}
         />
         {billingDetailsForm.countryBilling === "afghanistan" ? (
           <>
@@ -120,7 +121,7 @@ export default function BuyerBillingDetailsForm({
           required={true}
           placeholder="Select State"
           data={selectState}
-          setSelectValueObj={setBillingDetailsForm}
+          setSelectValueObj={handleSelectStateBillingChange}
         />
         <SGFormField
           name="pincodeBilling"

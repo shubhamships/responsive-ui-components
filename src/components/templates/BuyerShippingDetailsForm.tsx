@@ -1,12 +1,13 @@
 import SGFormField from "../elements/SGFormField";
 import SGFormSelect from "../elements/SGFormSelect";
 import { useSelector } from "react-redux";
-import { RootState } from "@/store";
+import { RootState } from "@/redux/store";
 
 export default function BuyerShippingDetailsForm({
-  setShipDetailsForm,
   handleChangeProfileDetails,
   handleChangeShippingDetails,
+  handleSelectCountryChange,
+  handleSelectShippingStateChange,
 }) {
   const selectCountry = [
     { key: "afghanistan", value: "Afghanistan" },
@@ -82,13 +83,14 @@ export default function BuyerShippingDetailsForm({
           inputValue={profileDetailsForm.email}
           onChangeFn={handleChangeProfileDetails}
         />
+
         <SGFormSelect
           name="country"
           label="Country"
           placeholder="Select Country"
           data={selectCountry}
           required
-          setSelectValueObj={setShipDetailsForm}
+          setSelectValueObj={handleSelectCountryChange}
         />
         {shipDetailsForm.country === "afghanistan" ? (
           <>
@@ -180,7 +182,7 @@ export default function BuyerShippingDetailsForm({
           required
           placeholder="Select State"
           data={listStatesData}
-          setSelectValueObj={setShipDetailsForm}
+          setSelectValueObj={handleSelectShippingStateChange}
         />
         <SGFormField
           name="pincode"

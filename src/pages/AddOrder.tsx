@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "@/store";
+import { RootState } from "@/redux/store";
 import BuyerShippingDetailsForm from "@/components/templates/BuyerShippingDetailsForm";
 import BuyerBillingDetailsForm from "@/components/templates/BuyerBillingDetailsForm";
 import LeftTab1 from "@/components/templates/LeftTab1";
-import { updateBillingDetails } from "@/reducers/billingDetailsReducer";
-import { updateShipDetails } from "@/reducers/shipDetailsReducer";
-import { updateProfileDetails } from "@/reducers/profileReducer";
+import {
+  updateProfileField,
+  updateShipField,
+  updateBillField,
+  updateBillMultipleFields,
+  updateShippingCountry,
+  updateBillingCountry,
+} from "@/redux/actions";
 
 export default function AddOrder() {
   const navigateTo = useNavigate();
@@ -15,7 +20,7 @@ export default function AddOrder() {
   const profileDetailsForm = useSelector((state: RootState) => state.profile);
   const shipDetailsForm = useSelector((state: RootState) => state.shipDetails);
   const billingDetailsForm = useSelector(
-    (state: RootState) => state.billingDetails
+    (state: RootState) => state.billDetails
   );
   // Checkbox state
   const [check, setCheck] = useState(true);
@@ -36,27 +41,35 @@ export default function AddOrder() {
   // profile form input change
   const handleInputProfileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    dispatch(updateProfileDetails({ [name]: value }));
+    dispatch(updateProfileField(name, value));
   };
-  const handleChangeShippingDetails = (
+  const handleInputShippingChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const { name, value } = e.target;
-    dispatch(updateShipDetails({ [name]: value }));
-  };
-
-  // shipping details form input change select field
-  const handleInputShipDetailsChange = (name, value) => {
-    //dispatch('action with type')
-    // dispatch(updateShipDetails({ [name]: value }));
+    dispatch(updateShipField(name, value));
   };
 
   // billing details form input change
-  const handleInputBillingDetailsChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleInputBillingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    dispatch(updateBillingDetails({ [name]: value })); //
+    dispatch(updateBillField(name, value));
+  };
+
+  const handleSelectShippingCountryChange = (selectedCountry: string) => {
+    dispatch(updateShippingCountry(selectedCountry));
+  };
+
+  const handleSelectCountryBillingChange = (selectedCountry: string) => {
+    dispatch(updateBillingCountry(selectedCountry));
+  };
+
+  const handleSelectShippingStateChange = (selectedState: string) => {
+    dispatch(updateShippingCountry(selectedState));
+  };
+
+  const handleSelectStateBillingChange = (selectedState: string) => {
+    dispatch(updateBillingCountry(selectedState));
   };
 
   //checkbox change
@@ -68,7 +81,7 @@ export default function AddOrder() {
 
     if (isChecked) {
       dispatch(
-        updateBillingDetails({
+        updateBillMultipleFields({
           address1Billing: shipDetailsForm.address1,
           landmarkBilling: shipDetailsForm.landmark,
           address2Billing: shipDetailsForm.address2,
@@ -98,9 +111,12 @@ export default function AddOrder() {
             <form onSubmit={handleSubmit} method="post">
               {/* Buyer shipping details form */}
               <BuyerShippingDetailsForm
-                setShipDetailsForm={handleInputShipDetailsChange}
                 handleChangeProfileDetails={handleInputProfileChange}
-                handleChangeShippingDetails={handleChangeShippingDetails}
+                handleChangeShippingDetails={handleInputShippingChange}
+                handleSelectCountryChange={handleSelectShippingCountryChange}
+                handleSelectShippingStateChange={
+                  handleSelectShippingStateChange
+                }
               />
               {/* Checkbox for billing details */}
               <div className="m-4 mb-8">
@@ -119,9 +135,12 @@ export default function AddOrder() {
               {!check && (
                 <BuyerBillingDetailsForm
                   billingDetailsForm={billingDetailsForm}
-                  setBillingDetailsForm={handleInputBillingDetailsChange}
-                  handleInputBillingDetailsChange={
-                    handleInputBillingDetailsChange
+                  handleInputBillingDetailsChange={handleInputBillingChange}
+                  handleSelectCountryBillingChange={
+                    handleSelectCountryBillingChange
+                  }
+                  handleSelectStateBillingChange={
+                    handleSelectStateBillingChange
                   }
                 />
               )}
