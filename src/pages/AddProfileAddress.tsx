@@ -140,7 +140,7 @@ export default function AddProfileAddress() {
                   type="submit"
                   className="bg bg-blue-600 p-2 text-white rounded"
                 >
-                  Continue
+                  Next
                 </button>
               </div>
             </form>

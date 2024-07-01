@@ -108,13 +108,24 @@ export default function AddOrderItemDetails() {
                 </button>
               </div>
               {/* submit button to handle the form submission */}
-              <div className="flex flex-col items-center justify-center mt-4 mb-2">
-                <button
-                  type="submit"
-                  className="bg bg-blue-600 p-2 text-white rounded"
-                >
-                  Continue
-                </button>
+              <div className="flex lg:flex-row lg:gap-10 flex-col items-center justify-center mt-8 mb-2">
+                <div>
+                  <button
+                    type="submit"
+                    className="bg bg-blue-600 p-2 text-white rounded"
+                    onClick={() => history.back()}
+                  >
+                    Back
+                  </button>
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    className="bg bg-blue-600 p-2 text-white rounded"
+                  >
+                    Next
+                  </button>
+                </div>
               </div>
             </form>
           </div>
