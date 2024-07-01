@@ -75,9 +75,9 @@ export default function AddProfileAddress() {
     if (isChecked) {
       dispatch(
         updateBillMultipleFields({
-          address1: ship.address1,
+          addressOne: ship.addressOne,
           landmark: ship.landmark,
-          address2: ship.address2,
+          addressTwo: ship.addressTwo,
           pincode: ship.pincode,
           city: ship.city,
           state: ship.state,

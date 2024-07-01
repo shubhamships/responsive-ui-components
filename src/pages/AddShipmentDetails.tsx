@@ -68,7 +68,7 @@ export default function AddShipmentDetails() {
                   ))}
                 </div>
                 {/* button for form submission */}
-                <div className="flex lg:flex-row lg:gap-10 flex-col items-center justify-center mt-8 mb-2">
+                <div className="flex lg:flex-row lg:gap-10 gap-5 flex-col items-center justify-center mt-8 mb-2">
                   <div>
                     <button
                       type="submit"

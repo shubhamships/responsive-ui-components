@@ -43,6 +43,7 @@ export default function AddShippingPartner() {
         { data }
       );
       console.log("Form data posted successfully:", response.data);
+      return true;
     } catch (error) {
       console.error("Error submitting form data:", error);
       alert("Failed to submit form data. Please try again.");
@@ -50,10 +51,12 @@ export default function AddShippingPartner() {
   };
   const [showSuccess, setShowSuccess] = useState(false);
 
-  const successHandler = () => {
-    setShowSuccess(true);
+  const successHandler = async () => {
     const mergedData = { profile, ship, bill, order, orderDimension };
-    axiosDataHandle(mergedData);
+    const isSuccess = await axiosDataHandle(mergedData);
+    if (isSuccess) {
+      setShowSuccess(true);
+    }
   };
 
   const cancelBox = () => {
@@ -101,7 +104,7 @@ export default function AddShippingPartner() {
               />
             </div>
           ))}
-          <div className="flex lg:flex-row lg:gap-10 flex-col items-center justify-center mt-8 mb-2">
+          <div className="flex lg:flex-row lg:gap-10 gap-5 flex-col items-center justify-center mt-8 mb-2">
             <div>
               <button
                 type="submit"
