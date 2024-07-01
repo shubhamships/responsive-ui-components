@@ -26,7 +26,7 @@ export default function BuyerBillingDetailsForm({
       </div>
       <div className="grid md:grid-cols-3 md:gap-6">
         <SGFormSelect
-          name="countryBilling"
+          name="country"
           label="Country"
           placeholder="Select Country"
           required={true}
@@ -36,89 +36,89 @@ export default function BuyerBillingDetailsForm({
         {bill.countryBilling === "afghanistan" ? (
           <>
             <SGFormField
-              name="houseBilling"
+              name="house"
               label="House Number"
               type="text"
               required
               pattern="^\S.*$"
               message="Don't add spaces at beginning"
               placeholder="Enter House No."
-              inputValue={bill.houseBilling}
+              inputValue={bill.house}
               onChangeFn={handleInputBillingChange}
             />
             <SGFormField
-              name="localityBilling"
+              name="locality"
               label="Locality"
               type="text"
               message="Don't add spaces at beginning"
               required
               pattern="^\S.*$"
               placeholder="Enter Locality"
-              inputValue={bill.localityBilling}
+              inputValue={bill.locality}
               onChangeFn={handleInputBillingChange}
             />
             <SGFormField
-              name="streetBilling"
+              name="street"
               label="Street"
               message="Don't add spaces at beginning"
               type="text"
               pattern="^\S.*$"
               required
               placeholder="Enter Street"
-              inputValue={bill.streetBilling}
+              inputValue={bill.street}
               onChangeFn={handleInputBillingChange}
             />
           </>
         ) : (
           <>
             <SGFormField
-              name="address1Billing"
+              name="addressOne"
               label="Address 1"
               type="text"
               required
               message="Don't add spaces at beginning"
               pattern="^\S.*$"
               placeholder="Enter Address"
-              inputValue={bill.address1Billing}
+              inputValue={bill.addressOne}
               onChangeFn={handleInputBillingChange}
             />
             <SGFormField
-              name="address2Billing"
+              name="addressTwo"
               label="Address 2"
               type="text"
               message="Don't add spaces at beginning"
               required
               pattern="^\S.*$"
               placeholder="Enter Address"
-              inputValue={bill.address2Billing}
+              inputValue={bill.addressTwo}
               onChangeFn={handleInputBillingChange}
             />
             <SGFormField
-              name="landmarkBilling"
+              name="landmark"
               label="Landmark"
               message="Don't add spaces at beginning"
               type="text"
               pattern="^\S.*$"
               required
               placeholder="Enter Landmark"
-              inputValue={bill.landmarkBilling}
+              inputValue={bill.landmark}
               onChangeFn={handleInputBillingChange}
             />
           </>
         )}
         <SGFormField
-          name="cityBilling"
+          name="city"
           label="City"
           pattern="^\S.*$"
           type="text"
           required
           message="Don't add spaces at beginning"
           placeholder="Enter City"
-          inputValue={bill.cityBilling}
+          inputValue={bill.city}
           onChangeFn={handleInputBillingChange}
         />
         <SGFormSelect
-          name="stateBilling"
+          name="state"
           label="State"
           required={true}
           placeholder="Select State"
@@ -126,14 +126,14 @@ export default function BuyerBillingDetailsForm({
           setSelectValueObj={handleSelectStateBillingChange}
         />
         <SGFormField
-          name="pincodeBilling"
+          name="pincode"
           label="Pincode"
           type="text"
           message="Enter digits of length 6"
           required
           pattern="[0-9]{6}"
           placeholder="Enter Pincode"
-          inputValue={bill.pincodeBilling}
+          inputValue={bill.pincode}
           onChangeFn={handleInputBillingChange}
         />
       </div>

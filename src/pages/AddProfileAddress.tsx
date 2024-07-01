@@ -75,16 +75,16 @@ export default function AddProfileAddress() {
     if (isChecked) {
       dispatch(
         updateBillMultipleFields({
-          address1Billing: ship.address1,
-          landmarkBilling: ship.landmark,
-          address2Billing: ship.address2,
-          pincodeBilling: ship.pincode,
-          cityBilling: ship.city,
-          stateBilling: ship.state,
-          countryBilling: ship.country,
-          houseBilling: ship.houseNumber,
-          localityBilling: ship.locality,
-          streetBilling: ship.street,
+          address1: ship.address1,
+          landmark: ship.landmark,
+          address2: ship.address2,
+          pincode: ship.pincode,
+          city: ship.city,
+          state: ship.state,
+          country: ship.country,
+          house: ship.houseNumber,
+          locality: ship.locality,
+          street: ship.street,
         })
       );
     }

@@ -43,7 +43,7 @@ export default function LeftTabOne() {
                 </>
               ) : (
                 <>
-                  {ship.address1} {ship.address2} {ship.landmark}{" "}
+                  {ship.addressOne} {ship.addressTwo} {ship.landmark}{" "}
                 </>
               )}
               {ship.city}
@@ -55,19 +55,16 @@ export default function LeftTabOne() {
           <div className="mb-4">
             <p className="text-white">Billing Address</p>
             <p className="text-gray-300">
-              {bill.countryBilling === "afghanistan" ? (
+              {bill.country === "afghanistan" ? (
                 <>
-                  {bill.houseBilling} {bill.streetBilling}{" "}
-                  {bill.localityBilling}{" "}
+                  {bill.house} {bill.street} {bill.locality}{" "}
                 </>
               ) : (
                 <>
-                  {bill.address1Billing} {bill.address2Billing}{" "}
-                  {bill.landmarkBilling}{" "}
+                  {bill.addressOne} {bill.addressTwo} {bill.landmark}{" "}
                 </>
               )}
-              {bill.cityBilling} {bill.stateBilling} {bill.pincodeBilling}{" "}
-              {bill.countryBilling}
+              {bill.city} {bill.state} {bill.pincode} {bill.country}
             </p>
           </div>
         </div>

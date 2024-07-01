@@ -32,19 +32,6 @@ export default function SGFormSelect({
   const [selectValue, setSelectValue] = useState(false);
   const [touched, setTouched] = useState(false);
 
-  // const onSelectChange = (value) => {
-  //   if (value === "Select") {
-  //     setSelectValue(true);
-  //   } else {
-  //     setSelectValue(false);
-  //     setTouched(false);
-  //   }
-  //   setTouched(true);
-  //   //dispatch select field redux action to change [name] fields value
-  //   // dispatch({ type: "shippingdetails/changeCOuntry' })
-  //   // setSelectValueObj((prev) => ({ ...prev, [name]: value }));
-  //   setSelectValueObj({ name, value });
-
   const onSelectChange = (value) => {
     if (value === "Select") {
       setSelectValue(true);

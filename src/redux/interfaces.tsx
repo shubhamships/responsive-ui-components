@@ -22,9 +22,9 @@ export const profileInitialState: ProfileState = {
 //SHIPPING DETAILS FORM INTERFACE
 interface ShipDetailsState {
   id: number;
-  address1: string;
+  addressOne: string;
   landmark: string;
-  address2: string;
+  addressTwo: string;
   houseNumber: string;
   street: string;
   locality: string;
@@ -35,9 +35,9 @@ interface ShipDetailsState {
 }
 export const shipInitialState: ShipDetailsState = {
   id: 1,
-  address1: "",
+  addressOne: "",
   landmark: "",
-  address2: "",
+  addressTwo: "",
   houseNumber: "",
   street: "",
   locality: "",
@@ -50,27 +50,29 @@ export const shipInitialState: ShipDetailsState = {
 //BILLING DETAILS FORM INTERFACE
 interface BillDetailsState {
   id: number;
-  address1Billing: string;
-  landmarkBilling: string;
-  address2Billing: string;
-  pincodeBilling: string;
-  cityBilling: string;
-  houseBilling: string;
-  streetBilling: string;
-  localityBilling: string;
-  countryBilling: string;
+  addressOne: string;
+  landmark: string;
+  addressTwo: string;
+  houseNumber: string;
+  street: string;
+  locality: string;
+  pincode: string;
+  city: string;
+  country: string;
+  state: string;
 }
 export const billInitialState: BillDetailsState = {
   id: 1,
-  address1Billing: "",
-  landmarkBilling: "",
-  address2Billing: "",
-  pincodeBilling: "",
-  cityBilling: "",
-  houseBilling: "",
-  streetBilling: "",
-  localityBilling: "",
-  countryBilling: "",
+  addressOne: "",
+  landmark: "",
+  addressTwo: "",
+  houseNumber: "",
+  street: "",
+  locality: "",
+  pincode: "",
+  city: "",
+  country: "",
+  state: "",
 };
 
 //ORDER DETAILS FORM INTERFACE

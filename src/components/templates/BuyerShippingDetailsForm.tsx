@@ -135,25 +135,25 @@ export default function BuyerShippingDetailsForm({
         ) : (
           <>
             <SGFormField
-              name="address1"
+              name="addressOne"
               message="Don't add spaces at beginning"
               label="Address 1"
               type="text"
               pattern="^\S.*$"
               required
               placeholder="Enter Address 1"
-              inputValue={shipDetailsForm.address1}
+              inputValue={shipDetailsForm.addressOne}
               onChangeFn={handleInputShippingChange}
             />
             <SGFormField
-              name="address2"
+              name="addressTwo"
               label="Address 2"
               type="text"
               message="Don't add spaces at beginning"
               pattern="^\S.*$"
               required
               placeholder="Enter Address 2"
-              inputValue={shipDetailsForm.address2}
+              inputValue={shipDetailsForm.addressTwo}
               onChangeFn={handleInputShippingChange}
             />
             <SGFormField
