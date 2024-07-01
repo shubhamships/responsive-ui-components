@@ -7,7 +7,6 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-
 export default function SuccessScreen({ cancelBox }) {
   return (
     <AlertDialog defaultOpen>

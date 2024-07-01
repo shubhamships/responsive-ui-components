@@ -2,10 +2,13 @@ import Service from "@/components/elements/Service";
 import { CalculatedWeightForm } from "@/components/templates/CalculatedWeightForm";
 import SuccessScreen from "@/components/templates/SuccessScreen";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
 import { useState } from "react";
 import LeftTabOne from "@/components/templates/LeftTabOne";
 import LeftTabTwo from "@/components/templates/LeftTabTwo";
 import LeftTabThree from "@/components/templates/LeftTabThree";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 export default function AddShippingPartner() {
   const availableServices = [
@@ -30,11 +33,27 @@ export default function AddShippingPartner() {
       amount: "12740",
     },
   ];
-
+  const { profile, ship, bill, order, orderDimension } = useSelector(
+    (state: RootState) => state.addOrder
+  );
+  const axiosDataHandle = async (data) => {
+    try {
+      const response = await axios.post(
+        "https://jsonplaceholder.typicode.com/posts",
+        { data }
+      );
+      console.log("Form data posted successfully:", response.data);
+    } catch (error) {
+      console.error("Error submitting form data:", error);
+      alert("Failed to submit form data. Please try again.");
+    }
+  };
   const [showSuccess, setShowSuccess] = useState(false);
 
   const successHandler = () => {
     setShowSuccess(true);
+    const mergedData = { profile, ship, bill, order, orderDimension };
+    axiosDataHandle(mergedData);
   };
 
   const cancelBox = () => {

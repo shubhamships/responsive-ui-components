@@ -1,6 +1,5 @@
 import OrderDimensionField from "@/components/elements/OrderDimensionField";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { useDispatch } from "react-redux";
@@ -29,20 +28,7 @@ export default function AddShipmentDetails() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(orderDimension);
-    axiosDataHandle(orderDimension);
     navigateTo("/add-order4");
-  };
-  const axiosDataHandle = async (data) => {
-    try {
-      const response = await axios.post(
-        "https://jsonplaceholder.typicode.com/posts",
-        { data }
-      );
-      console.log("Form data posted successfully:", response.data);
-    } catch (error) {
-      console.error("Error submitting form data:", error);
-      alert("Failed to submit form data. Please try again.");
-    }
   };
   return (
     <>
