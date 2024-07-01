@@ -3,8 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import OrderDetailsForm from "@/components/templates/OrderDetailsForm";
 import ItemDetailsForm from "@/components/templates/ItemDetailsForm";
-import LeftTab2 from "@/components/templates/LeftTab2";
-import LeftTab1 from "@/components/templates/LeftTab1";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import {
@@ -13,30 +11,27 @@ import {
   updateOrderItemField,
 } from "@/redux/actions";
 import { ItemForm } from "@/redux/interfaces";
+import LeftTabOne from "@/components/templates/LeftTabOne";
+import LeftTabTwo from "@/components/templates/LeftTabTwo";
 
-export default function AddOrder2() {
-  const profileDetailsForm = useSelector((state: RootState) => state.profile);
-  const shipDetailsForm = useSelector((state: RootState) => state.shipDetails);
-  const billingDetailsForm = useSelector(
-    (state: RootState) => state.billDetails
-  );
-  const orderForm = useSelector((state: RootState) => state.orderDetails);
+export default function AddOrderItemDetails() {
+  const { order } = useSelector((state: RootState) => state.addOrder);
   const dispatch = useDispatch();
   //navigation function
   const navigateTo = useNavigate();
   //function to update the form data
-  const handleInputChange = (e) => {
+  const handleInputOrderDetailChange = (e) => {
     const { name, value } = e.target;
     dispatch(updateOrderField(name, value));
   };
   //function for handling form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(orderForm);
+    console.log(order);
     navigateTo("/add-order3");
   };
-  const handleFormInputChange = (index, value) => {
-    const list = [...orderForm.itemForm];
+  const handleSelectOrderDetailIgstChange = (index, value) => {
+    const list = [...order.itemForm];
     list[index] = {
       ...list[index],
       igst: value,
@@ -44,23 +39,21 @@ export default function AddOrder2() {
     dispatch(updateOrderItemField(list));
   };
   //function to update the form data inside the item details
-  const handleChange = (index, event) => {
+  const handleInputItemForm = (index, event) => {
     const { name, value } = event.target;
-    const list = [...orderForm.itemForm]; //not an array use object only
+    const list = [...order.itemForm]; //not an array use object only
     list[index] = {
       ...list[index],
       [name]: value,
     };
     dispatch(updateOrderItemField(list));
   };
-
   const handleInvoiceCurrency = (selectedCurrency: string) => {
     dispatch(updateOrderInvoiceCurrency(selectedCurrency));
   };
-
   //function to add a new set of inputs when add button is pressed in itemForm
   const addInputField = () => {
-    const maxId = Math.max(...orderForm.itemForm.map((item) => item.id)); // Find the maximum id in the current itemForm array
+    const maxId = Math.max(...order.itemForm.map((item) => item.id)); // Find the maximum id in the current itemForm array
     const newId = maxId + 1; // Generate a new id for the new item
 
     const newItem: ItemForm = {
@@ -72,16 +65,12 @@ export default function AddOrder2() {
       unitPrice: "",
       igst: "",
     };
-
-    // Create a new array with the existing items and the new item
-    const updatedItemForm = [...orderForm.itemForm, newItem];
-    // Dispatch an action to update the itemForm in the Redux state
+    const updatedItemForm = [...order.itemForm, newItem];
     dispatch(updateOrderItemField(updatedItemForm));
   };
-
   //function to remove a set of inputs when remove button is pressed in itemForm
   const removeInputFields = (id) => {
-    const updatedList = orderForm.itemForm.filter((item) => item.id !== id);
+    const updatedList = order.itemForm.filter((item) => item.id !== id);
     dispatch(updateOrderItemField(updatedList));
   };
   return (
@@ -90,26 +79,24 @@ export default function AddOrder2() {
         {/* defining space for left tab to be 1/4 */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           <div className="lg:col-span-1 lg:overflow-y-auto lg:max-h-[600px]">
-            <LeftTab1
-              profileDetailsForm={profileDetailsForm}
-              shipDetailsForm={shipDetailsForm}
-              billingDetailsForm={billingDetailsForm}
-            />
-            <LeftTab2 orderForm={orderForm} />
+            <LeftTabOne />
+            <LeftTabTwo />
           </div>
           {/* defining space for form tab to be 3/4 */}
           <div className="lg:col-span-3">
             <form onSubmit={handleSubmit}>
               <OrderDetailsForm
-                orderForm={orderForm}
+                orderForm={order}
                 handleInvoiceCurrency={handleInvoiceCurrency}
-                handleInputChange={handleInputChange}
+                handleInputOrderDetailChange={handleInputOrderDetailChange}
               />
               {/* item details form for item Details */}
               <ItemDetailsForm
-                itemForm={orderForm.itemForm}
-                handleChange={handleChange}
-                handleFormInputChange={handleFormInputChange}
+                itemForm={order.itemForm}
+                handleInputItemForm={handleInputItemForm}
+                handleSelectOrderDetailIgstChange={
+                  handleSelectOrderDetailIgstChange
+                }
                 removeInputFields={removeInputFields}
               />
               {/* button to add new input field set */}

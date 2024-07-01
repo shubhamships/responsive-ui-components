@@ -2,7 +2,7 @@ import SGFormField from "../elements/SGFormField";
 import SGFormSelect from "../elements/SGFormSelect";
 export default function BuyerBillingDetailsForm({
   billingDetailsForm,
-  handleInputBillingDetailsChange,
+  handleInputBillingChange,
   handleSelectCountryBillingChange,
   handleSelectStateBillingChange,
 }) {
@@ -38,33 +38,33 @@ export default function BuyerBillingDetailsForm({
               label="House Number"
               type="text"
               required
-              pattern="\S(.*\S)?"
-              message="Don't add spaces at beginning or end"
-              placeholder="Enter Houe No."
+              pattern="^\S.*$"
+              message="Don't add spaces at beginning"
+              placeholder="Enter House No."
               inputValue={billingDetailsForm.houseBilling}
-              onChangeFn={handleInputBillingDetailsChange}
+              onChangeFn={handleInputBillingChange}
             />
             <SGFormField
               name="localityBilling"
               label="Locality"
               type="text"
-              message="Don't add spaces at beginning or end"
+              message="Don't add spaces at beginning"
               required
-              pattern="\S(.*\S)?"
+              pattern="^\S.*$"
               placeholder="Enter Locality"
               inputValue={billingDetailsForm.localityBilling}
-              onChangeFn={handleInputBillingDetailsChange}
+              onChangeFn={handleInputBillingChange}
             />
             <SGFormField
               name="streetBilling"
               label="Street"
-              message="Don't add spaces at beginning or end"
+              message="Don't add spaces at beginning"
               type="text"
-              pattern="\S(.*\S)?"
+              pattern="^\S.*$"
               required
               placeholder="Enter Street"
               inputValue={billingDetailsForm.streetBilling}
-              onChangeFn={handleInputBillingDetailsChange}
+              onChangeFn={handleInputBillingChange}
             />
           </>
         ) : (
@@ -74,46 +74,46 @@ export default function BuyerBillingDetailsForm({
               label="Address 1"
               type="text"
               required
-              message="Don't add spaces at beginning or end"
-              pattern="\S(.*\S)?"
+              message="Don't add spaces at beginning"
+              pattern="^\S.*$"
               placeholder="Enter Address"
               inputValue={billingDetailsForm.address1Billing}
-              onChangeFn={handleInputBillingDetailsChange}
+              onChangeFn={handleInputBillingChange}
             />
             <SGFormField
               name="address2Billing"
               label="Address 2"
               type="text"
-              message="Don't add spaces at beginning or end"
+              message="Don't add spaces at beginning"
               required
-              pattern="\S(.*\S)?"
+              pattern="^\S.*$"
               placeholder="Enter Address"
               inputValue={billingDetailsForm.address2Billing}
-              onChangeFn={handleInputBillingDetailsChange}
+              onChangeFn={handleInputBillingChange}
             />
             <SGFormField
               name="landmarkBilling"
               label="Landmark"
-              message="Don't add spaces at beginning or end"
+              message="Don't add spaces at beginning"
               type="text"
-              pattern="\S(.*\S)?"
+              pattern="^\S.*$"
               required
               placeholder="Enter Landmark"
               inputValue={billingDetailsForm.landmarkBilling}
-              onChangeFn={handleInputBillingDetailsChange}
+              onChangeFn={handleInputBillingChange}
             />
           </>
         )}
         <SGFormField
           name="cityBilling"
           label="City"
-          pattern="\S(.*\S)?"
+          pattern="^\S.*$"
           type="text"
           required
-          message="Don't add spaces at beginning or end"
+          message="Don't add spaces at beginning"
           placeholder="Enter City"
           inputValue={billingDetailsForm.cityBilling}
-          onChangeFn={handleInputBillingDetailsChange}
+          onChangeFn={handleInputBillingChange}
         />
         <SGFormSelect
           name="stateBilling"
@@ -132,7 +132,7 @@ export default function BuyerBillingDetailsForm({
           pattern="[0-9]{6}"
           placeholder="Enter Pincode"
           inputValue={billingDetailsForm.pincodeBilling}
-          onChangeFn={handleInputBillingDetailsChange}
+          onChangeFn={handleInputBillingChange}
         />
       </div>
     </>

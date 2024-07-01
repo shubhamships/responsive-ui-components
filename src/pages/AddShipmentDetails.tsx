@@ -1,23 +1,16 @@
 import OrderDimensionField from "@/components/elements/OrderDimensionField";
 import { useNavigate } from "react-router-dom";
-import LeftTab3 from "@/components/templates/LeftTab3";
 import axios from "axios";
-import LeftTab1 from "@/components/templates/LeftTab1";
-import LeftTab2 from "@/components/templates/LeftTab2";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { updateOrderDimensionField } from "@/redux/actions";
-export default function AddOrder3() {
-  const profileDetailsForm = useSelector((state: RootState) => state.profile);
-  const shipDetailsForm = useSelector((state: RootState) => state.shipDetails);
-  const billingDetailsForm = useSelector(
-    (state: RootState) => state.billDetails
-  );
-  const orderForm = useSelector((state: RootState) => state.orderDetails);
-  const orderDimensionForm = useSelector(
-    (state: RootState) => state.orderDimensionDetails
-  );
+import LeftTabOne from "@/components/templates/LeftTabOne";
+import LeftTabTwo from "@/components/templates/LeftTabTwo";
+import LeftTabThree from "@/components/templates/LeftTabThree";
+export default function AddShipmentDetails() {
+  const { orderDimension } = useSelector((state: RootState) => state.addOrder);
+
   //navigation function
   const navigateTo = useNavigate();
   const dispatch = useDispatch();
@@ -35,8 +28,8 @@ export default function AddOrder3() {
   // function to handle form submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(orderDimensionForm);
-    axiosDataHandle(orderDimensionForm);
+    console.log(orderDimension);
+    axiosDataHandle(orderDimension);
     navigateTo("/add-order4");
   };
   const axiosDataHandle = async (data) => {
@@ -56,13 +49,9 @@ export default function AddOrder3() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 m-4">
         {/* defining space for left tab to be 1/4 */}
         <div className="lg:col-span-1 lg:overflow-y-auto lg:max-h-[600px]">
-          <LeftTab1
-            profileDetailsForm={profileDetailsForm}
-            shipDetailsForm={shipDetailsForm}
-            billingDetailsForm={billingDetailsForm}
-          />
-          <LeftTab2 orderForm={orderForm} />
-          <LeftTab3 oderDimensionForm={orderDimensionForm} />
+          <LeftTabOne />
+          <LeftTabTwo />
+          <LeftTabThree />
         </div>
         {/* defining space for form tab to be 3/4 */}
         <div className="lg:col-span-3">
@@ -85,7 +74,7 @@ export default function AddOrder3() {
                   {shipDetails.map((item, index) => (
                     <OrderDimensionField
                       key={index}
-                      oderDimensionForm={orderDimensionForm}
+                      oderDimensionForm={orderDimension}
                       handleInputChange={handleInputChange}
                       title={item.title}
                       unit={item.unit}

@@ -1,7 +1,7 @@
 import SGFormField from "../elements/SGFormField";
 import SGFormSelect from "../elements/SGFormSelect";
 export default function OrderDetailsForm({
-  handleInputChange,
+  handleInputOrderDetailChange,
   orderForm,
   handleInvoiceCurrency,
 }) {
@@ -22,21 +22,21 @@ export default function OrderDetailsForm({
           label="Invoice Number"
           type="number"
           message="Only digits allowed"
-          pattern="\S(.*\S)?"
+          pattern="^\S.*$"
           required
           placeholder="Enter Invoice Number"
           inputValue={orderForm.invoiceNumber}
-          onChangeFn={handleInputChange}
+          onChangeFn={handleInputOrderDetailChange}
         />
         <SGFormField
           name="invoiceDate"
           label="Invoice Date"
           type="date"
-          pattern="\S(.*\S)?"
+          pattern="^\S.*$"
           required
           placeholder="Enter Invoice Date"
           inputValue={orderForm.invoiceDate}
-          onChangeFn={handleInputChange}
+          onChangeFn={handleInputOrderDetailChange}
         />
         <SGFormSelect
           name="invoiceCurrency"
@@ -49,23 +49,23 @@ export default function OrderDetailsForm({
           name="orderRef"
           label="Order Id/Ref."
           type="text"
-          message="Don't add spaces at beginning or end"
-          pattern="\S(.*\S)?"
+          message="Don't add spaces at beginning"
+          pattern="^\S.*$"
           required
           placeholder="Enter Order Id/Ref."
           inputValue={orderForm.orderRef}
-          onChangeFn={handleInputChange}
+          onChangeFn={handleInputOrderDetailChange}
         />
         <SGFormField
           name="ioss"
           label="IOSS"
-          message="Don't add spaces at beginning or end"
-          pattern="\S(.*\S)?"
+          message="Don't add spaces at beginning"
+          pattern="^\S.*$"
           type="text"
           required
           placeholder="Enter IOSS"
           inputValue={orderForm.ioss}
-          onChangeFn={handleInputChange}
+          onChangeFn={handleInputOrderDetailChange}
         />
       </div>
     </>

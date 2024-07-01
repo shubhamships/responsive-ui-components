@@ -1,16 +1,14 @@
 import Service from "@/components/elements/Service";
 import { CalculatedWeightForm } from "@/components/templates/CalculatedWeightForm";
-import LeftTab4 from "@/components/templates/LeftTab4";
-import LeftTab1 from "@/components/templates/LeftTab1";
-import LeftTab2 from "@/components/templates/LeftTab2";
-import LeftTab3 from "@/components/templates/LeftTab3";
+import LeftTab4 from "@/components/templates/LeftTabFour";
+import LeftTab1 from "@/components/templates/LeftTabOne";
+import LeftTab2 from "@/components/templates/LeftTabTwo";
+import LeftTab3 from "@/components/templates/LeftTabThree";
 import SuccessScreen from "@/components/templates/SuccessScreen";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
 
-export default function AddOrder4() {
+export default function AddShippingPartner() {
   const availableServices = [
     {
       name: "UPS",
@@ -43,27 +41,14 @@ export default function AddOrder4() {
   const cancelBox = () => {
     setShowSuccess(false);
   };
-  const profileDetailsForm = useSelector((state: RootState) => state.profile);
-  const shipDetailsForm = useSelector((state: RootState) => state.shipDetails);
-  const billingDetailsForm = useSelector(
-    (state: RootState) => state.billDetails
-  );
-  const orderForm = useSelector((state: RootState) => state.orderDetails);
-  const orderDimensionForm = useSelector(
-    (state: RootState) => state.orderDimensionDetails
-  );
 
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 m-4">
         <div className="lg:col-span-1 lg:overflow-y-auto lg:max-h-[600px]">
-          <LeftTab1
-            profileDetailsForm={profileDetailsForm}
-            shipDetailsForm={shipDetailsForm}
-            billingDetailsForm={billingDetailsForm}
-          />
-          <LeftTab2 orderForm={orderForm} />
-          <LeftTab3 oderDimensionForm={orderDimensionForm} />
+          <LeftTab1 />
+          <LeftTab2 />
+          <LeftTab3 />
           <LeftTab4 />
         </div>
         <div className="lg:col-span-3">

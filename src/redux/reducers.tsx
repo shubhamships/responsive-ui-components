@@ -11,8 +11,6 @@ import {
   UPDATE_ORDER_FORM_ITEM_DETAIL,
   UPDATE_ORDER_FORM_INVOICE_CURRENCY,
   UPDATE_ORDER_DIMENSION_FORM,
-  UPDATE_ORDER_FORM_ITEM_DETAIL_ADD,
-  UPDATE_ORDER_FORM_ITEM_DETAIL_REMOVE,
 } from "./constants";
 import {
   billInitialState,
@@ -22,117 +20,165 @@ import {
   orderDimensionInitialState,
 } from "./interfaces";
 
-//REDUCER FOR PROFILE DETAILS FORM
-export const profileReducer = (state = profileInitialState, action) => {
+const initialState = {
+  addOrder: {
+    profile: profileInitialState,
+    ship: shipInitialState,
+    bill: billInitialState,
+    order: orderFormInitialState,
+    orderDimension: orderDimensionInitialState,
+  },
+};
+
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_PROFILE_DETAIL:
       return {
         ...state,
-        [action.payload.fieldName]: action.payload.value,
+        addOrder: {
+          ...state.addOrder,
+          profile: {
+            ...state.addOrder.profile,
+            [action.payload.fieldName]: action.payload.value,
+          },
+        },
       };
-    default:
-      return state;
-  }
-};
-
-//REDUCER FOR SHIPPING DETAILS FORM
-export const shipReducer = (state = shipInitialState, action) => {
-  switch (action.type) {
     case UPDATE_SHIP_DETAIL:
       return {
         ...state,
-        [action.payload.fieldName]: action.payload.value,
+        addOrder: {
+          ...state.addOrder,
+          ship: {
+            ...state.addOrder.ship,
+            [action.payload.fieldName]: action.payload.value,
+          },
+        },
       };
     case UPDATE_SHIPPING_COUNTRY:
       return {
         ...state,
-        country: action.payload,
+        addOrder: {
+          ...state.addOrder,
+          ship: {
+            ...state.addOrder.ship,
+            country: action.payload,
+          },
+        },
       };
     case UPDATE_SHIPPING_STATE:
       return {
         ...state,
-        state: action.payload,
+        addOrder: {
+          ...state.addOrder,
+          ship: {
+            ...state.addOrder.ship,
+            state: action.payload,
+          },
+        },
       };
-    default:
-      return state;
-  }
-};
-
-//REDUCER FOR BILLING DETAILS FORM
-export const billReducer = (state = billInitialState, action) => {
-  switch (action.type) {
     case UPDATE_BILL_DETAIL:
       return {
         ...state,
-        [action.payload.fieldName]: action.payload.value,
+        addOrder: {
+          ...state.addOrder,
+          bill: {
+            ...state.addOrder.bill,
+            [action.payload.fieldName]: action.payload.value,
+          },
+        },
       };
     case UPDATE_BILL_MULTIPLE_DETAIL:
       return {
         ...state,
-        ...action.payload.fieldsToUpdate,
+        addOrder: {
+          ...state.addOrder,
+          bill: {
+            ...state.addOrder.bill,
+            ...action.payload.fieldsToUpdate,
+          },
+        },
       };
     case UPDATE_BILLING_COUNTRY:
       return {
         ...state,
-        countryBilling: action.payload,
+        addOrder: {
+          ...state.addOrder,
+          bill: {
+            ...state.addOrder.bill,
+            countryBilling: action.payload,
+          },
+        },
       };
     case UPDATE_BILLING_STATE:
       return {
         ...state,
-        stateBilling: action.payload,
+        addOrder: {
+          ...state.addOrder,
+          bill: {
+            ...state.addOrder.bill,
+            stateBilling: action.payload,
+          },
+        },
       };
-    default:
-      return state;
-  }
-};
-
-//REDUCER FOR ORDER DETAILS FORM
-export const orderReducer = (state = orderFormInitialState, action) => {
-  switch (action.type) {
     case UPDATE_ORDER_FORM_DETAIL:
       return {
         ...state,
-        [action.payload.fieldName]: action.payload.value,
+        addOrder: {
+          ...state.addOrder,
+          order: {
+            ...state.addOrder.order,
+            [action.payload.fieldName]: action.payload.value,
+          },
+        },
       };
     case UPDATE_ORDER_FORM_ITEM_DETAIL:
-      console.log(action.payload);
       return {
         ...state,
-        itemForm: action.payload,
+        addOrder: {
+          ...state.addOrder,
+          order: {
+            ...state.addOrder.order,
+            itemForm: action.payload,
+          },
+        },
       };
     case UPDATE_ORDER_FORM_INVOICE_CURRENCY:
       return {
         ...state,
-        invoiceCurrency: action.payload,
+        addOrder: {
+          ...state.addOrder,
+          order: {
+            ...state.addOrder.order,
+            invoiceCurrency: action.payload,
+          },
+        },
       };
-    default:
-      return state;
-  }
-};
-
-//REDUCER FOR ORDER DIMENSION DETAILS FORM
-export const orderDimensionReducer = (
-  state = orderDimensionInitialState,
-  action
-) => {
-  switch (action.type) {
     case UPDATE_ORDER_DIMENSION_FORM:
       return {
         ...state,
-        [action.payload.fieldName]: action.payload.value,
+        addOrder: {
+          ...state.addOrder,
+          orderDimension: {
+            ...state.addOrder.orderDimension,
+            [action.payload.fieldName]: action.payload.value,
+          },
+        },
       };
-
-    case UPDATE_ORDER_FORM_ITEM_DETAIL_ADD: //************************ */
-      return {
-        ...state,
-        itemForm: action.payload,
-      };
-    case UPDATE_ORDER_FORM_ITEM_DETAIL_REMOVE:
-      return {
-        ...state,
-        itemForm: action.payload,
-      };
+    // case UPDATE_ORDER_FORM_ITEM_DETAIL_ADD:
+    // case UPDATE_ORDER_FORM_ITEM_DETAIL_REMOVE:
+    //   return {
+    //     ...state,
+    //     addOrder: {
+    //       ...state.addOrder,
+    //       orderDimension: {
+    //         ...state.addOrder.orderDimension,
+    //         itemForm: action.payload,
+    //       },
+    //     },
+    //   };
     default:
       return state;
   }
 };
+
+export default rootReducer;

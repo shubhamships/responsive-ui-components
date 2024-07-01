@@ -1,6 +1,7 @@
 //ALL THE INTERFACES OF DIFFERENT FORMS ARE DEFINED HERE
 
 //PROFILE DETAILS FORM INTERFACE
+
 interface ProfileState {
   id: number;
   firstName: string;

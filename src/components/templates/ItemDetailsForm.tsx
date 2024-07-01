@@ -13,8 +13,8 @@ import {
 export default function ItemDetailsForm({
   removeInputFields,
   itemForm,
-  handleChange,
-  handleFormInputChange,
+  handleInputItemForm,
+  handleSelectOrderDetailIgstChange,
 }) {
   return (
     <>
@@ -25,37 +25,37 @@ export default function ItemDetailsForm({
         {itemForm &&
           itemForm.map((data, index) => {
             return (
-              <div key={data.id} className="grid grid-cols-1 md:grid-cols-8">
+              <div key={data.id} className="grid grid-cols-1 md:grid-cols-9">
                 <div className="my-2 mt-4 md:col-span-2">
                   <SGFormField
                     name="prodName"
                     label="Product"
                     type="text"
-                    message="Don't add spaces at beginning or end"
-                    pattern="\S(.*\S)?"
+                    message="Don't add spaces at beginning"
+                    pattern="^\S.*$"
                     required
-                    onChangeFn={(event) => handleChange(index, event)}
+                    onChangeFn={(event) => handleInputItemForm(index, event)}
                   />
                 </div>
                 <div className="my-2 mt-4">
                   <SGFormField
                     name="sku"
                     label="SKU"
-                    message="Don't add spaces at beginning or end"
-                    pattern="\S(.*\S)?"
+                    message="Don't add spaces at beginning"
+                    pattern="^\S.*$"
                     type="text"
-                    onChangeFn={(event) => handleChange(index, event)}
+                    onChangeFn={(event) => handleInputItemForm(index, event)}
                   />
                 </div>
                 <div className="my-2 mt-4">
                   <SGFormField
                     name="hsn"
                     label="HSN"
-                    message="Don't add spaces at beginning or end"
-                    pattern="\S(.*\S)?"
+                    message="Don't add spaces at beginning"
+                    pattern="^\S.*$"
                     type="text"
                     required
-                    onChangeFn={(event) => handleChange(index, event)}
+                    onChangeFn={(event) => handleInputItemForm(index, event)}
                   />
                 </div>
                 <div className="my-2 mt-4">
@@ -64,9 +64,9 @@ export default function ItemDetailsForm({
                     label="QTY"
                     message="Only digits allowed"
                     type="number"
-                    pattern="\S(.*\S)?"
+                    pattern="^\S.*$"
                     required
-                    onChangeFn={(event) => handleChange(index, event)}
+                    onChangeFn={(event) => handleInputItemForm(index, event)}
                   />
                 </div>
                 <div className="my-2 mt-4 md:col-span-2">
@@ -75,9 +75,9 @@ export default function ItemDetailsForm({
                     label="Unit Price"
                     type="number"
                     message="Only digits allowed"
-                    pattern="\S(.*\S)?"
+                    pattern="^\S.*$"
                     required
-                    onChangeFn={(event) => handleChange(index, event)}
+                    onChangeFn={(event) => handleInputItemForm(index, event)}
                   />
                 </div>
                 <div id="selectState" className="m-2 lg:mt-6">
@@ -87,8 +87,9 @@ export default function ItemDetailsForm({
                   <Select
                     required
                     onValueChange={(value) =>
-                      handleFormInputChange(index, value)
+                      handleSelectOrderDetailIgstChange(index, value)
                     }
+                    defaultValue="0%"
                   >
                     <SelectTrigger className="w-full mt-2">
                       <SelectValue placeholder="IGST" />
@@ -102,7 +103,7 @@ export default function ItemDetailsForm({
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="mt-2 mb-4">
+                <div className="lg:mt-14 mt-4">
                   {itemForm.length !== 1 && (
                     <button
                       onClick={() => removeInputFields(data.id)}

@@ -1,11 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import {
-  billReducer,
-  orderDimensionReducer,
-  orderReducer,
-  profileReducer,
-  shipReducer,
-} from "./reducers";
+import rootReducer from "./reducers";
 import {
   billInitialState,
   profileInitialState,
@@ -15,24 +9,18 @@ import {
 } from "./interfaces";
 
 const store = configureStore({
-  reducer: {
-    profile: profileReducer,
-    shipDetails: shipReducer,
-    billDetails: billReducer,
-    orderDetails: orderReducer,
-    orderDimensionDetails: orderDimensionReducer,
-  },
+  reducer: rootReducer,
   preloadedState: {
-    profile: profileInitialState,
-    shipDetails: shipInitialState,
-    billDetails: billInitialState,
-    orderDetails: orderFormInitialState,
-    orderDimensionDetails: orderDimensionInitialState,
+    addOrder: {
+      profile: profileInitialState,
+      ship: shipInitialState,
+      bill: billInitialState,
+      order: orderFormInitialState,
+      orderDimension: orderDimensionInitialState,
+    },
   },
 });
 
-//initialise store with empty values in this file only
-
 export default store;
-export type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = typeof store.dispatch;

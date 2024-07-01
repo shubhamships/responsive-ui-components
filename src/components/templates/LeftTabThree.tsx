@@ -1,5 +1,8 @@
 import { Card } from "@/components/ui/card";
-export default function LeftTab3({ oderDimensionForm }) {
+import { RootState } from "@/redux/store";
+import { useSelector } from "react-redux";
+export default function LeftTabThree() {
+  const { orderDimension } = useSelector((state: RootState) => state.addOrder);
   return (
     <Card>
       <div className="bg-slate-500 p-2 rounded-lg m-1 text-wrap overflow-auto">
@@ -9,19 +12,19 @@ export default function LeftTab3({ oderDimensionForm }) {
         <div className="grid grid-cols-1 gap-2">
           <div className="mb-4">
             <p className="text-white">Weight</p>
-            <p className="text-gray-300">{oderDimensionForm.weight} KG</p>
+            <p className="text-gray-300">{orderDimension.weight} KG</p>
           </div>
           <div className="mb-4">
             <p className="text-sm text-white">Length</p>
-            <p className="text-gray-300">{oderDimensionForm.length} CM</p>
+            <p className="text-gray-300">{orderDimension.length} CM</p>
           </div>
           <div className="mb-4">
             <p className="text-sm text-white">Breadth</p>
-            <p className="text-gray-300">{oderDimensionForm.breadth} CM</p>
+            <p className="text-gray-300">{orderDimension.breadth} CM</p>
           </div>
           <div className="mb-4">
             <p className="text-sm text-white">Height</p>
-            <p className="text-gray-300">{oderDimensionForm.height} CM</p>
+            <p className="text-gray-300">{orderDimension.height} CM</p>
           </div>
         </div>
       </div>

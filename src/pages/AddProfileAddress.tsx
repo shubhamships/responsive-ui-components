@@ -4,32 +4,33 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux/store";
 import BuyerShippingDetailsForm from "@/components/templates/BuyerShippingDetailsForm";
 import BuyerBillingDetailsForm from "@/components/templates/BuyerBillingDetailsForm";
-import LeftTab1 from "@/components/templates/LeftTab1";
 import {
   updateProfileField,
   updateShipField,
+  updateShippingCountry,
+  updateShippingState,
   updateBillField,
   updateBillMultipleFields,
-  updateShippingCountry,
   updateBillingCountry,
+  updateBillingState,
 } from "@/redux/actions";
+import LeftTabOne from "@/components/templates/LeftTabOne";
 
-export default function AddOrder() {
+export default function AddProfileAddress() {
   const navigateTo = useNavigate();
   const dispatch = useDispatch();
-  const profileDetailsForm = useSelector((state: RootState) => state.profile);
-  const shipDetailsForm = useSelector((state: RootState) => state.shipDetails);
-  const billingDetailsForm = useSelector(
-    (state: RootState) => state.billDetails
+  const { profile, ship, bill } = useSelector(
+    (state: RootState) => state.addOrder
   );
+
   // Checkbox state
   const [check, setCheck] = useState(true);
   // Handle form submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Profile Details", profileDetailsForm);
-    console.log("Billing Details", billingDetailsForm);
-    console.log("Shipping Details", shipDetailsForm);
+    console.log("Profile Details", profile);
+    console.log("Billing Details", bill);
+    console.log("Shipping Details", ship);
     navigateTo("/add-order2");
   };
   // profile form input change
@@ -37,55 +38,53 @@ export default function AddOrder() {
     const { name, value } = e.target;
     dispatch(updateProfileField(name, value));
   };
+  // profile form input change
   const handleInputShippingChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const { name, value } = e.target;
     dispatch(updateShipField(name, value));
   };
-
   // billing details form input change
   const handleInputBillingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     dispatch(updateBillField(name, value));
   };
-
+  // shipping form country change
   const handleSelectShippingCountryChange = (selectedCountry: string) => {
     dispatch(updateShippingCountry(selectedCountry));
   };
-
+  // billing form country change
   const handleSelectCountryBillingChange = (selectedCountry: string) => {
     dispatch(updateBillingCountry(selectedCountry));
   };
-
+  // shipping form state change
   const handleSelectShippingStateChange = (selectedState: string) => {
-    dispatch(updateShippingCountry(selectedState));
+    dispatch(updateShippingState(selectedState));
   };
-
+  // billing form state change
   const handleSelectStateBillingChange = (selectedState: string) => {
-    dispatch(updateBillingCountry(selectedState));
+    dispatch(updateBillingState(selectedState));
   };
-
-  //checkbox change
+  //checkbox if checked then billing form details update
   const handleCheckboxChangeCheck = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const isChecked = e.target.checked;
     setCheck(isChecked);
-
     if (isChecked) {
       dispatch(
         updateBillMultipleFields({
-          address1Billing: shipDetailsForm.address1,
-          landmarkBilling: shipDetailsForm.landmark,
-          address2Billing: shipDetailsForm.address2,
-          pincodeBilling: shipDetailsForm.pincode,
-          cityBilling: shipDetailsForm.city,
-          stateBilling: shipDetailsForm.state,
-          countryBilling: shipDetailsForm.country,
-          houseBilling: shipDetailsForm.houseNumber,
-          localityBilling: shipDetailsForm.locality,
-          streetBilling: shipDetailsForm.street,
+          address1Billing: ship.address1,
+          landmarkBilling: ship.landmark,
+          address2Billing: ship.address2,
+          pincodeBilling: ship.pincode,
+          cityBilling: ship.city,
+          stateBilling: ship.state,
+          countryBilling: ship.country,
+          houseBilling: ship.houseNumber,
+          localityBilling: ship.locality,
+          streetBilling: ship.street,
         })
       );
     }
@@ -95,19 +94,17 @@ export default function AddOrder() {
       <div className="m-4 px-2">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           <div className="lg:col-span-1 lg:overflow-y-auto max-h-[600px]">
-            <LeftTab1
-              profileDetailsForm={profileDetailsForm}
-              shipDetailsForm={shipDetailsForm}
-              billingDetailsForm={billingDetailsForm}
-            />
+            <LeftTabOne />
           </div>
           <div className="lg:col-span-3">
             <form onSubmit={handleSubmit} method="post">
               {/* Buyer shipping details form */}
               <BuyerShippingDetailsForm
-                handleChangeProfileDetails={handleInputProfileChange}
-                handleChangeShippingDetails={handleInputShippingChange}
-                handleSelectCountryChange={handleSelectShippingCountryChange}
+                handleInputProfileChange={handleInputProfileChange}
+                handleInputShippingChange={handleInputShippingChange}
+                handleSelectShippingCountryChange={
+                  handleSelectShippingCountryChange
+                }
                 handleSelectShippingStateChange={
                   handleSelectShippingStateChange
                 }
@@ -128,8 +125,8 @@ export default function AddOrder() {
               {/* Buyer billing details form if checkbox is unchecked */}
               {!check && (
                 <BuyerBillingDetailsForm
-                  billingDetailsForm={billingDetailsForm}
-                  handleInputBillingDetailsChange={handleInputBillingChange}
+                  billingDetailsForm={bill}
+                  handleInputBillingChange={handleInputBillingChange}
                   handleSelectCountryBillingChange={
                     handleSelectCountryBillingChange
                   }
