@@ -35,6 +35,7 @@ export default function ItemDetailsForm({
                     label="Product"
                     type="text"
                     message="Don't add spaces at beginning"
+                    inputValue={order.itemForm[index]["prodName"]}
                     pattern="^\S.*$"
                     required
                     onChangeFn={(event) => handleInputItemForm(index, event)}
@@ -45,6 +46,7 @@ export default function ItemDetailsForm({
                     name="sku"
                     label="SKU"
                     message="Don't add spaces at beginning"
+                    inputValue={order.itemForm[index]["sku"]}
                     pattern="^\S.*$"
                     type="text"
                     onChangeFn={(event) => handleInputItemForm(index, event)}
@@ -54,6 +56,7 @@ export default function ItemDetailsForm({
                   <SGFormField
                     name="hsn"
                     label="HSN"
+                    inputValue={order.itemForm[index]["hsn"]}
                     message="Don't add spaces at beginning"
                     pattern="^\S.*$"
                     type="text"
@@ -66,6 +69,7 @@ export default function ItemDetailsForm({
                     name="qty"
                     label="QTY"
                     message="Only digits allowed"
+                    inputValue={order.itemForm[index]["qty"]}
                     type="number"
                     pattern="^\S.*$"
                     required
@@ -77,6 +81,7 @@ export default function ItemDetailsForm({
                     name="unitPrice"
                     label="Unit Price"
                     type="number"
+                    inputValue={order.itemForm[index]["unitPrice"]}
                     message="Only digits allowed"
                     pattern="^\S.*$"
                     required

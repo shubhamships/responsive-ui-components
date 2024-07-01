@@ -49,7 +49,7 @@ export default function SGFormSelect({
         {required ? <span className={"text-red-600"}> *</span> : null}
       </Label>
       <div className="mt-2">
-        <Select onValueChange={onSelectChange} required>
+        <Select onValueChange={onSelectChange} required value="">
           <SelectTrigger
             className={`ring-1 ${
               selectValue

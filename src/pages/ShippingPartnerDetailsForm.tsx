@@ -4,13 +4,14 @@ import SuccessScreen from "@/components/templates/SuccessScreen";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useState } from "react";
-import LeftTabOne from "@/components/templates/LeftTabOne";
+import LeftTabOne from "@/components/elements/LeftTabOne";
 import LeftTabTwo from "@/components/templates/LeftTabTwo";
-import LeftTabThree from "@/components/templates/LeftTabThree";
+import LeftTabThree from "@/components/elements/LeftTabThree";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+import NextBackSubmitButton from "@/components/templates/NextBackSubmitButtons";
 
-export default function AddShippingPartner() {
+export default function ShippingPartnerDetailsForm() {
   const availableServices = [
     {
       name: "UPS",
@@ -37,13 +38,18 @@ export default function AddShippingPartner() {
     (state: RootState) => state.addOrder
   );
   const axiosDataHandle = async (data) => {
+    // data = api("url", "data")
+
+    // setState (data) // dispatch redux to save data to global store
+    // response status  - error status code - alert("eror message")
+
     try {
       const response = await axios.post(
         "https://jsonplaceholder.typicode.com/posts",
         { data }
       );
       console.log("Form data posted successfully:", response.data);
-      return true;
+      return true; // setShowSUccess (true) - better way
     } catch (error) {
       console.error("Error submitting form data:", error);
       alert("Failed to submit form data. Please try again.");
@@ -76,7 +82,7 @@ export default function AddShippingPartner() {
           <LeftTabThree />
         </div>
         <div className="lg:col-span-3">
-          <div className="m-2 p-2">
+          <div className="p-2">
             <p className="font-bold text-cyan-500 text-2xl mb-2">
               Select Shipping Partner
             </p>
@@ -94,27 +100,23 @@ export default function AddShippingPartner() {
             </p>
           </div>
           <CalculatedWeightForm />
-          {availableServices.map((item, index) => (
-            <div key={index}>
-              <Service
-                company={item.name}
-                duration={item.estimated}
-                cost={item.amount}
-                onSelect={handleServiceSelection}
-              />
-            </div>
-          ))}
+          <div className="lg:overflow-y-auto lg:max-h-[540px]">
+            {availableServices.map((item, index) => (
+              <div key={index}>
+                <Service
+                  company={item.name}
+                  duration={item.estimated}
+                  cost={item.amount}
+                  onSelect={handleServiceSelection}
+                />
+              </div>
+            ))}
+          </div>
           <div className="flex lg:flex-row lg:gap-10 gap-5 flex-col items-center justify-center mt-8 mb-2">
             <div>
-              <button
-                type="submit"
-                className="bg bg-blue-600 p-2 text-white rounded"
-                onClick={() => history.go(-1)}
-              >
-                Back
-              </button>
+              <NextBackSubmitButton />
             </div>
-            <div>
+            <div className="lg:fixed lg:right-20 lg:bottom-2 ">
               <Button onClick={successHandler}>Submit</Button>
             </div>
           </div>

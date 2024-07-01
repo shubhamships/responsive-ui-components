@@ -11,10 +11,10 @@ import {
   updateOrderItemField,
 } from "@/redux/actions";
 import { ItemForm } from "@/redux/interfaces";
-import LeftTabOne from "@/components/templates/LeftTabOne";
-import LeftTabTwo from "@/components/templates/LeftTabTwo";
+import LeftTab from "@/components/templates/LeftTab";
+import NextBackSubmitButton from "@/components/templates/NextBackSubmitButtons";
 
-export default function AddOrderItemDetails() {
+export default function OrderItemDetailsForm() {
   const { order } = useSelector((state: RootState) => state.addOrder);
   const dispatch = useDispatch();
   //navigation function
@@ -79,24 +79,26 @@ export default function AddOrderItemDetails() {
         {/* defining space for left tab to be 1/4 */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           <div className="lg:col-span-1 lg:overflow-y-auto lg:max-h-[600px]">
-            <LeftTabOne />
-            <LeftTabTwo />
+            <LeftTab />
           </div>
           {/* defining space for form tab to be 3/4 */}
           <div className="lg:col-span-3">
             <form onSubmit={handleSubmit}>
-              <OrderDetailsForm
-                handleInvoiceCurrency={handleInvoiceCurrency}
-                handleInputOrderDetailChange={handleInputOrderDetailChange}
-              />
-              {/* item details form for item Details */}
-              <ItemDetailsForm
-                handleInputItemForm={handleInputItemForm}
-                handleSelectOrderDetailIgstChange={
-                  handleSelectOrderDetailIgstChange
-                }
-                removeInputFields={removeInputFields}
-              />
+              <div className="lg:overflow-y-auto lg:max-h-[540px]">
+                <OrderDetailsForm
+                  handleInvoiceCurrency={handleInvoiceCurrency}
+                  handleInputOrderDetailChange={handleInputOrderDetailChange}
+                />
+                {/* item details form for item Details */}
+
+                <ItemDetailsForm
+                  handleInputItemForm={handleInputItemForm}
+                  handleSelectOrderDetailIgstChange={
+                    handleSelectOrderDetailIgstChange
+                  }
+                  removeInputFields={removeInputFields}
+                />
+              </div>
               {/* button to add new input field set */}
               <div className="mt-2">
                 <button
@@ -109,23 +111,7 @@ export default function AddOrderItemDetails() {
               </div>
               {/* submit button to handle the form submission */}
               <div className="flex lg:flex-row lg:gap-10 gap-5 flex-col items-center justify-center mt-8 mb-2">
-                <div>
-                  <button
-                    type="submit"
-                    className="bg bg-blue-600 p-2 text-white rounded"
-                    onClick={() => history.go(-1)}
-                  >
-                    Back
-                  </button>
-                </div>
-                <div>
-                  <button
-                    type="submit"
-                    className="bg bg-blue-600 p-2 text-white rounded"
-                  >
-                    Next
-                  </button>
-                </div>
+                <NextBackSubmitButton />
               </div>
             </form>
           </div>

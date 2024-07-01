@@ -11,6 +11,7 @@ import {
   UPDATE_ORDER_FORM_ITEM_DETAIL,
   UPDATE_ORDER_FORM_INVOICE_CURRENCY,
   UPDATE_ORDER_DIMENSION_FORM,
+  UPDATE_DIMENTISON_DETAIL,
 } from "./constants";
 import {
   billInitialState,
@@ -154,6 +155,17 @@ const rootReducer = (state = initialState, action) => {
         },
       };
     case UPDATE_ORDER_DIMENSION_FORM:
+      return {
+        ...state,
+        addOrder: {
+          ...state.addOrder,
+          orderDimension: {
+            ...state.addOrder.orderDimension,
+            [action.payload.fieldName]: action.payload.value,
+          },
+        },
+      };
+    case UPDATE_DIMENTISON_DETAIL:
       return {
         ...state,
         addOrder: {

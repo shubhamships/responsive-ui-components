@@ -91,7 +91,9 @@ export default function BuyerShippingDetailsForm({
         <SGFormSelect
           name="country"
           label="Country"
-          placeholder="Select Country"
+          placeholder={
+            shipDetailsForm.country ? shipDetailsForm.country : "Select Country"
+          }
           data={selectCountry}
           required
           setSelectValueObj={handleSelectShippingCountryChange}
@@ -184,7 +186,9 @@ export default function BuyerShippingDetailsForm({
           name="state"
           label="State"
           required
-          placeholder="Select State"
+          placeholder={
+            shipDetailsForm.state ? shipDetailsForm.state : "Select State"
+          }
           data={listStatesData}
           setSelectValueObj={handleSelectShippingStateChange}
         />

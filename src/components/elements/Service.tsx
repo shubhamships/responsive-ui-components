@@ -6,7 +6,7 @@ export default function Service({ company, cost, duration, onSelect }) {
     onSelect(selectedService);
   };
   return (
-    <div className="m-2 p-2 border border-dashed border-gray-400 lg:m-4 flex items-center">
+    <div className="p-2 border border-dashed border-gray-400 lg:m-2 flex items-center">
       <label className="flex items-center w-full justify-between">
         <div className="w-8 h-8 mr-4 flex items-center justify-left">
           <Input

@@ -43,7 +43,9 @@ export default function OrderDetailsForm({
         <SGFormSelect
           name="invoiceCurrency"
           label="Invoice Currency"
-          placeholder="Currency"
+          placeholder={
+            order.invoiceCurrency ? order.invoiceCurrency : "Select Currency"
+          }
           data={selectCurrency}
           setSelectValueObj={handleInvoiceCurrency}
         />
