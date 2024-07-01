@@ -1,12 +1,11 @@
 import Service from "@/components/elements/Service";
 import { CalculatedWeightForm } from "@/components/templates/CalculatedWeightForm";
-import LeftTab4 from "@/components/templates/LeftTabFour";
-import LeftTab1 from "@/components/templates/LeftTabOne";
-import LeftTab2 from "@/components/templates/LeftTabTwo";
-import LeftTab3 from "@/components/templates/LeftTabThree";
 import SuccessScreen from "@/components/templates/SuccessScreen";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import LeftTabOne from "@/components/templates/LeftTabOne";
+import LeftTabTwo from "@/components/templates/LeftTabTwo";
+import LeftTabThree from "@/components/templates/LeftTabThree";
 
 export default function AddShippingPartner() {
   const availableServices = [
@@ -42,14 +41,17 @@ export default function AddShippingPartner() {
     setShowSuccess(false);
   };
 
+  const handleServiceSelection = (selectedService) => {
+    console.log("Selected Service:", selectedService);
+  };
+
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 m-4">
         <div className="lg:col-span-1 lg:overflow-y-auto lg:max-h-[600px]">
-          <LeftTab1 />
-          <LeftTab2 />
-          <LeftTab3 />
-          <LeftTab4 />
+          <LeftTabOne />
+          <LeftTabTwo />
+          <LeftTabThree />
         </div>
         <div className="lg:col-span-3">
           <div className="m-2 p-2">
@@ -76,6 +78,7 @@ export default function AddShippingPartner() {
                 company={item.name}
                 duration={item.estimated}
                 cost={item.amount}
+                onSelect={handleServiceSelection}
               />
             </div>
           ))}

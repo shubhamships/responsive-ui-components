@@ -1,8 +1,9 @@
 import { Input } from "@/components/ui/input";
 
-export default function Service({ company, cost, duration }) {
+export default function Service({ company, cost, duration, onSelect }) {
   const handleInputChange = () => {
-    console.log({ company, cost, duration });
+    const selectedService = { company, cost, duration };
+    onSelect(selectedService);
   };
   return (
     <div className="m-2 p-2 border border-dashed border-gray-400 lg:m-4 flex items-center">

@@ -164,18 +164,6 @@ const rootReducer = (state = initialState, action) => {
           },
         },
       };
-    // case UPDATE_ORDER_FORM_ITEM_DETAIL_ADD:
-    // case UPDATE_ORDER_FORM_ITEM_DETAIL_REMOVE:
-    //   return {
-    //     ...state,
-    //     addOrder: {
-    //       ...state.addOrder,
-    //       orderDimension: {
-    //         ...state.addOrder.orderDimension,
-    //         itemForm: action.payload,
-    //       },
-    //     },
-    //   };
     default:
       return state;
   }

@@ -86,13 +86,11 @@ export default function AddOrderItemDetails() {
           <div className="lg:col-span-3">
             <form onSubmit={handleSubmit}>
               <OrderDetailsForm
-                orderForm={order}
                 handleInvoiceCurrency={handleInvoiceCurrency}
                 handleInputOrderDetailChange={handleInputOrderDetailChange}
               />
               {/* item details form for item Details */}
               <ItemDetailsForm
-                itemForm={order.itemForm}
                 handleInputItemForm={handleInputItemForm}
                 handleSelectOrderDetailIgstChange={
                   handleSelectOrderDetailIgstChange

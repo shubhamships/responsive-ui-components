@@ -10,20 +10,23 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 export default function ItemDetailsForm({
   removeInputFields,
-  itemForm,
   handleInputItemForm,
   handleSelectOrderDetailIgstChange,
 }) {
+  const { order } = useSelector((state: RootState) => state.addOrder);
+
   return (
     <>
       <div className="mt-4 mb-4 font-bold text-cyan-500 text-2xl">
         Item Details
       </div>
       <div className="m-2 font-medium text-sm">
-        {itemForm &&
-          itemForm.map((data, index) => {
+        {order.itemForm &&
+          order.itemForm.map((data, index) => {
             return (
               <div key={data.id} className="grid grid-cols-1 md:grid-cols-9">
                 <div className="my-2 mt-4 md:col-span-2">
@@ -104,7 +107,7 @@ export default function ItemDetailsForm({
                   </Select>
                 </div>
                 <div className="lg:mt-14 mt-4">
-                  {itemForm.length !== 1 && (
+                  {order.itemForm.length !== 1 && (
                     <button
                       onClick={() => removeInputFields(data.id)}
                       className="btn bg-red-500 rounded-full text-white px-2 py-1"

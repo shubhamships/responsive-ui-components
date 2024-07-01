@@ -1,8 +1,9 @@
+import { useSelector } from "react-redux";
 import SGFormField from "../elements/SGFormField";
 import SGFormSelect from "../elements/SGFormSelect";
+import { RootState } from "@/redux/store";
 export default function OrderDetailsForm({
   handleInputOrderDetailChange,
-  orderForm,
   handleInvoiceCurrency,
 }) {
   const selectCurrency = [
@@ -11,6 +12,7 @@ export default function OrderDetailsForm({
     { key: "eur", value: "EUR" },
     { key: "gbp", value: "GBP" },
   ];
+  const { order } = useSelector((state: RootState) => state.addOrder);
   return (
     <>
       <div className="mt-4 mb-4 font-bold text-cyan-500 text-2xl">
@@ -25,7 +27,7 @@ export default function OrderDetailsForm({
           pattern="^\S.*$"
           required
           placeholder="Enter Invoice Number"
-          inputValue={orderForm.invoiceNumber}
+          inputValue={order.invoiceNumber}
           onChangeFn={handleInputOrderDetailChange}
         />
         <SGFormField
@@ -35,7 +37,7 @@ export default function OrderDetailsForm({
           pattern="^\S.*$"
           required
           placeholder="Enter Invoice Date"
-          inputValue={orderForm.invoiceDate}
+          inputValue={order.invoiceDate}
           onChangeFn={handleInputOrderDetailChange}
         />
         <SGFormSelect
@@ -53,7 +55,7 @@ export default function OrderDetailsForm({
           pattern="^\S.*$"
           required
           placeholder="Enter Order Id/Ref."
-          inputValue={orderForm.orderRef}
+          inputValue={order.orderRef}
           onChangeFn={handleInputOrderDetailChange}
         />
         <SGFormField
@@ -64,7 +66,7 @@ export default function OrderDetailsForm({
           type="text"
           required
           placeholder="Enter IOSS"
-          inputValue={orderForm.ioss}
+          inputValue={order.ioss}
           onChangeFn={handleInputOrderDetailChange}
         />
       </div>

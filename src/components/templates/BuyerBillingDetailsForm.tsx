@@ -1,7 +1,8 @@
+import { useSelector } from "react-redux";
 import SGFormField from "../elements/SGFormField";
 import SGFormSelect from "../elements/SGFormSelect";
+import { RootState } from "@/redux/store";
 export default function BuyerBillingDetailsForm({
-  billingDetailsForm,
   handleInputBillingChange,
   handleSelectCountryBillingChange,
   handleSelectStateBillingChange,
@@ -17,6 +18,7 @@ export default function BuyerBillingDetailsForm({
     { key: "banglore", value: "Banglore" },
     { key: "pune", value: "Pune" },
   ];
+  const { bill } = useSelector((state: RootState) => state.addOrder);
   return (
     <>
       <div className="mt-4 mb-4 font-bold text-cyan-500 text-2xl">
@@ -31,7 +33,7 @@ export default function BuyerBillingDetailsForm({
           data={selectCountry}
           setSelectValueObj={handleSelectCountryBillingChange}
         />
-        {billingDetailsForm.countryBilling === "afghanistan" ? (
+        {bill.countryBilling === "afghanistan" ? (
           <>
             <SGFormField
               name="houseBilling"
@@ -41,7 +43,7 @@ export default function BuyerBillingDetailsForm({
               pattern="^\S.*$"
               message="Don't add spaces at beginning"
               placeholder="Enter House No."
-              inputValue={billingDetailsForm.houseBilling}
+              inputValue={bill.houseBilling}
               onChangeFn={handleInputBillingChange}
             />
             <SGFormField
@@ -52,7 +54,7 @@ export default function BuyerBillingDetailsForm({
               required
               pattern="^\S.*$"
               placeholder="Enter Locality"
-              inputValue={billingDetailsForm.localityBilling}
+              inputValue={bill.localityBilling}
               onChangeFn={handleInputBillingChange}
             />
             <SGFormField
@@ -63,7 +65,7 @@ export default function BuyerBillingDetailsForm({
               pattern="^\S.*$"
               required
               placeholder="Enter Street"
-              inputValue={billingDetailsForm.streetBilling}
+              inputValue={bill.streetBilling}
               onChangeFn={handleInputBillingChange}
             />
           </>
@@ -77,7 +79,7 @@ export default function BuyerBillingDetailsForm({
               message="Don't add spaces at beginning"
               pattern="^\S.*$"
               placeholder="Enter Address"
-              inputValue={billingDetailsForm.address1Billing}
+              inputValue={bill.address1Billing}
               onChangeFn={handleInputBillingChange}
             />
             <SGFormField
@@ -88,7 +90,7 @@ export default function BuyerBillingDetailsForm({
               required
               pattern="^\S.*$"
               placeholder="Enter Address"
-              inputValue={billingDetailsForm.address2Billing}
+              inputValue={bill.address2Billing}
               onChangeFn={handleInputBillingChange}
             />
             <SGFormField
@@ -99,7 +101,7 @@ export default function BuyerBillingDetailsForm({
               pattern="^\S.*$"
               required
               placeholder="Enter Landmark"
-              inputValue={billingDetailsForm.landmarkBilling}
+              inputValue={bill.landmarkBilling}
               onChangeFn={handleInputBillingChange}
             />
           </>
@@ -112,7 +114,7 @@ export default function BuyerBillingDetailsForm({
           required
           message="Don't add spaces at beginning"
           placeholder="Enter City"
-          inputValue={billingDetailsForm.cityBilling}
+          inputValue={bill.cityBilling}
           onChangeFn={handleInputBillingChange}
         />
         <SGFormSelect
@@ -131,7 +133,7 @@ export default function BuyerBillingDetailsForm({
           required
           pattern="[0-9]{6}"
           placeholder="Enter Pincode"
-          inputValue={billingDetailsForm.pincodeBilling}
+          inputValue={bill.pincodeBilling}
           onChangeFn={handleInputBillingChange}
         />
       </div>

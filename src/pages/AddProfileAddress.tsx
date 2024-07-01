@@ -125,7 +125,6 @@ export default function AddProfileAddress() {
               {/* Buyer billing details form if checkbox is unchecked */}
               {!check && (
                 <BuyerBillingDetailsForm
-                  billingDetailsForm={bill}
                   handleInputBillingChange={handleInputBillingChange}
                   handleSelectCountryBillingChange={
                     handleSelectCountryBillingChange
